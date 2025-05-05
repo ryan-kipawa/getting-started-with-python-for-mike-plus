@@ -1,0 +1,50 @@
+project:
+  type: book
+
+book:
+  title: "Getting started with Python for MIKE+"
+  author:
+    - "Ryan Murray"
+    - "Rocco Palmitessa"
+  date: "2025-05-15"
+  chapters:
+    - index.qmd
+    - intro.qmd
+
+    - part: "Module 1 - Foundations"
+      chapters:
+        - module1_foundations\index.qmd
+
+    - part: "Module 2 - Time Series"
+      chapters:
+        - module2_time_series\index.qmd
+
+    - part: "Module 3 - Network Results"
+      chapters:
+        - module3_network_results\index.qmd
+
+    - part: "Module 4 - Calibration Plots and Statistics"
+      chapters:
+        - module4_calibration_plots_and_statistics\index.qmd
+
+    - part: "Module 5 - MIKE+Py"
+      chapters:
+        - module5_mikepluspy\index.qmd
+
+    - part: "Module 6 - Putting Everything Together"
+      chapters:
+        - module6_putting_everything_together\index.qmd
+
+  page-footer: "Copyright 2025, DHI Group"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    number-sections: false
+  pdf:
+    documentclass: scrreprt
+
+
+
