@@ -1,3 +1,6 @@
+# quarto version:
+# https://github.com/quarto-dev/quarto-cli/releases/tag/v1.6.43
+
 project:
   type: book
 
