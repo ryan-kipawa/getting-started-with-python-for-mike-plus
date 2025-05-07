@@ -5,6 +5,9 @@ on:
   push:
     branches: main
 
+env:
+  UV_SYSTEM_PYTHON: 1
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -23,12 +26,18 @@ jobs:
           version: 1.6.42
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          # Install a specific version of uv.
+          version: "0.7.3"
       
-      - name: Install Python and Dependencies
+      - name: "Set up Python"
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - run: pip install -r book/requirements.txt
+          python-version-file: "book/.python-version"
+      - run: uv pip install -r book/requirements.txt
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
