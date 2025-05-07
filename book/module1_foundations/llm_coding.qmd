@@ -1,0 +1,27 @@
+# LLMs for Coding
+
+Large Language Models (LLMs) can significantly enhance coding efficiency. They're also a great tool for explaining code, which is helpful for learning Python.
+
+## Ways of using LLMs
+
+LLMs for coding is an area under rapid development. Here's a few ways of using LLMs for coding, roughly in the order in which they became avaiable for use:
+
+1. Chat interfaces via web (e.g. ChatGPT, Mistral AI)
+2. Chat interfaces via an IDE (e.g. [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat))
+3. Inline chat and autocompletion in IDE (e.g. [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot))
+4. Agentic coding with specialized IDEs (e.g. [Windsurf](https://windsurf.com/editor))
+
+Using LLMs is completely optional for the course. However, since Github Copilot is free and integrated with VS Code, our suggestion is to try it out as a learning assistant.
+
+## Ideas of how to use LLMs in coding
+
+A few ideas of how to use LLMs in coding:
+
+- Write scripts from scratch based on a description of what's needed
+- Explain a given script line by line to enhance understanding
+- Understand cryptic error messages, and get potential solutions
+- Review the quality of your code to see if it could be improved
+
+## Example - Andrej Karpathy using LLMs for coding
+
+{{< video https://www.youtube.com/embed/EWvNQjAaOHw?si=VUpLr2-rEUsOWZEI&amp;start=4471 >}}

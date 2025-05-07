@@ -1,0 +1,104 @@
+# Python Management
+
+Python continuously releases [new versions](https://devguide.python.org/versions/). Similarly, individual Python packages ([hosted on PyPI](https://pypi.org)) also continuously release new versions. Python scripts usually have dependencies on specific Python versions and packages, which highlights the need to carefully managing these. This is similar to different versions of MIKE+: you would not expect a MIKE+ 2025 model to run with MIKE+ 2023.
+
+## Tools
+
+There's several tools for managing Python and packages together. Two common options are:
+
+1. [uv](https://docs.astral.sh/uv/)
+2. [Miniforge](https://conda-forge.org/download/)
+
+This course uses *uv*. Please install *uv* according to their [official installation instructions](https://docs.astral.sh/uv/getting-started/installation/). Use the "standalone installed" for Windows.
+
+Confirm you properly installed *uv* by opening a terminal and running:
+
+```powershell
+uv --version
+```
+
+::: {.callout-tip}
+## Learn basics of terminals
+Installing and using *uv* requires using a terminal. Being familiar with terminals is generally useful for Python. This course assumes basic knowledge. If you've never used a terminal before, then please refer to an introductory resource such as: 
+[Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.5).
+:::
+
+## Installing Python with uv
+
+You can install Python with *uv* from the command line:
+
+```powershell
+uv python install
+```
+
+By default, this installs the latest version of Python (3.13.2 at the time of writing).
+
+Confirm it installed correctly by running:
+```powershell
+uv run python --version
+```
+
+## Virtual Environments
+
+:::{.callout-note}
+Virtual environments are an advanced Python topic, however, they are fundamental to using *uv*. Therefore, they will not be covered in depth, but explained just enough to be useful.
+:::
+
+Virtual environments are useful for isolating dependencies between projects. For example, let's say you work on two projects: Project A and Project B. If Project A requires a different version of Python than Project B, then you can handle that by creating virtual environments for each project. This avoids a [common issue](https://en.wikipedia.org/wiki/Dependency_hell) encountered when not using virtual environments. Conceptually, a virtual environment is a single Python version and set of Python packages.
+
+Create a new folder, and make a virtual environment:
+```powershell
+uv venv
+```
+
+Notice a folder called `.venv` was created. Explore that folder to see what it contains. Can you find the file `Python.exe`and the folder `site-packages`?
+
+It's good practice to create a single virtual environment in the root directory of each project. Therefore, the remainder of this course assumes you always run *uv* from within a folder containing a virtual environment.
+
+Refer to [uv's documentation](https://docs.astral.sh/uv/pip/environments/) for additional details.
+
+## Python package management
+
+*uv* provides two different approaches for Python package management. This course uses their *pip interface*. Common workflows are shown in the following sections. Refer to [uv's documentation](https://docs.astral.sh/uv/pip/) for more details.
+
+### Install packages
+
+Install Python packages with uv as follows:
+
+```powershell
+uv pip install <package-name>
+```
+
+For example, install *mikeio* as follows:
+```powershell
+uv pip install mikeio
+```
+
+Look at the `site-packages` folder again. Notice that it now includes mikeio and many other packages. When a package is installed, all of its dependencies are also installed automatically.
+
+### List installed packages
+
+List all installed Python packages and their versions with:
+```powershell
+uv pip list
+```
+
+### Upgrade packages
+
+Upgrade an older package version to the latest version as follows:
+
+```powershell
+uv pip install --ugprade mikeio
+```
+
+### Install specific package versions
+
+Occaisonally there's a need to install an older version of a package, which can be done as follows:
+
+```powershell
+uv pip install mikeio==1.7.1
+```
+
+## Example video
+
+{{< video placeholder >}}

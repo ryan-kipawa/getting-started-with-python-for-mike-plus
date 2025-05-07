@@ -1,3 +1,52 @@
-# Preface {.unnumbered}
+# Introduction {.unnumbered}
 
-TODO: Some meta introduction / images.
+DHI offers a range of free, open-source Python libraries that enable automated and reproducible MIKE+ workflows, as well as unlock the potential for robust and flexible analyses. This course is designed for experienced MIKE+ modelers who are new to Python, providing a practical foundation to begin applying concepts to real projects. You’ll gain essential skills to read, run, and modify Python scripts relevant to MIKE+ modelling through focused, hand-tailored examples. The course will orient you to a new way of working, guiding you through the transition from a GUI to a script-based environment, helping you navigate common challenges, and giving you the confidence to continue exploring Python and seek out resources to further develop your skills.
+
+## Why Python with MIKE+?
+
+Using Python alongside MIKE+ provides the following advantages:
+
+- Efficient handling of various file types, including dfs0, res1d, and xns11
+- Conversion of data between MIKE+ and third-party formats such as CSV and Excel
+- Flexibility to modify MIKE+ databases, access tools, and run simulations
+- Automation of modelling tasks using a straightforward scripting syntax
+- Reproducible and documented workflows that enhance model quality assurance
+
+## Intended Audience
+
+This course is ideal for MIKE+ modelers who:
+
+- Are eager to explore Python’s potential in MIKE+ modelling
+- Want to enhance, automate, or document parts of their workflows with Python
+- Seek more flexible and robust techniques for advanced modelling needs
+
+## Course Structure
+
+The course focuses on practical applications of Python for common MIKE+ modelling tasks. Content generally consists of a combination of videos, live sessions, and hands-on exercises. We will cover Python libraries such as MIKE IO, MIKE IO 1D, and MIKE+Py.
+
+Module 1 | Foundations
+: Topics: Python and Python Packages, Visual Studio Code, GitHub, Jupyter Notebooks, LLMs for coding, Pandas, Matplotlib, Documentation
+
+Module 2 | Time Series
+: Topics: dfs0 files, plotting, statistics, selections, resampling, basic data validation
+
+Module 3 | Network Results
+: Topics: network result files (e.g. res1d, res, res11), selecting data, extracting results, geospatial formats (e.g. shapefiles)
+
+Module 4 | Calibration Plots and Statistics
+: Topics: basic statistics and plots relevant for model calibration
+
+Module 5 | MIKE+Py
+: Topics: databases and SQL, modifying MIKE+ databases, accessing GUI tools, running simulations
+
+Module 6 | Putting Everything Together
+: Topics: final project applying lessons of previous modules.
+
+## Course Objectives
+
+After completing this course, you should be able to:
+
+- Install Python and related packages for use with MIKE+
+- Apply Python to create reproducible and automated workflows
+- Explore documentation and run example notebooks and scripts
+- Connect with the open-source Python community and MIKE+ modelers

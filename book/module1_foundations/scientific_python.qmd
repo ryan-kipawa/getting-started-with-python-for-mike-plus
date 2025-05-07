@@ -1,0 +1,140 @@
+# Scientific Python
+
+Python is a general purpose programming language that's used by a broad range of domains. MIKE+ modelling workflows most closely align with the *scientific python* community.
+
+## Package ecosystem for scientific Python
+
+There's several useful packages for engineering and science. This course will use the following packages:
+
+- [NumPy](https://numpy.org/)
+- [Maptlotlib](https://matplotlib.org/)
+- [pandas](https://pandas.pydata.org/)
+
+Check out [packages sponsored by  NumFOCUS](https://numfocus.org/sponsored-projects) for an overview of useful libraries.
+
+::: {.callout-tip}
+DHI builds their Python ecosystem on top of these packages, to enable  better integration between them and allow scientists/engineers the flexibility that's often required.
+:::
+
+## NumPy
+
+NumPy is a  package that essentially enables faster numerical computing on large arrays than would otherwise be possible via Python collections. It is foundational to many other packages.
+
+NumPy is imported as `np` by convention:
+```{python}
+import numpy as np
+```
+
+::: {.callout-note}
+Import as 'np' simply imports numpy and creates an alias for it as 'np'.
+:::
+
+Create a NumPy array from a Python collection:
+```{python}
+my_array = np.array([1, 2, 3])
+my_array
+```
+
+Use *vectorized* operations on arrays. For example, multiple all elements of the previous array by 2:
+```{python}
+my_array * 2
+```
+
+Index and slice arrays the same way as Python collections:
+```{python}
+my_array[0]
+```
+
+Perform aggregation functions on an array (e.g. sum, mean, max):
+```{python}
+my_array.sum()
+```
+
+Refer to [NumPy's official documentation](https://numpy.org/doc/stable/index.html) for additional information.
+
+## Pandas
+
+Pandas builds upon NumPy with a special focus on tabular data (like spreadsheets, or csv files).
+
+Pandas is imported as 'pd' by convention:
+```{python}
+import pandas as pd
+```
+
+Create a DataFrame, which is like a 2D labeled array (rows + columns):
+```{python}
+import pandas as pd
+data = [['Alice', 25], ['Bob', 30]]
+df = pd.DataFrame(data, columns=['name', 'age'])
+df
+```
+
+Select a single column by name:
+```{python}
+df['age']
+```
+
+Perform aggregation operations just like as with NumPy:
+```{python}
+df['age'].mean()
+```
+
+Import data from a csv file into a pandas DataFrame:
+```{python}
+rainfall = pd.read_csv('data/fake_daily_rainfall.csv', index_col='date')
+rainfall.head()
+```
+
+::: {.callout-note}
+Use the `head` method of a DataFrame to view the first five rows of very long DataFrames.
+:::
+
+Create plots from a DataFrame:
+```{python}
+rainfall.plot(kind='bar')
+```
+
+Export a DataFrame to csv, excel, or other formats:
+```{python}
+rainfall.to_csv("temp.csv")
+rainfall.to_excel("temp.xlsx")
+```
+```{python}
+#| include: false
+import os
+os.remove("temp.csv")
+os.remove("temp.xlsx")
+```
+
+Refer to [pandas's official documentation](https://pandas.pydata.org/docs/) for additional information.
+
+## Matplotlib
+
+Matplotlib is a library for creating plots and is commonly used by other libraries.
+
+Matplotlib is imported as 'plt' by convention:
+```{python}
+import matplotlib.pyplot as plt
+```
+
+Create a simple line plot:
+```{python}
+# Create some data
+x = np.array([1, 2, 3, 4, 5])
+y = x ** 2
+
+# Make the plot
+plt.plot(x, y)              # Plots x vs y
+plt.title("My plot")        # Gives a title to the plot
+plt.xlabel("X Axis")        # Labels the x-axis
+plt.ylabel("Y Axis")        # Labels the y-axis
+plt.grid()                  # Turns on grid lines
+```
+
+Refer to [Matplotlib's official documentation](https://matplotlib.org/stable/users/index) for additional information.
+
+Also, feel free to check out their [example gallery](https://matplotlib.org/stable/gallery/index.html) for a sense of what's possible.
+
+## Example - Importing and Plotting a Time Series CSV File
+
+{{< video placeholder >}}

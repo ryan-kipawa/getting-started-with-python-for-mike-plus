@@ -1,0 +1,35 @@
+# Python Scripts
+
+A Python script is a file with the extension *.py* that contains Python code that's executable via Python's interpreter.
+
+## Running Python Scripts
+
+Python is most powerful when scripts are reused. Therefore, it's important to understand both how to run scripts others have sent you, as well as how to explain how others can use scripts you wrote.
+
+### Running in Terminal
+
+You can run a script from the terminal by running:
+
+```powershell
+uv run python example_script.py
+```
+
+### Running in VS Code
+
+You can run scripts from VS Code's user interface. Under the hood, it executes the script in the terminal, so this is only a matter of preference. Refer to VS Code's documentation on [how to run Python code](https://code.visualstudio.com/docs/python/run). 
+
+::: {.callout-tip}
+Running scripts in debug mode is more convenient via VS Code's user interface. This lets you walk through code line by line as it executes, which is helpful when investigating unexpected outcomes.
+:::
+
+## Script Dependencies
+
+As previously mentioned, Python code includes dependencies on a set of Python packages (e.g. mikeio). If a script is run with a virtual environment that is missing these dependencies, there'll be an error along the lines of: *ModuleNotFoundError: No module named 'mikeio'*. The package listed in the error message (e.g. mikeio) needs to be installed before running the script.
+
+::: {.callout-tip}
+*uv* provides a way of defining dependencies within the script itself, such that they are automatically detected and installed when running the script with *uv*. Refer to uv's documentation on [script inline metadata](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies) for details.
+:::
+
+## Example - running scripts
+
+{{< video placeholder >}}

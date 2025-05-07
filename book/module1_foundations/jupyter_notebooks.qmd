@@ -1,0 +1,67 @@
+# Jupyter Notebooks
+
+A Jupyter Notebook is a file with the extension *.ipynb* that combines code, its output, and markdown into an interactive notebook-like experience. 
+
+## Comparison with Python Scripts
+
+A key difference is that notebooks are *interactive*, whereas scripts simply run from start to end. Generally, notebooks are more useful for exploratory or visual worklows (e.g. making plots, or analyzing data). It's also a great tool for learning Python.
+
+## Terminology
+
+The following are fundamental concepts of Jupyter Notebooks:
+
+Cell
+: A Jupyter Notebook is a collection of cells.
+
+Code Cell
+: A cell containing Python code, whose output shows below after execution.
+
+Cell Output
+: The output after executing a cell, which could be many things (e.g. a number, plot, or table)
+
+Markdown Cell
+: A cell containing markdown for nicely formatted text.
+
+Kernel
+: Responsible for executing cells. Same as Python virtual environment for the purposes of this course.
+
+## Running a Jupyter Notebook
+
+The Python extension for VS Code allows opening jupyter notebook files (.ipynb).
+
+Upon opening a notebook, all cells are displayed along with any saved output of those cells.
+
+Running a notebook first requires selecting the kernel (i.e. the Python virtual environment). If the virtual environment has not installed the package `ipykernel`, then VS Code will ask to do that. Alternatively, manually install it via:
+
+```powershell
+uv pip install ipykernel
+```
+
+Next, "Run All" to run all cells from top to bottom. It's also possible to run (or re-run) cells individually in any order.
+
+::: {.callout-tip}
+It's good practice to organize notebooks such that they run from top to bottom.
+:::
+
+## Creating a Jupyter Notebook
+
+Create a Jupyter Notebook from within VS Code by opening the Command Palette (CTRL + SHIFT + P) and typing "Create: New  Jupyter Notebook".
+
+Save the notebook in a project folder to help VS Code automatically find the project's virtual environment. Then, start adding and running cells.
+
+## Useful Keyboard Shortcuts
+
+There's a few useful keyboard shortcuts when working with notebooks:
+
+1. Shift + Enter: Run the current cell and move to the next.
+2. Ctrl + Enter: Run the current cell.
+4. A: Insert a new cell above.
+5. B: Insert a new cell below.
+
+## Additional resources
+
+For additional information, refer to [VS Code's documentation on jupyter notebooks](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
+
+## Example - Using Jupyter Notebooks
+
+{{< video placeholder >}}

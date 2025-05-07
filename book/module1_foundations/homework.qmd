@@ -1,0 +1,57 @@
+# Homework {.unnumbered}
+
+**Exercise 1**
+
+1. Create a GitHub account.
+2. Find and explore the *mikeio1d* repository. Can you find its documentation?
+3. What's the current version of *mikeio1d*?
+4. Search around GitHub and *star* some repositories you think are cool.
+
+**Exercise 2**
+
+1. Make a new folder somewhere on your PC.
+2. Open the folder in Visual Studio Code.
+2. Create a virtual environment in that folder using *uv* from VS Code's terminal.
+3. Install *mikeio1d* in the virtual environment using *uv*.
+4. List all the packages in the virtual environment. Do you recognize any?
+5. Select the Python Interpreter in VS Code to be the virtual environment you created.
+
+**Exercise 3**
+
+1. From VS Code, create a new file under the project folder created in exercise two.
+2. Copy the following code into the script:
+```{python}
+#| output: false
+import mikeio1d
+
+print("I'm a script that uses mikeio1d version " + mikeio1d.__version__)
+```
+3. Run the script from VS Code's terminal using *uv*.
+4. Run the script from VS Code's user interface (i.e. via the 'Run' menu).
+5. Do you get the same output for steps 3 and 4?
+
+**Exercise 4**
+
+1. Install `ipykernel` into the same virtual environment of the previous exercises.
+2. Create a new Jupyter Notebook from within VS Code.
+3. Make sure the kernel matches your virtual environment, otherwise update it.
+4. Paste the code from exercise three into a code cell.
+5. Run the cell created in the previous step. Does the output match that of exercise three?
+
+**Exercise 5**
+
+1. Install the package `cowsay`into your virtual environment.
+2. Create a new script, and import the function `cow` from `cowsay`.
+3. Make a list containing the names of three countries you want to visit.
+4. Loop over the list, and invoke the function `cow` by passing the current element of the list.
+5. Run the script. What do you see?
+6. Try to get the same output in a jupyter notebook by using two code cells.
+
+**Exercise 6**
+
+1. Download the following csv file into your project folder: TODO: Add link
+2. Install `pandas` and `matplotlib` into your virtual environment.
+3. Create a new Jupyter Notebook and import pandas
+4. Load the downloaded csv file into a *DataFrame* using pandas.
+5. Calculate the minimum, mean, and maximum values.
+6. Plot the DataFrame. Do the values calculated from the previous step make sense?

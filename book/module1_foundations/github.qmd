@@ -1,0 +1,32 @@
+# GitHub
+
+[GitHub](https://github.com/) is a website for storing, sharing, and collaborating on software development projects. It's an especially popular platform for [open-source software](https://en.wikipedia.org/wiki/Open-source_software). DHI uses GitHub for hosting its entire open-source Python ecosystem, including documentation and examples.
+
+## DHI's Python Ecosystem on GitHub
+
+DHI's Python ecosystem is organized into modular Python packages based on functionality. This is a common pattern in Python that empowers users to flexibly combine functionalities to meet specific project needs. An overview of Python packages useful for MIKE+ modelling is provided in the table below.
+
+| Package | Description |
+|:--------------------------------|:--------------------------------------|
+| [![MIKE IO](/images/logos\MIKE-IO-Logo-Pos-RGB-nomargin.png){width="185"}](https://github.com/DHI/mikeio) | Read, write and manipulate dfs0, dfs1, dfs2, dfs3, dfsu and mesh files. |
+| [![MIKE IO 1D](/images/logos\MIKE-IO-1D-Logo-Pos-RGB-nomargin.png){width="185"}](https://github.com/DHI/mikeio1d) | Read, manipulate, and analyze res1d, res, resx, out, and xns11 files. |
+| [![MIKE+Py](/images/logos\mikeplus-py.png){width="217"}](https://github.com/DHI/mikepluspy) | MIKE+Py is a python interface for MIKE+. |
+| [![ModelSkill](/images/logos\modelskill.png){width="300" height="50"}](https://github.com/DHI/modelskill) | Compare MIKE model results and observations. |
+| [![TSOD](/images/logos\tsod.png){width="171"}](https://github.com/DHI/tsod) | Anomaly Detection for time series data. |
+
+Feel free to browse additional open-source packages on [DHI's GitHub profile](https://github.com/DHI).
+
+## Why visit a Python package's GitHub page?
+
+You'll use GitHub for:
+
+* Accessing documentation and examples.
+* Creating 'issues' and/or 'discussions' when you need help.
+* Checking out changes with new package versions.
+* Browsing source code and/or contributing code you think is generally useful.
+
+## Typical structure of a Python package on GitHub
+
+Please watch the video below for a guided tour of how DHI organizes their Python packages on GitHub.
+
+{{< video placeholder >}}

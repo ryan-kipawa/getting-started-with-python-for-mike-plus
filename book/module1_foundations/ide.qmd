@@ -1,0 +1,46 @@
+# Integrated Development Environments (IDEs)
+
+An Integrated Development Environment (IDE) is a software that bundles together tools convenient for software development. This courses uses [Visual Studio Code](https://code.visualstudio.com/) as an IDE, which is a popular free and open-source software provided by Microsoft.
+
+## Why use an IDE?
+
+There's several benefits to using an IDE compared to using a text editor like Notepad:
+
+* Designed for easy code writing, with several shortcuts
+* Syntax highlighting for more readable code
+* Automatic code completion
+* Integrated terminal
+* Integrated LLM chat and code completion
+* Highly customizable with extensions
+
+## Install Visual Studio Code
+
+Install Visual Studio Code (VSCode) according to their [official instructions](https://code.visualstudio.com/). 
+
+::: {.callout-caution}
+You may stumble upon a software called Visual Studio, which is **different** than Visual Studio Code.
+:::
+
+## Getting Started
+
+VS Code provides excellent documentation. Please refer to their [getting started](https://code.visualstudio.com/docs/getstarted/getting-started) guide for a basic introduction.
+
+## Visual Studio Code Extensions
+
+This course uses the [Python extension for VS Code](https://marketplace.visualstudio.com/items/?itemName=ms-python.python). Extensions can be installed from within VS Code. Refer to VS Code's documentation for guidance.
+
+## Opening Projects
+
+VS Code can be used in different ways. This course uses a common workflow of opening VS Code from the root directory of a project folder. Alternatively, open a project folder via "Open Folder" from within VS Code.
+
+## Selecting Python Interpreters
+
+VS Code should automatically detect virtual environments located in the root project directory. 
+
+Otherwise, there's an option of manually selecting which Python Interpreter VS Code uses. Access it via the Command Palette (CTRL + SHIFT + P) and typing "Python: Select Interpreter". 
+
+VS Code uses the selected interpreter for running scripts, as well as for other features like auto completion.
+
+## Example - Setting up a fresh project
+
+{{< video placeholder >}}

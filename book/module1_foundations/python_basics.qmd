@@ -1,0 +1,208 @@
+# Python Basics
+
+This section provides a crash course on basic Python concepts used throughout the course. It is purposefully brief, with additional resources provided at the end.
+
+::: {.callout-tip}
+Follow along by running these cells in a Jupyter Notebook. Alternatively, run them in the [Python Interpreter](https://docs.python.org/3/tutorial/interpreter.html) which can be started with `uv run python`.
+:::
+
+## Using libraries
+
+Most functionality useful for MIKE+ modelling exists in Python packages (e.g. mikeio). Therefore, it's important to understand how to access functionality in a Python package.
+
+::: {.callout-note}
+The terms package, library, and module are used interchangeably throughout this course.
+:::
+
+### Import libraries
+
+Import libraries using the `import` statement:
+
+```{python}
+import math
+```
+
+Or import specific functionality from a library:
+
+```{python}
+from math import sqrt
+```
+
+### Objects
+
+All imports are *objects* containing some functionality. Objects have *members* accessible via the dot notation:
+
+```{python}
+math.pi
+```
+
+Dot accessors can be chained together, since all members are also objects.
+```{python}
+math.pi.is_integer()
+```
+
+There's a few common types of objects to be aware of:
+
+1. Modules: *reusable code you can import into your program.*
+2. Classes: *templates for creating objects with specific properties and behaviors.*
+3. Functions / Methods: *blocks of code that return a result.*
+4. Data: *any stored information (e.g. numbers, text).*
+
+See the type of an object with:
+```{python}
+type(math)
+```
+
+See the members of an object with:
+```{python}
+#| output: false
+dir(math)
+```
+
+Get help for an object:
+```{python}
+#| output: false
+help(math)
+```
+
+Good libraries have documentation. For example, see the [documentation for math](https://docs.python.org/3/library/math.html).
+
+### Using Functions / Methods
+
+::: {.callout-note}
+This course will use the terms 'function' and 'method' interchangeably.
+:::
+
+Use a function by *invoking* it with round brackets:
+
+```{python}
+sqrt(25)
+```
+
+Between the brackets is the function *arguments*. There's different ways of specifying arguments. For example, there could be a list of arguments:
+
+```{python}
+math.pow(2, 3)
+```
+
+### Using Classes
+
+Some library functionality is provided via a *class* that needs to be *instantiated* before using it.
+
+Below, the `Random` class is instantiated and assigned to the identifier `my_random` for reference later on.
+
+```{python}
+from random import Random
+my_random = Random()
+```
+
+An instantiation of a class is called an *instance*, and is also an object whose functionality is accessible with the dot notation:
+
+```{python}
+my_random.random() # returns a random number
+``` 
+
+## Variables
+
+Store data/objects in named variables by using the assignment operator `=`.
+
+```{python}
+result = 1 + 1
+result
+```
+
+::: {.callout-note}
+A valid name must be used. In general, this means it must start with a letter or underscore.
+:::
+
+Variable names can be referenced anywhere after their definition.
+
+```{python}
+result = result * 2
+result
+```
+
+## Collections
+
+A common need is to have a collection of related data. Perhaps the most common type of collection is a `list`, which is briefly introduced below.
+
+Create a list with square brackets. Optionally include comma separated elements, otherwise an empty list is created.
+```{python}
+my_numbers = [1, 2, 3]
+my_numbers
+```
+
+Append elements to an existing list.
+```{python}
+my_numbers.append(my_numbers)
+```
+
+Access a specific element by *indexing* the list with the zero-based index. Zero refers to the first element, one the second, and so on.
+```{python}
+my_numbers[0]
+```
+
+Access a subset of a list by *slicing* it. The example below accesses elements with index 0 up to, but excluding, 2.
+```{python}
+my_numbers[0:2]
+```
+
+## Control Logic
+
+Control logic allows the flow of a program to be controlled via boolean conditions.
+
+### Conditional statements
+
+Use `if` statements to execute code only if the specified condition is true.
+
+```{python}
+if 100 > 10:
+    print("100 is greater than 10")
+```
+
+::: {.callout-note}
+The code that the `if` statement applies to is called a *block*, which must be indented.
+:::
+
+Use `else` statements after an `if` statement to execute code only if the condition is untrue.
+
+```{python}
+if 100 < 10:
+    print("100 is less than 10")
+else:
+    print("of course, 100 is not less than 10")
+```
+
+### Loops
+
+A `while` loop continuously executes a block of code *while* the specified condition is true.
+
+```{python}
+i = 0
+while i < 3:
+    print(i)
+    i = i + 1
+```
+
+A `for` loop executes a block of code per element in a specified collection. 
+
+```{python}
+for fruit in ["Apple", "Banana", "Orange"]:
+    print(fruit)
+```
+
+## Additional resources
+
+Learning Python should be a continuous endeavor through practice. Luckily there's an abundance of high quality resources online. Here's a few examples:
+
+- [Official Python Documentation](https://docs.python.org/3/tutorial/)
+- [Learn X in Y minutes](https://learnxinyminutes.com/python/)
+- [FreeCodeCamp: Scientific Computing with Python](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
+
+::: {.callout-tip}
+Python is used by a wide variety of domains (e.g. web development). Try to use resources specific for engineering/science applications for a more efficient learning path.
+:::
+
+## Example - Using Python's Interpreter
+
+{{< video placeholder >}}

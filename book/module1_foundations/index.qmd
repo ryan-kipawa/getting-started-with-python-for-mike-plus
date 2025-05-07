@@ -1,3 +1,10 @@
-# Introduction
+# Welcome to Module One! {.unnumbered}
 
-Coming soon...
+In this module, you'll gain the skills to confidently set up your coding environment, access course materials, and run Python code with ease. Our focus is on:
+
+1. Mastering essential tools (e.g. GitHub, Visual Studio Code, uv).
+2. Running and understanding Python scripts and Jupyter notebooks.
+3. Learning basic Python syntax and concepts.
+4. Exploring core libraries (e.g. NumPy, Pandas, Matplotlib) for data analysis.
+
+Don’t worry if it feels fast-paced — you’ll practice these concepts in later modules. Let’s get you set up and ready to dive in!
