@@ -4,14 +4,14 @@ Large Language Models (LLMs) can significantly enhance coding efficiency. They'r
 
 ## Ways of using LLMs
 
-LLMs for coding is an area under rapid development. Here's a few ways of using LLMs for coding, roughly in the order in which they became avaiable for use:
+LLMs for coding is an area under rapid development. Here are a few ways of using LLMs for coding, roughly in the order in which they became available  for use:
 
 1. Chat interfaces via web (e.g. ChatGPT, Mistral AI)
 2. Chat interfaces via an IDE (e.g. [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat))
 3. Inline chat and autocompletion in IDE (e.g. [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot))
 4. Agentic coding with specialized IDEs (e.g. [Windsurf](https://windsurf.com/editor))
 
-Using LLMs is completely optional for the course. However, since Github Copilot is free and integrated with VS Code, our suggestion is to try it out as a learning assistant.
+Using LLMs is completely optional for the course. However, since GitHub Copilot is free and integrated with VS Code, our suggestion is to try it out as a learning assistant.
 
 ## Ideas of how to use LLMs in coding
 

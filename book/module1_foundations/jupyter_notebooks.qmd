@@ -4,7 +4,7 @@ A Jupyter Notebook is a file with the extension *.ipynb* that combines code, its
 
 ## Comparison with Python Scripts
 
-A key difference is that notebooks are *interactive*, whereas scripts simply run from start to end. Generally, notebooks are more useful for exploratory or visual worklows (e.g. making plots, or analyzing data). It's also a great tool for learning Python.
+A key difference is that notebooks are *interactive*, whereas scripts simply run from start to end. Generally, notebooks are more useful for exploratory or visual workflows (e.g. making plots, or analyzing data). It's also a great tool for learning Python.
 
 ## Terminology
 

@@ -41,7 +41,7 @@ Dot accessors can be chained together, since all members are also objects.
 math.pi.is_integer()
 ```
 
-There's a few common types of objects to be aware of:
+There are a few common types of objects to be aware of:
 
 1. Modules: *reusable code you can import into your program.*
 2. Classes: *templates for creating objects with specific properties and behaviors.*
@@ -134,7 +134,7 @@ my_numbers
 
 Append elements to an existing list.
 ```{python}
-my_numbers.append(my_numbers)
+my_numbers.append(4)
 ```
 
 Access a specific element by *indexing* the list with the zero-based index. Zero refers to the first element, one the second, and so on.

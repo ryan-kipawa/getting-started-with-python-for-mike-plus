@@ -4,12 +4,12 @@ Python continuously releases [new versions](https://devguide.python.org/versions
 
 ## Tools
 
-There's several tools for managing Python and packages together. Two common options are:
+There are several tools for managing Python and packages together. Two common options are:
 
 1. [uv](https://docs.astral.sh/uv/)
 2. [Miniforge](https://conda-forge.org/download/)
 
-This course uses *uv*. Please install *uv* according to their [official installation instructions](https://docs.astral.sh/uv/getting-started/installation/). Use the "standalone installed" for Windows.
+This course uses *uv*. Please install *uv* according to their [official installation instructions](https://docs.astral.sh/uv/getting-started/installation/). Use the "standalone installer" for Windows.
 
 Confirm you properly installed *uv* by opening a terminal and running:
 
@@ -88,12 +88,12 @@ uv pip list
 Upgrade an older package version to the latest version as follows:
 
 ```powershell
-uv pip install --ugprade mikeio
+uv pip install --upgrade mikeio
 ```
 
 ### Install specific package versions
 
-Occaisonally there's a need to install an older version of a package, which can be done as follows:
+Occasionally there's a need to install an older version of a package, which can be done as follows:
 
 ```powershell
 uv pip install mikeio==1.7.1

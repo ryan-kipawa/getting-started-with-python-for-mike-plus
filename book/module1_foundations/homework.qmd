@@ -11,14 +11,14 @@
 
 1. Make a new folder somewhere on your PC.
 2. Open the folder in Visual Studio Code.
-2. Create a virtual environment in that folder using *uv* from VS Code's terminal.
-3. Install *mikeio1d* in the virtual environment using *uv*.
-4. List all the packages in the virtual environment. Do you recognize any?
-5. Select the Python Interpreter in VS Code to be the virtual environment you created.
+3. Create a virtual environment in that folder using *uv* from VS Code's terminal.
+4. Install *mikeio1d* in the virtual environment using *uv*.
+5. List all the packages in the virtual environment. Do you recognize any?
+6. Select the Python Interpreter in VS Code to be the virtual environment you created.
 
 **Exercise 3**
 
-1. From VS Code, create a new file under the project folder created in exercise two.
+1. From VS Code, create a new .py file under the project folder created in exercise two.
 2. Copy the following code into the script:
 ```{python}
 #| output: false
@@ -40,7 +40,7 @@ print("I'm a script that uses mikeio1d version " + mikeio1d.__version__)
 
 **Exercise 5**
 
-1. Install the package `cowsay`into your virtual environment.
+1. Install the package `cowsay` into your virtual environment.
 2. Create a new script, and import the function `cow` from `cowsay`.
 3. Make a list containing the names of three countries you want to visit.
 4. Loop over the list, and invoke the function `cow` by passing the current element of the list.

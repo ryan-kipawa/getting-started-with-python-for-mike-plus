@@ -4,10 +4,10 @@ Python is a general purpose programming language that's used by a broad range of
 
 ## Package ecosystem for scientific Python
 
-There's several useful packages for engineering and science. This course will use the following packages:
+There are several useful packages for engineering and science. This course will use the following packages:
 
 - [NumPy](https://numpy.org/)
-- [Maptlotlib](https://matplotlib.org/)
+- [Matplotlib](https://matplotlib.org/)
 - [pandas](https://pandas.pydata.org/)
 
 Check out [packages sponsored by  NumFOCUS](https://numfocus.org/sponsored-projects) for an overview of useful libraries.
@@ -18,7 +18,7 @@ DHI builds their Python ecosystem on top of these packages, to enable  better in
 
 ## NumPy
 
-NumPy is a  package that essentially enables faster numerical computing on large arrays than would otherwise be possible via Python collections. It is foundational to many other packages.
+NumPy is a package that essentially enables faster numerical computing on large arrays than would otherwise be possible via Python collections. It is foundational to many other packages.
 
 NumPy is imported as `np` by convention:
 ```{python}
@@ -35,7 +35,7 @@ my_array = np.array([1, 2, 3])
 my_array
 ```
 
-Use *vectorized* operations on arrays. For example, multiple all elements of the previous array by 2:
+Use *vectorized* operations on arrays. For example, multiply all elements of the previous array by 2:
 ```{python}
 my_array * 2
 ```
