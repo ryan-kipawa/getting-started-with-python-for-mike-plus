@@ -64,4 +64,4 @@ For additional information, refer to [VS Code's documentation on jupyter noteboo
 
 ## Example - Using Jupyter Notebooks
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/hBQ7lS-6crY?si=87M3mjkNJykX2w7s >}}

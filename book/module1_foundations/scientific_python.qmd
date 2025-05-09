@@ -137,4 +137,4 @@ Also, feel free to check out their [example gallery](https://matplotlib.org/stab
 
 ## Example - Importing and Plotting a Time Series CSV File
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/biRU1_LfLL8?si=Ik-65D8AsbkLyNzZ >}}

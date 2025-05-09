@@ -101,4 +101,4 @@ uv pip install mikeio==1.7.1
 
 ## Example video
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/aOzYOZqSV60?si=0YKKOnakhujo8dPC >}}

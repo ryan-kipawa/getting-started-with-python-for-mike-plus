@@ -205,4 +205,4 @@ Python is used by a wide variety of domains (e.g. web development). Try to use r
 
 ## Example - Using Python's Interpreter
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/U2gxRmstAC0?si=u07FDPI3u1gtp6b5 >}}

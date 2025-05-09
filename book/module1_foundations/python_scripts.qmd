@@ -32,4 +32,4 @@ As previously mentioned, Python code includes dependencies on a set of Python pa
 
 ## Example - running scripts
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/TL2ZS1TeZeY?si=wZ3vy2gxBk9YdtJE >}}

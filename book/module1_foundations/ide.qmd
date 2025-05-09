@@ -43,4 +43,4 @@ VS Code uses the selected interpreter for running scripts, as well as for other 
 
 ## Example - Setting up a fresh project
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/ROvfBhSLquw?si=MfLDx9HFVadnWZne >}}

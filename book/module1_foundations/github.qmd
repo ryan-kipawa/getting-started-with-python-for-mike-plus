@@ -29,4 +29,4 @@ You'll use GitHub for:
 
 Please watch the video below for a guided tour of how DHI organizes their Python packages on GitHub.
 
-{{< video placeholder >}}
+{{< video https://www.youtube.com/embed/skF41BJT7m4?si=R1YSH6WLC7PdA4LV >}}
