@@ -1,5 +1,5 @@
 # quarto version:
-# https://github.com/quarto-dev/quarto-cli/releases/tag/v1.6.43
+# https://github.com/quarto-dev/quarto-cli/releases/tag/v1.7.30
 
 project:
   type: book
@@ -55,4 +55,3 @@ format:
       - brand
   pdf:
     documentclass: scrreprt
-
