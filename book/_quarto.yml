@@ -10,6 +10,10 @@ book:
     - "Ryan Murray"
     - "Rocco Palmitessa"
   date: "2025-05-15"
+
+  sidebar:
+    logo: images/logos/DHI_Logo_Pos_RGB_noMargin.png
+    
   chapters:
     - index.qmd
 
