@@ -11,9 +11,13 @@ book:
     - "Rocco Palmitessa"
   date: "2025-05-15"
 
+  comments:
+    giscus:
+      repo: DHI/Getting-started-with-Python-for-MIKE-Plus
+
   sidebar:
     logo: images/logos/DHI_Logo_Pos_RGB_noMargin.png
-    
+
   chapters:
     - index.qmd
 
