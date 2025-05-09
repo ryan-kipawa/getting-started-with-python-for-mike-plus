@@ -1,10 +1,10 @@
 # Integrated Development Environments (IDEs)
 
-An Integrated Development Environment (IDE) is a software that bundles together tools convenient for software development. This courses uses [Visual Studio Code](https://code.visualstudio.com/) as an IDE, which is a popular free and open-source software provided by Microsoft.
+An Integrated Development Environment (IDE) is a software that bundles together tools convenient for software development. This course uses [Visual Studio Code](https://code.visualstudio.com/) as an IDE, which is a popular free and open-source software provided by Microsoft.
 
 ## Why use an IDE?
 
-There's several benefits to using an IDE compared to using a text editor like Notepad:
+There are several benefits to using an IDE compared to using a text editor like Notepad:
 
 * Designed for easy code writing, with several shortcuts
 * Syntax highlighting for more readable code
