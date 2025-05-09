@@ -1,3 +1,7 @@
+---
+comments: false
+---
+
 # Homework {.unnumbered}
 
 **Exercise 1**

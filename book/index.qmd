@@ -1,3 +1,7 @@
+---
+comments: false
+---
+
 # Introduction {.unnumbered}
 
 DHI offers a range of free, open-source Python libraries that enable automated and reproducible MIKE+ workflows, as well as unlock the potential for robust and flexible analyses. This course is designed for experienced MIKE+ modelers who are new to Python, providing a practical foundation to begin applying concepts to real projects. You’ll gain essential skills to read, run, and modify Python scripts relevant to MIKE+ modelling through focused, hand-tailored examples. The course will orient you to a new way of working, guiding you through the transition from a GUI to a script-based environment, helping you navigate common challenges, and giving you the confidence to continue exploring Python and seek out resources to further develop your skills.

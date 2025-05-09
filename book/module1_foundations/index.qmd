@@ -1,3 +1,7 @@
+---
+comments: false
+---
+
 # Welcome to Module One! {.unnumbered}
 
 In this module, you'll gain the skills to confidently set up your coding environment, access course materials, and run Python code with ease. Our focus is on:

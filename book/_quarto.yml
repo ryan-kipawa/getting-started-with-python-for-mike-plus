@@ -11,10 +11,12 @@ book:
     - "Rocco Palmitessa"
   date: "2025-05-15"
 
-  url: https://dhi.github.io/Getting-started-with-Python-for-MIKE-Plus/
+  repo-url: https://github.com/DHI/getting-started-with-python-for-mike-plus
+  url: https://dhi.github.io/getting-started-with-python-for-mike-plus/
+
   comments:
     giscus:
-      repo: DHI/Getting-started-with-Python-for-MIKE-Plus
+      repo: dhi/getting-started-with-python-for-mike-plus
 
   sidebar:
     logo: images/logos/DHI_Logo_Pos_RGB_noMargin.png
@@ -59,8 +61,11 @@ book:
 
 format:
   html:
+    comments:
+      giscus:
+        repo: dhi/getting-started-with-python-for-mike-plus
     theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+      light: cosmo
+      dark: cyborg
+  #pdf:
+  #  documentclass: scrreprt
