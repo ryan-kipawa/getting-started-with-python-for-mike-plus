@@ -51,6 +51,10 @@ Create a new folder, and make a virtual environment:
 uv venv
 ```
 
+::: {.callout-tip}
+Use the terminal `cd` command to change its current directory. Alternatively, install [Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/) to easily launch a terminal from a folder within File Explorer via the right-click context menu.
+:::
+
 Notice a folder called `.venv` was created. Explore that folder to see what it contains. Can you find the file `Python.exe`and the folder `site-packages`?
 
 It's good practice to create a single virtual environment in the root directory of each project. Therefore, the remainder of this course assumes you always run *uv* from within a folder containing a virtual environment.
