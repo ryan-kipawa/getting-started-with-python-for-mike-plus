@@ -11,6 +11,7 @@ book:
     - "Rocco Palmitessa"
   date: "2025-05-15"
 
+  url: https://dhi.github.io/Getting-started-with-Python-for-MIKE-Plus/
   comments:
     giscus:
       repo: DHI/Getting-started-with-Python-for-MIKE-Plus
@@ -23,16 +24,16 @@ book:
 
     - part: "Module 1 - Foundations"
       chapters:
-        - module1_foundations\index.qmd
-        - module1_foundations\github.qmd
-        - module1_foundations\python_management.qmd
-        - module1_foundations\ide.qmd
-        - module1_foundations\python_scripts.qmd
-        - module1_foundations\jupyter_notebooks.qmd
-        - module1_foundations\python_basics.qmd
-        - module1_foundations\llm_coding.qmd
-        - module1_foundations\scientific_python.qmd
-        - module1_foundations\homework.qmd
+        - module1_foundations/index.qmd
+        - module1_foundations/github.qmd
+        - module1_foundations/python_management.qmd
+        - module1_foundations/ide.qmd
+        - module1_foundations/python_scripts.qmd
+        - module1_foundations/jupyter_notebooks.qmd
+        - module1_foundations/python_basics.qmd
+        - module1_foundations/llm_coding.qmd
+        - module1_foundations/scientific_python.qmd
+        - module1_foundations/homework.qmd
 
     - part: "Module 2 - Time Series"
       #chapters:
