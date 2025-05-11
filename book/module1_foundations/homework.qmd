@@ -53,7 +53,7 @@ print("I'm a script that uses mikeio1d version " + mikeio1d.__version__)
 
 **Exercise 6**
 
-1. Download [this time series csv file](data/homework/example_time_series.csv){download=example_time_series} into your project folder.
+1. Download [this time series csv file](data/homework/rain_events.csv){download=rain_events} into your project folder.
 2. Install `pandas` and `matplotlib` into your virtual environment.
 3. Create a new Jupyter Notebook and import pandas
 4. Load the downloaded csv file into a *DataFrame* using pandas.
