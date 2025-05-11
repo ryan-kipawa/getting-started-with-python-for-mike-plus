@@ -59,3 +59,10 @@ print("I'm a script that uses mikeio1d version " + mikeio1d.__version__)
 4. Load the downloaded csv file into a *DataFrame* using pandas.
 5. Calculate the minimum, mean, and maximum values.
 6. Plot the DataFrame. Do the values calculated from the previous step make sense?
+
+**Practice Exercises (optional)**
+
+- [Jupyter Notebook covering Python basics](data/homework/python_basics.ipynb){download=python_basics}
+- [Jupyter Notebook covering NumPy](data/homework/numpy.ipynb){download=numpy}
+- [Jupyter Notebook covering Pandas](data/homework/pandas.ipynb){download=pandas}
+- [Jupyter Notebook covering Matplotlib](data/homework/matplotlib.ipynb){download=matplotlib}
