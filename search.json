@@ -1,0 +1,1020 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Getting started with Python for MIKE+",
+    "section": "",
+    "text": "Introduction\nDHI offers a range of free, open-source Python libraries that enable automated and reproducible MIKE+ workflows, as well as unlock the potential for robust and flexible analyses. This course is designed for experienced MIKE+ modelers who are new to Python, providing a practical foundation to begin applying concepts to real projects. You’ll gain essential skills to read, run, and modify Python scripts relevant to MIKE+ modelling through focused, hand-tailored examples. The course will orient you to a new way of working, guiding you through the transition from a GUI to a script-based environment, helping you navigate common challenges, and giving you the confidence to continue exploring Python and seek out resources to further develop your skills.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#why-python-with-mike",
+    "href": "index.html#why-python-with-mike",
+    "title": "Getting started with Python for MIKE+",
+    "section": "Why Python with MIKE+?",
+    "text": "Why Python with MIKE+?\nUsing Python alongside MIKE+ provides the following advantages:\n\nEfficient handling of various file types, including dfs0, res1d, and xns11\nConversion of data between MIKE+ and third-party formats such as CSV and Excel\nFlexibility to modify MIKE+ databases, access tools, and run simulations\nAutomation of modelling tasks using a straightforward scripting syntax\nReproducible and documented workflows that enhance model quality assurance",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#intended-audience",
+    "href": "index.html#intended-audience",
+    "title": "Getting started with Python for MIKE+",
+    "section": "Intended Audience",
+    "text": "Intended Audience\nThis course is ideal for MIKE+ modelers who:\n\nAre eager to explore Python’s potential in MIKE+ modelling\nWant to enhance, automate, or document parts of their workflows with Python\nSeek more flexible and robust techniques for advanced modelling needs",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#course-structure",
+    "href": "index.html#course-structure",
+    "title": "Getting started with Python for MIKE+",
+    "section": "Course Structure",
+    "text": "Course Structure\nThe course focuses on practical applications of Python for common MIKE+ modelling tasks. Content generally consists of a combination of videos, live sessions, and hands-on exercises. We will cover Python libraries such as MIKE IO, MIKE IO 1D, and MIKE+Py.\n\nModule 1 | Foundations\n\nTopics: Python and Python Packages, Visual Studio Code, GitHub, Jupyter Notebooks, LLMs for coding, Pandas, Matplotlib, Documentation\n\nModule 2 | Time Series\n\nTopics: dfs0 files, plotting, statistics, selections, resampling, basic data validation\n\nModule 3 | Network Results\n\nTopics: network result files (e.g. res1d, res, res11), selecting data, extracting results, geospatial formats (e.g. shapefiles)\n\nModule 4 | Calibration Plots and Statistics\n\nTopics: basic statistics and plots relevant for model calibration\n\nModule 5 | MIKE+Py\n\nTopics: databases and SQL, modifying MIKE+ databases, accessing GUI tools, running simulations\n\nModule 6 | Putting Everything Together\n\nTopics: final project applying lessons of previous modules.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#course-objectives",
+    "href": "index.html#course-objectives",
+    "title": "Getting started with Python for MIKE+",
+    "section": "Course Objectives",
+    "text": "Course Objectives\nAfter completing this course, you should be able to:\n\nInstall Python and related packages for use with MIKE+\nApply Python to create reproducible and automated workflows\nExplore documentation and run example notebooks and scripts\nConnect with the open-source Python community and MIKE+ modelers",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/index.html",
+    "href": "module1_foundations/index.html",
+    "title": "Welcome to Module One!",
+    "section": "",
+    "text": "In this module, you’ll gain the skills to confidently set up your coding environment, access course materials, and run Python code with ease. Our focus is on:\n\nMastering essential tools (e.g. GitHub, Visual Studio Code, uv).\nRunning and understanding Python scripts and Jupyter notebooks.\nLearning basic Python syntax and concepts.\nExploring core libraries (e.g. NumPy, Pandas, Matplotlib) for data analysis.\n\nDon’t worry if it feels fast-paced — you’ll practice these concepts in later modules. Let’s get you set up and ready to dive in!",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "Welcome to Module One!"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/github.html",
+    "href": "module1_foundations/github.html",
+    "title": "1  GitHub",
+    "section": "",
+    "text": "1.1 DHI’s Python Ecosystem on GitHub\nGitHub is a website for storing, sharing, and collaborating on software development projects. It’s an especially popular platform for open-source software. DHI uses GitHub for hosting its entire open-source Python ecosystem, including documentation and examples.\nDHI’s Python ecosystem is organized into modular Python packages based on functionality. This is a common pattern in Python that empowers users to flexibly combine functionalities to meet specific project needs. An overview of Python packages useful for MIKE+ modelling is provided in the table below.\nFeel free to browse additional open-source packages on DHI’s GitHub profile.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/github.html#dhis-python-ecosystem-on-github",
+    "href": "module1_foundations/github.html#dhis-python-ecosystem-on-github",
+    "title": "1  GitHub",
+    "section": "",
+    "text": "Package\nDescription\n\n\n\n\n\nRead, write and manipulate dfs0, dfs1, dfs2, dfs3, dfsu and mesh files.\n\n\n\nRead, manipulate, and analyze res1d, res, resx, out, and xns11 files.\n\n\n\nMIKE+Py is a python interface for MIKE+.\n\n\n\nCompare MIKE model results and observations.\n\n\n\nAnomaly Detection for time series data.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/github.html#why-visit-a-python-packages-github-page",
+    "href": "module1_foundations/github.html#why-visit-a-python-packages-github-page",
+    "title": "1  GitHub",
+    "section": "1.2 Why visit a Python package’s GitHub page?",
+    "text": "1.2 Why visit a Python package’s GitHub page?\nYou’ll use GitHub for:\n\nAccessing documentation and examples.\nCreating ‘issues’ and/or ‘discussions’ when you need help.\nChecking out changes with new package versions.\nBrowsing source code and/or contributing code you think is generally useful.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/github.html#typical-structure-of-a-python-package-on-github",
+    "href": "module1_foundations/github.html#typical-structure-of-a-python-package-on-github",
+    "title": "1  GitHub",
+    "section": "1.3 Typical structure of a Python package on GitHub",
+    "text": "1.3 Typical structure of a Python package on GitHub\nPlease watch the video below for a guided tour of how DHI organizes their Python packages on GitHub.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html",
+    "href": "module1_foundations/python_management.html",
+    "title": "2  Python Management",
+    "section": "",
+    "text": "2.1 Tools\nPython continuously releases new versions. Similarly, individual Python packages (hosted on PyPI) also continuously release new versions. Python scripts usually have dependencies on specific Python versions and packages, which highlights the need to carefully managing these. This is similar to different versions of MIKE+: you would not expect a MIKE+ 2025 model to run with MIKE+ 2023.\nThere are several tools for managing Python and packages together. Two common options are:\nThis course uses uv. Please install uv according to their official installation instructions. Use the “standalone installer” for Windows.\nConfirm you properly installed uv by opening a terminal and running:",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html#tools",
+    "href": "module1_foundations/python_management.html#tools",
+    "title": "2  Python Management",
+    "section": "",
+    "text": "uv\nMiniforge\n\n\n\nuv --version\n\n\n\n\n\n\nLearn basics of terminals\n\n\n\nInstalling and using uv requires using a terminal. Being familiar with terminals is generally useful for Python. This course assumes basic knowledge. If you’ve never used a terminal before, then please refer to an introductory resource such as: Windows PowerShell.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html#installing-python-with-uv",
+    "href": "module1_foundations/python_management.html#installing-python-with-uv",
+    "title": "2  Python Management",
+    "section": "2.2 Installing Python with uv",
+    "text": "2.2 Installing Python with uv\nYou can install Python with uv from the command line:\nuv python install\nBy default, this installs the latest version of Python (3.13.2 at the time of writing).\nConfirm it installed correctly by running:\nuv run python --version",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html#virtual-environments",
+    "href": "module1_foundations/python_management.html#virtual-environments",
+    "title": "2  Python Management",
+    "section": "2.3 Virtual Environments",
+    "text": "2.3 Virtual Environments\n\n\n\n\n\n\nNote\n\n\n\nVirtual environments are an advanced Python topic, however, they are fundamental to using uv. Therefore, they will not be covered in depth, but explained just enough to be useful.\n\n\nVirtual environments are useful for isolating dependencies between projects. For example, let’s say you work on two projects: Project A and Project B. If Project A requires a different version of Python than Project B, then you can handle that by creating virtual environments for each project. This avoids a common issue encountered when not using virtual environments. Conceptually, a virtual environment is a single Python version and set of Python packages.\nCreate a new folder, and make a virtual environment:\nuv venv\n\n\n\n\n\n\nTip\n\n\n\nUse the terminal cd command to change its current directory. Alternatively, install Windows Terminal to easily launch a terminal from a folder within File Explorer via the right-click context menu.\n\n\nNotice a folder called .venv was created. Explore that folder to see what it contains. Can you find the file Python.exeand the folder site-packages?\nIt’s good practice to create a single virtual environment in the root directory of each project. Therefore, the remainder of this course assumes you always run uv from within a folder containing a virtual environment.\nRefer to uv’s documentation for additional details.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html#python-package-management",
+    "href": "module1_foundations/python_management.html#python-package-management",
+    "title": "2  Python Management",
+    "section": "2.4 Python package management",
+    "text": "2.4 Python package management\nuv provides two different approaches for Python package management. This course uses their pip interface. Common workflows are shown in the following sections. Refer to uv’s documentation for more details.\n\n2.4.1 Install packages\nInstall Python packages with uv as follows:\nuv pip install &lt;package-name&gt;\nFor example, install mikeio as follows:\nuv pip install mikeio\nLook at the site-packages folder again. Notice that it now includes mikeio and many other packages. When a package is installed, all of its dependencies are also installed automatically.\n\n\n2.4.2 List installed packages\nList all installed Python packages and their versions with:\nuv pip list\n\n\n2.4.3 Upgrade packages\nUpgrade an older package version to the latest version as follows:\nuv pip install --upgrade mikeio\n\n\n2.4.4 Install specific package versions\nOccasionally there’s a need to install an older version of a package, which can be done as follows:\nuv pip install mikeio==1.7.1",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_management.html#example-video",
+    "href": "module1_foundations/python_management.html#example-video",
+    "title": "2  Python Management",
+    "section": "2.5 Example video",
+    "text": "2.5 Example video",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Management</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html",
+    "href": "module1_foundations/ide.html",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "",
+    "text": "3.1 Why use an IDE?\nAn Integrated Development Environment (IDE) is a software that bundles together tools convenient for software development. This course uses Visual Studio Code as an IDE, which is a popular free and open-source software provided by Microsoft.\nThere are several benefits to using an IDE compared to using a text editor like Notepad:",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#why-use-an-ide",
+    "href": "module1_foundations/ide.html#why-use-an-ide",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "",
+    "text": "Designed for easy code writing, with several shortcuts\nSyntax highlighting for more readable code\nAutomatic code completion\nIntegrated terminal\nIntegrated LLM chat and code completion\nHighly customizable with extensions",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#install-visual-studio-code",
+    "href": "module1_foundations/ide.html#install-visual-studio-code",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.2 Install Visual Studio Code",
+    "text": "3.2 Install Visual Studio Code\nInstall Visual Studio Code (VSCode) according to their official instructions.\n\n\n\n\n\n\nCaution\n\n\n\nYou may stumble upon a software called Visual Studio, which is different than Visual Studio Code.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#getting-started",
+    "href": "module1_foundations/ide.html#getting-started",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.3 Getting Started",
+    "text": "3.3 Getting Started\nVS Code provides excellent documentation. Please refer to their getting started guide for a basic introduction.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#visual-studio-code-extensions",
+    "href": "module1_foundations/ide.html#visual-studio-code-extensions",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.4 Visual Studio Code Extensions",
+    "text": "3.4 Visual Studio Code Extensions\nThis course uses the Python extension for VS Code. Extensions can be installed from within VS Code. Refer to VS Code’s documentation for guidance.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#opening-projects",
+    "href": "module1_foundations/ide.html#opening-projects",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.5 Opening Projects",
+    "text": "3.5 Opening Projects\nVS Code can be used in different ways. This course uses a common workflow of opening VS Code from the root directory of a project folder. Alternatively, open a project folder via “Open Folder” from within VS Code.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#selecting-python-interpreters",
+    "href": "module1_foundations/ide.html#selecting-python-interpreters",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.6 Selecting Python Interpreters",
+    "text": "3.6 Selecting Python Interpreters\nVS Code should automatically detect virtual environments located in the root project directory.\nOtherwise, there’s an option of manually selecting which Python Interpreter VS Code uses. Access it via the Command Palette (CTRL + SHIFT + P) and typing “Python: Select Interpreter”.\nVS Code uses the selected interpreter for running scripts, as well as for other features like auto completion.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/ide.html#example---setting-up-a-fresh-project",
+    "href": "module1_foundations/ide.html#example---setting-up-a-fresh-project",
+    "title": "3  Integrated Development Environments (IDEs)",
+    "section": "3.7 Example - Setting up a fresh project",
+    "text": "3.7 Example - Setting up a fresh project",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Integrated Development Environments (IDEs)</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_scripts.html",
+    "href": "module1_foundations/python_scripts.html",
+    "title": "4  Python Scripts",
+    "section": "",
+    "text": "4.1 Running Python Scripts\nA Python script is a file with the extension .py that contains Python code that’s executable via Python’s interpreter.\nPython is most powerful when scripts are reused. Therefore, it’s important to understand both how to run scripts others have sent you, as well as how to explain how others can use scripts you wrote.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_scripts.html#running-python-scripts",
+    "href": "module1_foundations/python_scripts.html#running-python-scripts",
+    "title": "4  Python Scripts",
+    "section": "",
+    "text": "4.1.1 Running in Terminal\nYou can run a script from the terminal by running:\nuv run python example_script.py\n\n\n4.1.2 Running in VS Code\nYou can run scripts from VS Code’s user interface. Under the hood, it executes the script in the terminal, so this is only a matter of preference. Refer to VS Code’s documentation on how to run Python code.\n\n\n\n\n\n\nTip\n\n\n\nRunning scripts in debug mode is more convenient via VS Code’s user interface. This lets you walk through code line by line as it executes, which is helpful when investigating unexpected outcomes.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_scripts.html#script-dependencies",
+    "href": "module1_foundations/python_scripts.html#script-dependencies",
+    "title": "4  Python Scripts",
+    "section": "4.2 Script Dependencies",
+    "text": "4.2 Script Dependencies\nAs previously mentioned, Python code includes dependencies on a set of Python packages (e.g. mikeio). If a script is run with a virtual environment that is missing these dependencies, there’ll be an error along the lines of: ModuleNotFoundError: No module named ‘mikeio’. The package listed in the error message (e.g. mikeio) needs to be installed before running the script.\n\n\n\n\n\n\nTip\n\n\n\nuv provides a way of defining dependencies within the script itself, such that they are automatically detected and installed when running the script with uv. Refer to uv’s documentation on script inline metadata for details.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_scripts.html#example---running-scripts",
+    "href": "module1_foundations/python_scripts.html#example---running-scripts",
+    "title": "4  Python Scripts",
+    "section": "4.3 Example - running scripts",
+    "text": "4.3 Example - running scripts",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html",
+    "href": "module1_foundations/jupyter_notebooks.html",
+    "title": "5  Jupyter Notebooks",
+    "section": "",
+    "text": "5.1 Comparison with Python Scripts\nA Jupyter Notebook is a file with the extension .ipynb that combines code, its output, and markdown into an interactive notebook-like experience.\nA key difference is that notebooks are interactive, whereas scripts simply run from start to end. Generally, notebooks are more useful for exploratory or visual workflows (e.g. making plots, or analyzing data). It’s also a great tool for learning Python.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#terminology",
+    "href": "module1_foundations/jupyter_notebooks.html#terminology",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.2 Terminology",
+    "text": "5.2 Terminology\nThe following are fundamental concepts of Jupyter Notebooks:\n\nCell\n\nA Jupyter Notebook is a collection of cells.\n\nCode Cell\n\nA cell containing Python code, whose output shows below after execution.\n\nCell Output\n\nThe output after executing a cell, which could be many things (e.g. a number, plot, or table)\n\nMarkdown Cell\n\nA cell containing markdown for nicely formatted text.\n\nKernel\n\nResponsible for executing cells. Same as Python virtual environment for the purposes of this course.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#running-a-jupyter-notebook",
+    "href": "module1_foundations/jupyter_notebooks.html#running-a-jupyter-notebook",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.3 Running a Jupyter Notebook",
+    "text": "5.3 Running a Jupyter Notebook\nThe Python extension for VS Code allows opening jupyter notebook files (.ipynb).\nUpon opening a notebook, all cells are displayed along with any saved output of those cells.\nRunning a notebook first requires selecting the kernel (i.e. the Python virtual environment). If the virtual environment has not installed the package ipykernel, then VS Code will ask to do that. Alternatively, manually install it via:\nuv pip install ipykernel\nNext, “Run All” to run all cells from top to bottom. It’s also possible to run (or re-run) cells individually in any order.\n\n\n\n\n\n\nTip\n\n\n\nIt’s good practice to organize notebooks such that they run from top to bottom.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#creating-a-jupyter-notebook",
+    "href": "module1_foundations/jupyter_notebooks.html#creating-a-jupyter-notebook",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.4 Creating a Jupyter Notebook",
+    "text": "5.4 Creating a Jupyter Notebook\nCreate a Jupyter Notebook from within VS Code by opening the Command Palette (CTRL + SHIFT + P) and typing “Create: New Jupyter Notebook”.\nSave the notebook in a project folder to help VS Code automatically find the project’s virtual environment. Then, start adding and running cells.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#useful-keyboard-shortcuts",
+    "href": "module1_foundations/jupyter_notebooks.html#useful-keyboard-shortcuts",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.5 Useful Keyboard Shortcuts",
+    "text": "5.5 Useful Keyboard Shortcuts\nThere’s a few useful keyboard shortcuts when working with notebooks:\n\nShift + Enter: Run the current cell and move to the next.\nCtrl + Enter: Run the current cell.\nA: Insert a new cell above.\nB: Insert a new cell below.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#additional-resources",
+    "href": "module1_foundations/jupyter_notebooks.html#additional-resources",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.6 Additional resources",
+    "text": "5.6 Additional resources\nFor additional information, refer to VS Code’s documentation on jupyter notebooks.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/jupyter_notebooks.html#example---using-jupyter-notebooks",
+    "href": "module1_foundations/jupyter_notebooks.html#example---using-jupyter-notebooks",
+    "title": "5  Jupyter Notebooks",
+    "section": "5.7 Example - Using Jupyter Notebooks",
+    "text": "5.7 Example - Using Jupyter Notebooks",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Jupyter Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html",
+    "href": "module1_foundations/python_basics.html",
+    "title": "6  Python Basics",
+    "section": "",
+    "text": "6.1 Using libraries\nThis section provides a crash course on basic Python concepts used throughout the course. It is purposefully brief, with additional resources provided at the end.\nMost functionality useful for MIKE+ modelling exists in Python packages (e.g. mikeio). Therefore, it’s important to understand how to access functionality in a Python package.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#using-libraries",
+    "href": "module1_foundations/python_basics.html#using-libraries",
+    "title": "6  Python Basics",
+    "section": "",
+    "text": "Note\n\n\n\nThe terms package, library, and module are used interchangeably throughout this course.\n\n\n\n6.1.1 Import libraries\nImport libraries using the import statement:\n\nimport math\n\nOr import specific functionality from a library:\n\nfrom math import sqrt\n\n\n\n6.1.2 Objects\nAll imports are objects containing some functionality. Objects have members accessible via the dot notation:\n\nmath.pi\n\n3.141592653589793\n\n\nDot accessors can be chained together, since all members are also objects.\n\nmath.pi.is_integer()\n\nFalse\n\n\nThere are a few common types of objects to be aware of:\n\nModules: reusable code you can import into your program.\nClasses: templates for creating objects with specific properties and behaviors.\nFunctions / Methods: blocks of code that return a result.\nData: any stored information (e.g. numbers, text).\n\nSee the type of an object with:\n\ntype(math)\n\nmodule\n\n\nSee the members of an object with:\n\ndir(math)\n\nGet help for an object:\n\nhelp(math)\n\nGood libraries have documentation. For example, see the documentation for math.\n\n\n6.1.3 Using Functions / Methods\n\n\n\n\n\n\nNote\n\n\n\nThis course will use the terms ‘function’ and ‘method’ interchangeably.\n\n\nUse a function by invoking it with round brackets:\n\nsqrt(25)\n\n5.0\n\n\nBetween the brackets is the function arguments. There’s different ways of specifying arguments. For example, there could be a list of arguments:\n\nmath.pow(2, 3)\n\n8.0\n\n\n\n\n6.1.4 Using Classes\nSome library functionality is provided via a class that needs to be instantiated before using it.\nBelow, the Random class is instantiated and assigned to the identifier my_random for reference later on.\n\nfrom random import Random\nmy_random = Random()\n\nAn instantiation of a class is called an instance, and is also an object whose functionality is accessible with the dot notation:\n\nmy_random.random() # returns a random number\n\n0.07627326615508245",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#variables",
+    "href": "module1_foundations/python_basics.html#variables",
+    "title": "6  Python Basics",
+    "section": "6.2 Variables",
+    "text": "6.2 Variables\nStore data/objects in named variables by using the assignment operator =.\n\nresult = 1 + 1\nresult\n\n2\n\n\n\n\n\n\n\n\nNote\n\n\n\nA valid name must be used. In general, this means it must start with a letter or underscore.\n\n\nVariable names can be referenced anywhere after their definition.\n\nresult = result * 2\nresult\n\n4",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#collections",
+    "href": "module1_foundations/python_basics.html#collections",
+    "title": "6  Python Basics",
+    "section": "6.3 Collections",
+    "text": "6.3 Collections\nA common need is to have a collection of related data. Perhaps the most common type of collection is a list, which is briefly introduced below.\nCreate a list with square brackets. Optionally include comma separated elements, otherwise an empty list is created.\n\nmy_numbers = [1, 2, 3]\nmy_numbers\n\n[1, 2, 3]\n\n\nAppend elements to an existing list.\n\nmy_numbers.append(4)\n\nAccess a specific element by indexing the list with the zero-based index. Zero refers to the first element, one the second, and so on.\n\nmy_numbers[0]\n\n1\n\n\nAccess a subset of a list by slicing it. The example below accesses elements with index 0 up to, but excluding, 2.\n\nmy_numbers[0:2]\n\n[1, 2]",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#control-logic",
+    "href": "module1_foundations/python_basics.html#control-logic",
+    "title": "6  Python Basics",
+    "section": "6.4 Control Logic",
+    "text": "6.4 Control Logic\nControl logic allows the flow of a program to be controlled via boolean conditions.\n\n6.4.1 Conditional statements\nUse if statements to execute code only if the specified condition is true.\n\nif 100 &gt; 10:\n    print(\"100 is greater than 10\")\n\n100 is greater than 10\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe code that the if statement applies to is called a block, which must be indented.\n\n\nUse else statements after an if statement to execute code only if the condition is untrue.\n\nif 100 &lt; 10:\n    print(\"100 is less than 10\")\nelse:\n    print(\"of course, 100 is not less than 10\")\n\nof course, 100 is not less than 10\n\n\n\n\n6.4.2 Loops\nA while loop continuously executes a block of code while the specified condition is true.\n\ni = 0\nwhile i &lt; 3:\n    print(i)\n    i = i + 1\n\n0\n1\n2\n\n\nA for loop executes a block of code per element in a specified collection.\n\nfor fruit in [\"Apple\", \"Banana\", \"Orange\"]:\n    print(fruit)\n\nApple\nBanana\nOrange",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#additional-resources",
+    "href": "module1_foundations/python_basics.html#additional-resources",
+    "title": "6  Python Basics",
+    "section": "6.5 Additional resources",
+    "text": "6.5 Additional resources\nLearning Python should be a continuous endeavor through practice. Luckily there’s an abundance of high quality resources online. Here’s a few examples:\n\nOfficial Python Documentation\nLearn X in Y minutes\nFreeCodeCamp: Scientific Computing with Python\n\n\n\n\n\n\n\nTip\n\n\n\nPython is used by a wide variety of domains (e.g. web development). Try to use resources specific for engineering/science applications for a more efficient learning path.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/python_basics.html#example---using-pythons-interpreter",
+    "href": "module1_foundations/python_basics.html#example---using-pythons-interpreter",
+    "title": "6  Python Basics",
+    "section": "6.6 Example - Using Python’s Interpreter",
+    "text": "6.6 Example - Using Python’s Interpreter",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/llm_coding.html",
+    "href": "module1_foundations/llm_coding.html",
+    "title": "7  LLMs for Coding",
+    "section": "",
+    "text": "7.1 Ways of using LLMs\nLarge Language Models (LLMs) can significantly enhance coding efficiency. They’re also a great tool for explaining code, which is helpful for learning Python.\nLLMs for coding is an area under rapid development. Here are a few ways of using LLMs for coding, roughly in the order in which they became available for use:\nUsing LLMs is completely optional for the course. However, since GitHub Copilot is free and integrated with VS Code, our suggestion is to try it out as a learning assistant.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>LLMs for Coding</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/llm_coding.html#ways-of-using-llms",
+    "href": "module1_foundations/llm_coding.html#ways-of-using-llms",
+    "title": "7  LLMs for Coding",
+    "section": "",
+    "text": "Chat interfaces via web (e.g. ChatGPT, Mistral AI)\nChat interfaces via an IDE (e.g. GitHub Copilot Chat)\nInline chat and autocompletion in IDE (e.g. GitHub Copilot)\nAgentic coding with specialized IDEs (e.g. Windsurf)",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>LLMs for Coding</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/llm_coding.html#ideas-of-how-to-use-llms-in-coding",
+    "href": "module1_foundations/llm_coding.html#ideas-of-how-to-use-llms-in-coding",
+    "title": "7  LLMs for Coding",
+    "section": "7.2 Ideas of how to use LLMs in coding",
+    "text": "7.2 Ideas of how to use LLMs in coding\nA few ideas of how to use LLMs in coding:\n\nWrite scripts from scratch based on a description of what’s needed\nExplain a given script line by line to enhance understanding\nUnderstand cryptic error messages, and get potential solutions\nReview the quality of your code to see if it could be improved",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>LLMs for Coding</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/llm_coding.html#example---andrej-karpathy-using-llms-for-coding",
+    "href": "module1_foundations/llm_coding.html#example---andrej-karpathy-using-llms-for-coding",
+    "title": "7  LLMs for Coding",
+    "section": "7.3 Example - Andrej Karpathy using LLMs for coding",
+    "text": "7.3 Example - Andrej Karpathy using LLMs for coding",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>LLMs for Coding</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html",
+    "href": "module1_foundations/scientific_python.html",
+    "title": "8  Scientific Python",
+    "section": "",
+    "text": "8.1 Package ecosystem for scientific Python\nPython is a general purpose programming language that’s used by a broad range of domains. MIKE+ modelling workflows most closely align with the scientific python community.\nThere are several useful packages for engineering and science. This course will use the following packages:\nCheck out packages sponsored by NumFOCUS for an overview of useful libraries.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html#package-ecosystem-for-scientific-python",
+    "href": "module1_foundations/scientific_python.html#package-ecosystem-for-scientific-python",
+    "title": "8  Scientific Python",
+    "section": "",
+    "text": "NumPy\nMatplotlib\npandas\n\n\n\n\n\n\n\n\nTip\n\n\n\nDHI builds their Python ecosystem on top of these packages, to enable better integration between them and allow scientists/engineers the flexibility that’s often required.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html#numpy",
+    "href": "module1_foundations/scientific_python.html#numpy",
+    "title": "8  Scientific Python",
+    "section": "8.2 NumPy",
+    "text": "8.2 NumPy\nNumPy is a package that essentially enables faster numerical computing on large arrays than would otherwise be possible via Python collections. It is foundational to many other packages.\nNumPy is imported as np by convention:\n\nimport numpy as np\n\n\n\n\n\n\n\nNote\n\n\n\nImport as ‘np’ simply imports numpy and creates an alias for it as ‘np’.\n\n\nCreate a NumPy array from a Python collection:\n\nmy_array = np.array([1, 2, 3])\nmy_array\n\narray([1, 2, 3])\n\n\nUse vectorized operations on arrays. For example, multiply all elements of the previous array by 2:\n\nmy_array * 2\n\narray([2, 4, 6])\n\n\nIndex and slice arrays the same way as Python collections:\n\nmy_array[0]\n\nnp.int64(1)\n\n\nPerform aggregation functions on an array (e.g. sum, mean, max):\n\nmy_array.sum()\n\nnp.int64(6)\n\n\nRefer to NumPy’s official documentation for additional information.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html#pandas",
+    "href": "module1_foundations/scientific_python.html#pandas",
+    "title": "8  Scientific Python",
+    "section": "8.3 Pandas",
+    "text": "8.3 Pandas\nPandas builds upon NumPy with a special focus on tabular data (like spreadsheets, or csv files).\nPandas is imported as ‘pd’ by convention:\n\nimport pandas as pd\n\nCreate a DataFrame, which is like a 2D labeled array (rows + columns):\n\nimport pandas as pd\ndata = [['Alice', 25], ['Bob', 30]]\ndf = pd.DataFrame(data, columns=['name', 'age'])\ndf\n\n\n\n\n\n\n\n\nname\nage\n\n\n\n\n0\nAlice\n25\n\n\n1\nBob\n30\n\n\n\n\n\n\n\nSelect a single column by name:\n\ndf['age']\n\n0    25\n1    30\nName: age, dtype: int64\n\n\nPerform aggregation operations just like as with NumPy:\n\ndf['age'].mean()\n\nnp.float64(27.5)\n\n\nImport data from a csv file into a pandas DataFrame:\n\nrainfall = pd.read_csv('data/fake_daily_rainfall.csv', index_col='date')\nrainfall.head()\n\n\n\n\n\n\n\n\nrainfall_mm\n\n\ndate\n\n\n\n\n\n2025-06-01\n17.450712\n\n\n2025-06-02\n7.926035\n\n\n2025-06-03\n19.715328\n\n\n2025-06-04\n32.845448\n\n\n2025-06-05\n6.487699\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nUse the head method of a DataFrame to view the first five rows of very long DataFrames.\n\n\nCreate plots from a DataFrame:\n\nrainfall.plot(kind='bar')\n\n\n\n\n\n\n\n\nExport a DataFrame to csv, excel, or other formats:\n\nrainfall.to_csv(\"temp.csv\")\nrainfall.to_excel(\"temp.xlsx\")\n\nRefer to pandas’s official documentation for additional information.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html#matplotlib",
+    "href": "module1_foundations/scientific_python.html#matplotlib",
+    "title": "8  Scientific Python",
+    "section": "8.4 Matplotlib",
+    "text": "8.4 Matplotlib\nMatplotlib is a library for creating plots and is commonly used by other libraries.\nMatplotlib is imported as ‘plt’ by convention:\n\nimport matplotlib.pyplot as plt\n\nCreate a simple line plot:\n\n# Create some data\nx = np.array([1, 2, 3, 4, 5])\ny = x ** 2\n\n# Make the plot\nplt.plot(x, y)              # Plots x vs y\nplt.title(\"My plot\")        # Gives a title to the plot\nplt.xlabel(\"X Axis\")        # Labels the x-axis\nplt.ylabel(\"Y Axis\")        # Labels the y-axis\nplt.grid()                  # Turns on grid lines\n\n\n\n\n\n\n\n\nRefer to Matplotlib’s official documentation for additional information.\nAlso, feel free to check out their example gallery for a sense of what’s possible.",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/scientific_python.html#example---importing-and-plotting-a-time-series-csv-file",
+    "href": "module1_foundations/scientific_python.html#example---importing-and-plotting-a-time-series-csv-file",
+    "title": "8  Scientific Python",
+    "section": "8.5 Example - Importing and Plotting a Time Series CSV File",
+    "text": "8.5 Example - Importing and Plotting a Time Series CSV File",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Scientific Python</span>"
+    ]
+  },
+  {
+    "objectID": "module1_foundations/homework.html",
+    "href": "module1_foundations/homework.html",
+    "title": "Homework",
+    "section": "",
+    "text": "Exercise 1\n\nCreate a GitHub account.\nFind and explore the mikeio1d repository. Can you find its documentation?\nWhat’s the current version of mikeio1d?\nSearch around GitHub and star some repositories you think are cool.\n\nExercise 2\n\nMake a new folder somewhere on your PC.\nOpen the folder in Visual Studio Code.\nCreate a virtual environment in that folder using uv from VS Code’s terminal.\nInstall mikeio1d in the virtual environment using uv.\nList all the packages in the virtual environment. Do you recognize any?\nSelect the Python Interpreter in VS Code to be the virtual environment you created.\n\nExercise 3\n\nFrom VS Code, create a new .py file under the project folder created in exercise two.\nCopy the following code into the script:\n\n\nimport mikeio1d\n\nprint(\"I'm a script that uses mikeio1d version \" + mikeio1d.__version__)\n\n\nRun the script from VS Code’s terminal using uv.\nRun the script from VS Code’s user interface (i.e. via the ‘Run’ menu).\nDo you get the same output for steps 3 and 4?\n\nExercise 4\n\nInstall ipykernel into the same virtual environment of the previous exercises.\nCreate a new Jupyter Notebook from within VS Code.\nMake sure the kernel matches your virtual environment, otherwise update it.\nPaste the code from exercise three into a code cell.\nRun the cell created in the previous step. Does the output match that of exercise three?\n\nExercise 5\n\nInstall the package cowsay into your virtual environment.\nCreate a new script, and import the function cow from cowsay.\nMake a list containing the names of three countries you want to visit.\nLoop over the list, and invoke the function cow by passing the current element of the list.\nRun the script. What do you see?\nTry to get the same output in a jupyter notebook by using two code cells.\n\nExercise 6\n\nDownload this time series csv file into your project folder.\nInstall pandas and matplotlib into your virtual environment.\nCreate a new Jupyter Notebook and import pandas\nLoad the downloaded csv file into a DataFrame using pandas.\nCalculate the minimum, mean, and maximum values.\nPlot the DataFrame. Do the values calculated from the previous step make sense?\n\nPractice Exercises (optional)\n\nJupyter Notebook covering Python basics\nJupyter Notebook covering NumPy\nJupyter Notebook covering Pandas\nJupyter Notebook covering Matplotlib",
+    "crumbs": [
+      "Module 1 - Foundations",
+      "Homework"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/index.html",
+    "href": "module2_time_series/index.html",
+    "title": "Welcome to Module 2!",
+    "section": "",
+    "text": "This module launches you into the practical world of time series data, a fundamental component of nearly all MIKE+ modelling projects. Our focus is on empowering you to efficiently handle, analyze, and prepare time series for your MIKE+ workflows:\n\nConvert dfs0 to Pandas DataFrame\nSelect, resample, and clean data\nVisualize time series data\nConvert Pandas DataFrame to dfs0\n\nYou’ll build on knowledge of Pandas, and be introduced to a new library: MIKE IO. Let’s go!",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "Welcome to Module 2!"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html",
+    "href": "module2_time_series/01_mikeio.html",
+    "title": "9  MIKE IO Basics",
+    "section": "",
+    "text": "9.1 What is MIKE IO?\nThis section introduces MIKE IO, a fundamental DHI Python package. You’ll learn what MIKE IO is, the scope of its usage in this course, how to install it, and grasp its basic concepts. We provide a brief overview here; the next section delves into more detail.\nMIKE IO is an open-source Python package developed by DHI, which you might recall from Module 1. It empowers modelers with full flexibility by bridging the gap between various MIKE file formats and Scientific Python’s rich and powerful package ecosystem.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html#usage-in-course",
+    "href": "module2_time_series/01_mikeio.html#usage-in-course",
+    "title": "9  MIKE IO Basics",
+    "section": "9.2 Usage in course",
+    "text": "9.2 Usage in course\nFor MIKE+ modelers, a key file format is dfs0, DHI’s standard for tabular time series data. You’re likely familiar with dfs0 files for storing data such as rainfall, water levels, or discharge.\nThis course primarily focuses on the dfs0 functionality of MIKE IO, since it’s most relevant for handling time series data in MIKE+. While MIKE IO also supports other formats like dfs2, dfsu, and mesh files, they are intermediate topics beyond the scope of this introductory course.\n\n\n\n\n\n\nAlternative ways of using MIKE IO\n\n\n\n\n\nIt’s important to note that this course primarily focuses on using MIKE IO to get time series data into Pandas DataFrames. This approach is chosen to:\n\nReduce the initial learning curve for Python beginners by leveraging Pandas skills.\nProvide a method that is sufficiently powerful for most common time series tasks in MIKE+ modelling.\n\nMIKE IO itself has a lot of other useful functionalities, especially for working directly with Dataset and DataArray objects, and for handling multidimensional data (like dfs2 or dfsu files). We encourage you explore the official MIKE IO documentation after mastering the basics of Pandas.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html#installation",
+    "href": "module2_time_series/01_mikeio.html#installation",
+    "title": "9  MIKE IO Basics",
+    "section": "9.3 Installation",
+    "text": "9.3 Installation\nInstall MIKE IO with:\nuv pip install mikeio\n\n\n\n\n\n\nTip\n\n\n\nAlways check the official MIKE IO’s documentation for the most up-to-date installation instructions and information on the latest versions.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html#quick-glance",
+    "href": "module2_time_series/01_mikeio.html#quick-glance",
+    "title": "9  MIKE IO Basics",
+    "section": "9.4 Quick glance",
+    "text": "9.4 Quick glance\nLet’s take a quick look at some core MIKE IO objects and how to access them. When you read a dfs0 file, MIKE IO typically returns a Dataset object.\n\nimport mikeio\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\n\n\n\n\n\n\n\nNote\n\n\n\nExample dfs0 is from MIKE+ Example Project: Sirius.\n\n\nThis Dataset object, ds, holds the data and metadata. You can easily access its contents, such as the items:\n\nds.items\n\nThe time axis is a Pandas DatetimeIndex, shared between all items:\n\nds.time\n\nTo access data for a specific item, you can select it from the Dataset, which returns a DataArray object:\n\nda = ds[0] # Access the first item from ds.items",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html#key-concepts",
+    "href": "module2_time_series/01_mikeio.html#key-concepts",
+    "title": "9  MIKE IO Basics",
+    "section": "9.5 Key Concepts",
+    "text": "9.5 Key Concepts\nUnderstanding a few key concepts in MIKE IO will be helpful as you progress through this course:\n\n\nDataset\n\nA Dataset is a collection of one or more DataArray objects that share the same time axis. Think of it as the entire content of a dfs0 file.\n\nDataArray\n\nA DataArray holds the data for a single item, including its time series values and associated metadata. This is comparable to a single column in a dfs0 file when viewed in a tabular format.\n\nItems\n\nEach DataArray within a Dataset represents an “item.” An item is characterized by its name, type (e.g., water level, discharge), unit (e.g., meters, m\\(^3\\)/s), and value type (e.g., instantaneous, accumulated), which are crucial for correct data interpretation in MIKE software.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/01_mikeio.html#additional-reading-optional",
+    "href": "module2_time_series/01_mikeio.html#additional-reading-optional",
+    "title": "9  MIKE IO Basics",
+    "section": "9.6 Additional reading (optional)",
+    "text": "9.6 Additional reading (optional)\nThe following sections of MIKE IO’s documentation are particularly relevant for this course:\n\nGetting started\nData Structures\nDataArray\nDataset\nDfs0\nEUM (Units and Types)",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/02_reading_dfs0.html",
+    "href": "module2_time_series/02_reading_dfs0.html",
+    "title": "10  Read dfs0 to Pandas",
+    "section": "",
+    "text": "10.1 Workflow\nThis section guides you through loading time series data from dfs0 files into Pandas DataFrames. This approach allows you to leverage your existing Pandas skills, learned in Module 1, for powerful time series analysis and manipulation.\nThe general workflow for working with dfs0 data is as follows:",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/02_reading_dfs0.html#workflow",
+    "href": "module2_time_series/02_reading_dfs0.html#workflow",
+    "title": "10  Read dfs0 to Pandas",
+    "section": "",
+    "text": "Read dfs0 file into Dataset\nSubset Dataset for specific items and times (optional)\nConvert Dataset (or DataArray) to DataFrame\nPerform some additional analysis via the DataFrame",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/02_reading_dfs0.html#datasets",
+    "href": "module2_time_series/02_reading_dfs0.html#datasets",
+    "title": "10  Read dfs0 to Pandas",
+    "section": "10.2 Datasets",
+    "text": "10.2 Datasets\nThe primary function for reading MIKE IO files is mikeio.read(). It returns a Dataset object, which is a container for one or more DataArray objects (e.g. a specific time series).\nReading a dfs0 file into a Dataset is as simple as calling the read() method with the dfs0 file path as the argument:\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=10 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  2:   F=5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  3:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  4:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  5:   F=0.5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  6:   F=0.2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  7:   F=0.1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  8:   F=0.05 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\nNotice the representation of the Dataset object shows information about:\n\nTotal number of time steps\nTimestamps for first and last time step\nAll the items (i.e. DataArrays) available\n\n\n\n\n\n\n\nRead() loads entire dfs0 into memory by default\n\n\n\n\n\nBy default, mikeio.read() loads the entire dfs0 file into memory. This is fine for smaller files, but for very large dfs0 files, you might want to load only specific items or a particular time range to conserve memory and improve performance. You can do this directly with the items or time arguments in the read() function. For example, to read only the first item (index 0):\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\", items=0)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\nSimilarly, to read only the data for the first time step (index 0):\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\", time=0)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=10 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  2:   F=5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  3:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  4:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  5:   F=0.5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  6:   F=0.2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  7:   F=0.1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  8:   F=0.05 &lt;Rainfall Intensity&gt; (mm per hour) - 3",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/02_reading_dfs0.html#dataarrays",
+    "href": "module2_time_series/02_reading_dfs0.html#dataarrays",
+    "title": "10  Read dfs0 to Pandas",
+    "section": "10.3 DataArrays",
+    "text": "10.3 DataArrays\nDataArray objects are accessed via the Dataset object after reading.\nSelect a specific DataArray from the Dataset by its index or its name. For example, to select the first DataArray by its index:\n\nda = ds[0]\nda\n\n&lt;mikeio.DataArray&gt;\nname:  F=20\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nvalues: 0.0\n\n\nAlternatively, select a DataArray by its name using square brackets:\n\nda = ds[\" F=20\"]\nda\n\n&lt;mikeio.DataArray&gt;\nname:  F=20\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nvalues: 0.0\n\n\nNotice the representation of the DataArray object is also informative, just like the Dataset object.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/02_reading_dfs0.html#convert-to-pandas",
+    "href": "module2_time_series/02_reading_dfs0.html#convert-to-pandas",
+    "title": "10  Read dfs0 to Pandas",
+    "section": "10.4 Convert to Pandas",
+    "text": "10.4 Convert to Pandas\nYou can convert an entire Dataset (which might contain multiple time series) into a Pandas DataFrame. Each item in the Dataset will become a column in the DataFrame.\n\nimport pandas as pd\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\ndf = ds.to_dataframe()\ndf.head()\n\n\n\n\n\n\n\n\nF=20\nF=10\nF=5\nF=2\nF=1\nF=0.5\nF=0.2\nF=0.1\nF=0.05\n\n\n\n\n2019-01-01 00:00:00\n0.00\n0.000000\n0.0\n0.0\n0.000000\n0.000000\n0.000000\n0.000000\n0.0\n\n\n2019-01-01 06:00:00\n0.15\n0.283333\n0.4\n0.4\n0.466667\n0.683333\n0.966667\n1.316667\n1.4\n\n\n2019-01-01 07:00:00\n0.20\n0.400000\n0.6\n0.6\n0.800000\n1.100000\n1.600000\n2.200000\n2.3\n\n\n2019-01-01 08:00:00\n0.30\n0.600000\n0.7\n0.8\n0.900000\n1.400000\n2.000000\n2.800000\n3.1\n\n\n2019-01-01 09:00:00\n0.30\n0.600000\n0.9\n1.0\n1.200000\n1.800000\n2.600000\n3.600000\n4.0\n\n\n\n\n\n\n\nSimilarly, a single DataArray can be converted to a Pandas DataFrame (which will have one data column).\n\nda = ds[\" F=20\"]\ndf_T20 = da.to_dataframe()\ndf_T20.head()\n\n\n\n\n\n\n\n\nF=20\n\n\n\n\n2019-01-01 00:00:00\n0.00\n\n\n2019-01-01 06:00:00\n0.15\n\n\n2019-01-01 07:00:00\n0.20\n\n\n2019-01-01 08:00:00\n0.30\n\n\n2019-01-01 09:00:00\n0.30\n\n\n\n\n\n\n\nOnce your data is in a DataFrame, you can use all of Pandas’ powerful methods. For instance, you can easily plot a time series:\n\ndf_T20.plot(\n    title=\"Rainfall for Return Period F=20\",\n    ylabel=\"Rainfall (mm/hr)\"\n)\n\n\n\n\n\n\n\n\nOr get some descriptive statistics:\n\ndf.describe().T\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nF=20\n22.0\n2.158333\n4.824954\n0.0\n0.300\n0.60\n1.80\n22.799999\n\n\nF=10\n22.0\n4.039394\n9.101874\n0.0\n0.525\n1.10\n3.00\n43.200001\n\n\nF=5\n22.0\n5.890909\n13.389296\n0.0\n0.725\n1.60\n4.65\n63.599998\n\n\nF=2\n22.0\n9.408333\n17.422466\n0.0\n0.825\n2.00\n8.40\n75.599998\n\n\nF=1\n22.0\n12.641667\n25.616199\n0.0\n0.950\n2.40\n9.75\n114.000000\n\n\nF=0.5\n22.0\n15.833333\n30.442241\n0.0\n1.425\n3.40\n13.50\n134.399994\n\n\nF=0.2\n22.0\n22.475000\n36.939988\n0.0\n2.075\n5.30\n23.40\n151.199997\n\n\nF=0.1\n22.0\n27.500758\n39.726610\n0.0\n2.900\n7.60\n34.05\n153.600006\n\n\nF=0.05\n22.0\n30.627272\n42.803784\n0.0\n3.200\n8.65\n39.75\n158.399994\n\n\n\n\n\n\n\n\n\n\n\n\n\nLearning Python’s scientific ecosystem pays off…\n\n\n\nNotice that using a common structure for data (e.g. DataFrame) unlocks familiar analyses independent of the original data source file format (e.g. dfs0, csv). This is an example of why converting data into a format compatible with the scientific Python ecosystem is useful.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html",
+    "href": "module2_time_series/03_data_selection.html",
+    "title": "11  Data Selection",
+    "section": "",
+    "text": "11.1 Why subset data?\nThis section explores how to select specific subsets of time series data.\nSelecting a subset of data is useful for:",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html#why-subset-data",
+    "href": "module2_time_series/03_data_selection.html#why-subset-data",
+    "title": "11  Data Selection",
+    "section": "",
+    "text": "focusing analysis on data of interest (e.g. specific item or time range)\nreducing memory usage and computational overhead (helpful for large files)\ngenerating relevant illustrations (plots and table views)",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html#alternative-methods",
+    "href": "module2_time_series/03_data_selection.html#alternative-methods",
+    "title": "11  Data Selection",
+    "section": "11.2 Alternative Methods",
+    "text": "11.2 Alternative Methods\nThere are various ways of selecting subsets of dfs0 data. This section covers two different approaches:\n\nUsing mikeio.read()\nUsing Pandas DataFrame\n\nAs mentioned, MIKE IO also provides additional functionality for selecting subsets, however this course focuses on Pandas for simplicity.\n\n\n\n\n\n\nMemory considerations\n\n\n\n\n\nSelecting data via the read() method is generally most performant, since it will avoid loading the entire file into memory. Selecting data via Dataset, DataArray, and DataFrame objects requires first loading the entire file into memory.\nA dfs0 file is a special case where the entire file is loaded into memory regardless, however that will not be the case for other dfs formats (e.g. dfs2, dfsu). Therefore, it’s a good practice to use the read() method when you know which data you want in advance.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html#selecting-items",
+    "href": "module2_time_series/03_data_selection.html#selecting-items",
+    "title": "11  Data Selection",
+    "section": "11.3 Selecting Items",
+    "text": "11.3 Selecting Items\nWhen reading data with mikeio.read(), the items argument lets you specify which items to load. You can do this by providing a list of item names.\n\nds = mikeio.read(\n    \"data/sirius_idf_rainfall.dfs0\", \n    items=[\" F=1\", \" F=2\"]\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\nAlternatively, you can select items using their numerical indices (zero-based). For example, to load the first and third items:\n\nds = mikeio.read(\n    \"data/sirius_idf_rainfall.dfs0\",\n    items=[4, 3]\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\n\n\n\n\n\n\nTip\n\n\n\nUsing item indices can be convenient, especially for quick explorations. However, specifying item names explicitly makes your code more readable and robust to changes in the dfs0 file structure, such as if items are reordered.\n\n\nFrom a Pandas DataFrame, you can select items using standard Pandas column selection techniques.\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\ndf = ds.to_dataframe()\ndf.head()\n\n\n\n\n\n\n\n\nF=20\nF=10\nF=5\nF=2\nF=1\nF=0.5\nF=0.2\nF=0.1\nF=0.05\n\n\n\n\n2019-01-01 00:00:00\n0.00\n0.000000\n0.0\n0.0\n0.000000\n0.000000\n0.000000\n0.000000\n0.0\n\n\n2019-01-01 06:00:00\n0.15\n0.283333\n0.4\n0.4\n0.466667\n0.683333\n0.966667\n1.316667\n1.4\n\n\n2019-01-01 07:00:00\n0.20\n0.400000\n0.6\n0.6\n0.800000\n1.100000\n1.600000\n2.200000\n2.3\n\n\n2019-01-01 08:00:00\n0.30\n0.600000\n0.7\n0.8\n0.900000\n1.400000\n2.000000\n2.800000\n3.1\n\n\n2019-01-01 09:00:00\n0.30\n0.600000\n0.9\n1.0\n1.200000\n1.800000\n2.600000\n3.600000\n4.0\n\n\n\n\n\n\n\nTo select a single item:\n\ndf[[\" F=20\"]].head()\n\n\n\n\n\n\n\n\nF=20\n\n\n\n\n2019-01-01 00:00:00\n0.00\n\n\n2019-01-01 06:00:00\n0.15\n\n\n2019-01-01 07:00:00\n0.20\n\n\n2019-01-01 08:00:00\n0.30\n\n\n2019-01-01 09:00:00\n0.30\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nIndexing with a list returns another DataFrame, whereas indexing with a single value returns a Series.\n\n\nFor multiple items, provide a list of column names:\n\ndf[[\" F=1\", \" F=2\"]].head()\n\n\n\n\n\n\n\n\nF=1\nF=2\n\n\n\n\n2019-01-01 00:00:00\n0.000000\n0.0\n\n\n2019-01-01 06:00:00\n0.466667\n0.4\n\n\n2019-01-01 07:00:00\n0.800000\n0.6\n\n\n2019-01-01 08:00:00\n0.900000\n0.8\n\n\n2019-01-01 09:00:00\n1.200000\n1.0",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html#selecting-time-steps",
+    "href": "module2_time_series/03_data_selection.html#selecting-time-steps",
+    "title": "11  Data Selection",
+    "section": "11.4 Selecting Time Steps",
+    "text": "11.4 Selecting Time Steps\nWhen reading data with mikeio.read(), the time argument allows for various ways to specify the desired subset.\nYou can select by a single time step index (e.g., the first time step, index 0).\n\nds = mikeio.read(\n    \"data/single_water_level.dfs0\",\n    time=0\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: ()\ntime: 1993-12-02 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\nOr provide a list of indices for specific time steps (e.g., the first three time steps).\n\nds = mikeio.read(\n    \"data/single_water_level.dfs0\",\n    time=[0,1,2]\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:3)\ntime: 1993-12-02 00:00:00 - 1993-12-02 01:00:00 (3 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\nYou can also use timestamp strings.\n\nds = mikeio.read(\n    \"data/single_water_level.dfs0\",\n    time=\"1993-12-02 00:00:00\"\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: ()\ntime: 1993-12-02 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\nSelect multiple timestamps with a more general string, such as all times on a specific date.\n\nds = mikeio.read(\n    \"data/single_water_level.dfs0\",\n    time=\"1993-12-03\"\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:48)\ntime: 1993-12-03 00:00:00 - 1993-12-03 23:30:00 (48 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\nTo specify a time range, use Python’s slice() object with start and end timestamps:\n\nds = mikeio.read(\n    \"data/single_water_level.dfs0\",\n    time=slice(\"1993-12-02 12:00\", \"1993-12-02 16:00\")\n)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:9)\ntime: 1993-12-02 12:00:00 - 1993-12-02 16:00:00 (9 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\n\n\n\n\n\n\nTip\n\n\n\nPython’s slice() method is versatile for defining ranges. While list-like slicing notation (e.g., time_series[start:end]) is common with Pandas DataFrames, slice(start, end) is the explicit way to create a slice object, often used in functions like mikeio.read().\n\n\nFrom a Pandas DataFrame, standard indexing and slicing techniques of the DatetimeIndex may be used.\nTo select by time step index, use .iloc.\n\nds = mikeio.read(\"data/single_water_level.dfs0\")\ndf = ds.to_dataframe()\ndf.iloc[[0]] \n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02\n-0.2689\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nProviding a list to iloc returns another DataFrame, whereas providing a single value returns a Series.\n\n\nFor the first three time steps:\n\ndf.iloc[0:3]\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:30:00\n-0.2847\n\n\n1993-12-02 01:00:00\n-0.3020\n\n\n\n\n\n\n\nFor selection by timestamp strings, use .loc.\n\ndf.loc[[\"1993-12-02 00:00:00\"]]\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02\n-0.2689\n\n\n\n\n\n\n\nTo select all data for a particular day:\n\ndf.loc[\"1993-12-03\"].head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-03 00:00:00\n0.0879\n\n\n1993-12-03 00:30:00\n0.0951\n\n\n1993-12-03 01:00:00\n0.0988\n\n\n1993-12-03 01:30:00\n0.0836\n\n\n1993-12-03 02:00:00\n0.0634\n\n\n\n\n\n\n\nAnd for a range between start and end timestamps:\n\ndf.loc[\"1993-12-02 12:00\":\"1993-12-02 16:00\"]\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 12:00:00\n-0.4590\n\n\n1993-12-02 12:30:00\n-0.4698\n\n\n1993-12-02 13:00:00\n-0.4812\n\n\n1993-12-02 13:30:00\n-0.4919\n\n\n1993-12-02 14:00:00\n-0.5012\n\n\n1993-12-02 14:30:00\n-0.4798\n\n\n1993-12-02 15:00:00\n-0.4486\n\n\n1993-12-02 15:30:00\n-0.4137\n\n\n1993-12-02 16:00:00\n-0.3772\n\n\n\n\n\n\n\nA key distinction in Pandas is between .iloc and .loc:\n\n.iloc is used for integer-location based indexing (by position, e.g., df.iloc[0] for the first row).\n.loc is used for label-based indexing (by index names or boolean arrays, e.g., df.loc['2023-01-01']).\n\nWhen working with time series data having a DatetimeIndex, .loc is particularly powerful as it allows you to use date/time strings for intuitive selections and slicing, as shown in the examples.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/03_data_selection.html#example",
+    "href": "module2_time_series/03_data_selection.html#example",
+    "title": "11  Data Selection",
+    "section": "11.5 Example",
+    "text": "11.5 Example\nLet’s tie these concepts together with an example of plotting a subset of a dfs0 file.\n1. Read a specific item of the dfs0 file into a Dataset\n\nds = mikeio.read(\"data/single_water_level.dfs0\", items=\"ST 2: WL (m)\")\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:577)\ntime: 1993-12-02 00:00:00 - 1993-12-14 00:00:00 (577 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  ST 2: WL (m) &lt;Water Level&gt; (meter)\n\n\n2. Convert to Pandas DataFrame:\n\ndf = ds.to_dataframe()\ndf\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:30:00\n-0.2847\n\n\n1993-12-02 01:00:00\n-0.3020\n\n\n1993-12-02 01:30:00\n-0.3223\n\n\n1993-12-02 02:00:00\n-0.3483\n\n\n...\n...\n\n\n1993-12-13 22:00:00\n-0.0462\n\n\n1993-12-13 22:30:00\n-0.0522\n\n\n1993-12-13 23:00:00\n-0.0619\n\n\n1993-12-13 23:30:00\n-0.0717\n\n\n1993-12-14 00:00:00\n-0.0814\n\n\n\n\n577 rows × 1 columns\n\n\n\n3. Filter the Pandas DataFrame for the time range of interest.\n\ndf = df.loc[\"1993-12-02 00:00\":\"1993-12-02 4:00\"]\ndf\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:30:00\n-0.2847\n\n\n1993-12-02 01:00:00\n-0.3020\n\n\n1993-12-02 01:30:00\n-0.3223\n\n\n1993-12-02 02:00:00\n-0.3483\n\n\n1993-12-02 02:30:00\n-0.3644\n\n\n1993-12-02 03:00:00\n-0.3778\n\n\n1993-12-02 03:30:00\n-0.3983\n\n\n1993-12-02 04:00:00\n-0.4192\n\n\n\n\n\n\n\n4. Plot\n\nax = df.plot()\nax.set_title(\"Water Level at Night\")\nax.set_ylabel(\"Water Level (m)\")\nax.grid(which=\"both\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPlot methods often return a Matplotlib Axes object, conventionally called ax. Use it to customize the plot before it’s displayed a Jupyter Cell.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Selection</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html",
+    "href": "module2_time_series/04_resampling.html",
+    "title": "12  Resampling",
+    "section": "",
+    "text": "12.1 What is Resampling?\nResampling is a powerful technique for changing the frequency of time series data, a common task when working with MIKE+ model inputs or outputs.\nAt its core, resampling involves adjusting the time steps in your data. There are two main types:\nA prerequisite for resampling in Pandas is that the DataFrame must have a DatetimeIndex. This will be the case if it was created via MIKE IO’s to_dataframe() method.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#what-is-resampling",
+    "href": "module2_time_series/04_resampling.html#what-is-resampling",
+    "title": "12  Resampling",
+    "section": "",
+    "text": "Downsampling: reducing the frequency of data points (e.g., hourly to daily rainfall).\nUpsampling: increasing the frequency of data points (e.g., hourly to minutely discharge).\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf a DataFrame’s index is time-like but not already a DatetimeIndex, you can usually convert it with:\ndf.index = pd.to_datetime(df.index)",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#why-resample",
+    "href": "module2_time_series/04_resampling.html#why-resample",
+    "title": "12  Resampling",
+    "section": "12.2 Why Resample?",
+    "text": "12.2 Why Resample?\nTwo common motivations for resampling time series data in MIKE+ modelling are:\n\nAligning Series: comparing time series that were recorded at different frequencies (e.g., aligning 15-minute model results with hourly observations).\nSmoothing Data: reducing noise to highlight underlying trends by aggregating data over longer periods (e.g., hourly average flow from noisy instantaneous readings).",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#how-to-resample-with-pandas",
+    "href": "module2_time_series/04_resampling.html#how-to-resample-with-pandas",
+    "title": "12  Resampling",
+    "section": "12.3 How to resample (with Pandas)",
+    "text": "12.3 How to resample (with Pandas)\nPandas provides a straightforward resample() method for time series data.\nThe general syntax is: df.resample(&lt;rule&gt;).&lt;aggregation_or_fill_method&gt;().\n\nrule\n\nA string specifying the target frequency (e.g., ‘D’ for daily).\n\naggregation_or_fill_method\n\nA function to apply to the data within each new time bin. For downsampling, this is typically an aggregation like .mean() or .sum(). For upsampling, this is a fill method like .ffill() or .interpolate().\n\n\nA quick example for illustration with the following DataFrame:\n\ndf.head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:30:00\n-0.2847\n\n\n1993-12-02 01:00:00\n-0.3020\n\n\n1993-12-02 01:30:00\n-0.3223\n\n\n1993-12-02 02:00:00\n-0.3483\n\n\n\n\n\n\n\nTo resample this half-hourly data to daily mean values:\n\ndf_daily_mean = df.resample('D').mean()\ndf_daily_mean.head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02\n-0.302979\n\n\n1993-12-03\n0.041185\n\n\n1993-12-04\n0.014558\n\n\n1993-12-05\n0.265933\n\n\n1993-12-06\n-0.004035\n\n\n\n\n\n\n\n\n\nShow Plotting Code\nax = df.plot()\ndf_daily_mean.plot(ax=ax)\nax.legend([\"Original\", \"Downsampled\"])",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#common-frequency-rules",
+    "href": "module2_time_series/04_resampling.html#common-frequency-rules",
+    "title": "12  Resampling",
+    "section": "12.4 Common Frequency Rules",
+    "text": "12.4 Common Frequency Rules\nPandas offers many frequency aliases (rules). Some of the most common include:\n\n\"M\": Month-end frequency\n\"W\": Weekly frequency (defaults to Sunday)\n\"D\": Calendar day frequency\n\"H\": Hourly frequency\n\"15min\": 15-minute frequency\n\n\n\n\n\n\n\nNote\n\n\n\nFor a comprehensive list of frequency strings (offset aliases), refer to the Pandas documentation on Time Series / Date functionality.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#aggregation-methods-downsampling",
+    "href": "module2_time_series/04_resampling.html#aggregation-methods-downsampling",
+    "title": "12  Resampling",
+    "section": "12.5 Aggregation Methods (Downsampling)",
+    "text": "12.5 Aggregation Methods (Downsampling)\nWhen downsampling, you are reducing the number of data points, so you need to decide how to aggregate the values within each new, larger time period. Common aggregation methods include:\n\n.mean(): calculate the average of the values.\n.sum(): calculate the sum of the values.\n.first(): select the first value in the period.\n.last(): select the last value in the period.\n.min(): find the minimum value.\n.max(): find the maximum value.\n\n\n\n\n\n\n\nTip\n\n\n\nThe choice of aggregation method depends on the nature of your data and what you want to represent. For instance, rainfall is often summed, while water levels or flows might be averaged.\n\n\nResample to daily values by chosing the maximum value on each day.\n\ndf_daily_max = df.resample('D').max()\ndf_daily_max.head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02\n0.0799\n\n\n1993-12-03\n0.1486\n\n\n1993-12-04\n0.1583\n\n\n1993-12-05\n0.5106\n\n\n1993-12-06\n0.1793\n\n\n\n\n\n\n\nOr, chose the minimum value on each day.\n\ndf_daily_min = df.resample('D').min()\ndf_daily_min.head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02\n-0.5012\n\n\n1993-12-03\n-0.0701\n\n\n1993-12-04\n-0.1112\n\n\n1993-12-05\n0.0524\n\n\n1993-12-06\n-0.1114\n\n\n\n\n\n\n\nCompare these two aggregation methods with a plot.\n\n\nShow Plotting Code\nax = df.plot(color='grey')\ndf_daily_mean.plot(ax=ax, linestyle=\"--\")\ndf_daily_min.plot(ax=ax, linestyle=\"--\")\ndf_daily_max.plot(ax=ax, linestyle=\"--\")\nax.legend([\"Original\", \"Upsampled (mean)\", \"Upsampled (min)\", \"Upsampled (max)\"])\nax.grid(which=\"both\")",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/04_resampling.html#fill-methods-upsampling",
+    "href": "module2_time_series/04_resampling.html#fill-methods-upsampling",
+    "title": "12  Resampling",
+    "section": "12.6 Fill Methods (Upsampling)",
+    "text": "12.6 Fill Methods (Upsampling)\nWhen upsampling, you are increasing the number of data points, which means you’ll have new time steps with no existing data. You need to specify a method to fill these gaps. Common fill methods include:\n\n.ffill() (forward fill): propagate the last valid observation forward.\n.bfill() (backward fill): use the next valid observation to fill the gap.\n.interpolate(): fill nan values using an interpolation method (e.g., linear, spline).\n\n\n\n\n\n\n\nNote\n\n\n\nnan stands for ‘not a number’, which is a common way to represent missing values. See NumPy’s nan.\n\n\nRecall our original DataFrame had half-hourly time steps:\n\ndf.head(2) # show only first two rows\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:30:00\n-0.2847\n\n\n\n\n\n\n\nUpsample this to a resolution of one minute, comparing ffill and bfill:\n\ndf.resample(\"5min\").ffill().head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:05:00\n-0.2689\n\n\n1993-12-02 00:10:00\n-0.2689\n\n\n1993-12-02 00:15:00\n-0.2689\n\n\n1993-12-02 00:20:00\n-0.2689\n\n\n\n\n\n\n\n\ndf.resample(\"5min\").bfill().head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n\n\n1993-12-02 00:05:00\n-0.2847\n\n\n1993-12-02 00:10:00\n-0.2847\n\n\n1993-12-02 00:15:00\n-0.2847\n\n\n1993-12-02 00:20:00\n-0.2847\n\n\n\n\n\n\n\nCompare the difference between these two. Find the new time stamps and how they’re values were chosen.\nDepending on use case, a more appropriate approach may be filling gaps with linear interpolation:\n\ndf_interpolated = df.resample('5min').interpolate(method='linear')\ndf_interpolated.head()\n\n\n\n\n\n\n\n\nST 2: WL (m)\n\n\n\n\n1993-12-02 00:00:00\n-0.268900\n\n\n1993-12-02 00:05:00\n-0.271533\n\n\n1993-12-02 00:10:00\n-0.274167\n\n\n1993-12-02 00:15:00\n-0.276800\n\n\n1993-12-02 00:20:00\n-0.279433\n\n\n\n\n\n\n\nCompare interpolation to original data for a zoomed-in time period:\n\n\nShow Plotting Code\nsubset = slice(\"1993-12-02 00:00:00\", \"1993-12-02 08:00:00\")\nax = df.loc[subset].plot(color=\"grey\", alpha=0.7, linewidth=8)\ndf_interpolated.loc[subset].plot(ax=ax, linestyle=\"--\")\nax.legend([\"Original\", \"Interpolated\"])\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nUpsampling should be done with caution, as it involves making assumptions about the data between known points. The choice of fill method can significantly impact the resulting time series.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resampling</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/05_visualization.html",
+    "href": "module2_time_series/05_visualization.html",
+    "title": "13  Data Visualization",
+    "section": "",
+    "text": "13.1 Why Visualize Data?\nVisualizing time series data is a critical step in any MIKE+ modelling workflow. Effective plots can help understand data quality, model behavior, the agreement between simulations and observations, as well as communicating key findings.\nVisual inspection of data serves several key purposes in the modelling process:",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/05_visualization.html#why-visualize-data",
+    "href": "module2_time_series/05_visualization.html#why-visualize-data",
+    "title": "13  Data Visualization",
+    "section": "",
+    "text": "Validate input data: Quickly identify anomalies, gaps, or questionable patterns in input time series like rainfall, flow, or water levels.\nGrasp system behavior: Understand underlying trends, seasonality, and extreme events within your datasets.\nCalibrate/validate: Graphically compare simulated results against observed data to assess model performance.\nDiagnose model errors: Pinpoint discrepancies in timing, magnitude, or overall patterns between model output and reality.\nCommunicate results: Create clear visuals to share modelling outcomes, impacts of different scenarios, or model performance metrics with stakeholders.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/05_visualization.html#simple-statistics",
+    "href": "module2_time_series/05_visualization.html#simple-statistics",
+    "title": "13  Data Visualization",
+    "section": "13.2 Simple Statistics",
+    "text": "13.2 Simple Statistics\nBefore diving into plots, it’s often useful to get a quick numerical summary of your data.\nAssuming you have a DataFrame df containing your time series with both observed and model data:\n\ndf.head()\n\n\n\n\n\n\n\n\nModel\nObserved\n\n\n\n\n1993-12-02 00:00:00\n-0.2689\n-0.219229\n\n\n1993-12-02 00:30:00\n-0.2847\n-0.298526\n\n\n1993-12-02 01:00:00\n-0.3020\n-0.237231\n\n\n1993-12-02 01:30:00\n-0.3223\n-0.169997\n\n\n1993-12-02 02:00:00\n-0.3483\n-0.371715\n\n\n\n\n\n\n\nThe describe() method provides useful statistics of each column in the DataFrame.\n\ndf.describe()\n\n\n\n\n\n\n\n\nModel\nObserved\n\n\n\n\ncount\n577.000000\n577.000000\n\n\nmean\n-0.005975\n-0.007724\n\n\nstd\n0.219331\n0.247389\n\n\nmin\n-0.501200\n-0.671723\n\n\n25%\n-0.136900\n-0.162345\n\n\n50%\n-0.000200\n-0.009162\n\n\n75%\n0.124900\n0.154040\n\n\nmax\n0.510600\n0.699579",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/05_visualization.html#useful-time-series-plots",
+    "href": "module2_time_series/05_visualization.html#useful-time-series-plots",
+    "title": "13  Data Visualization",
+    "section": "13.3 Useful Time Series Plots",
+    "text": "13.3 Useful Time Series Plots\nThis section showcases a few useful plot types for time series data in MIKE+ modelling.\n\n13.3.1 Line Plots\nLine plots are essential for visualizing temporal patterns in hydraulic data like flows, water levels, or rainfall. They are also the primary way to compare simulated versus observed time series.\nYou can plot a single series directly from a DataFrame column:\n\ndf['Observed'].plot(\n    title='Observed Flow Over Time',\n    xlabel='Time',\n    ylabel='Flow (m$^3$/s)'\n)\n\n\n\n\n\n\n\n\nCompare two time series, such as observed and modelled flow:\n\ndf[['Observed', 'Model']].plot(\n    title='Flow Comparison: Observed vs. Model',\n    ylabel='Flow (m$^3$/s)'\n)\n\n\n\n\n\n\n\n\n\n\n13.3.2 Rolling Mean / Moving Average Plot\nThis plot helps smooth out noisy time series data, such as high-frequency sensor readings for flow or water level. This smoothing can make it easier to visualize underlying trends or long-term patterns.\n\ndf['Observed_Rolling_Mean'] = df['Observed'].rolling(window=6).mean()\n\ndf[['Observed', 'Observed_Rolling_Mean']].plot(\n    title='Observed 6-Hour Rolling Mean',\n    ylabel='Flow (m$^3$/s)'\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nAdjust the window size in the .rolling() method to control the amount of smoothing. Larger windows result in smoother trends but might obscure shorter-term variations.\n\n\n\n\n13.3.3 Scatter Plots\nScatter plots are particularly useful for model calibration. By plotting paired observed values against simulated values, you can assess point-by-point agreement.\n\nax = df.plot.scatter(\n    x='Observed',\n    y='Model',\n    alpha=0.5, # so we can see overlapping points better\n    title='Observed vs. Model'\n)\n\n# plot 1:1 line\nmax_val = max(df['Observed'].max(), df['Model'].max())\nmin_val = min(df['Observed'].min(), df['Model'].min())\nax.plot([min_val, max_val], [min_val, max_val], 'k--', label='1:1 Line')  # black dashed line\nax.legend()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nPoints clustering around the 1:1 line (the dashed line in the example) indicate good agreement.\n\n\n\n\n13.3.4 Box Plots\nTo understand seasonal variability in your data (e.g. diurnal or seasonal flow patterns), box plots can be effective.\n\ndf['Day'] = df.index.day_name()\nax = df.boxplot(column='Observed', by='Day')\nax.get_figure().suptitle(\"\") # remove figure title, just use axes title\nax.set_title(\"Flows by Day of Week\")\nax.set_ylabel(\"Water level (m)\")\n\nText(0, 0.5, 'Water level (m)')\n\n\n\n\n\n\n\n\n\n\n\n13.3.5 Cumulative Sum Plots\nCumulative sum plots are excellent for assessing overall water balance or comparing total accumulated volumes (e.g., rainfall, runoff) between observed and simulated data over a period.\n\ndf_discharge.cumsum().plot(ylabel=\"Cumulated Discharge (m$^3$/s)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCumulative sums for mass balance require calculating volume differentials. The example below is a simplified approach, recognizing they time series share the same time axis.\n\n\n\n\n13.3.6 Distribution Plots\nHistograms help you examine the frequency distribution of variables, such as water levels or flows. This can be useful for comparing the overall statistical profile of observed versus simulated data or understanding the prevalence of certain magnitudes.\n\ndf.plot.hist(bins=15, alpha=0.5)\n\n\n\n\n\n\n\n\nSimilarly, review frequency distribution with KDE plots:\n\ndf.plot.kde()",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/05_visualization.html#saving-plots",
+    "href": "module2_time_series/05_visualization.html#saving-plots",
+    "title": "13  Data Visualization",
+    "section": "13.4 Saving Plots",
+    "text": "13.4 Saving Plots\nEasily save plots for inclusion in reports via plt.savefig().\n\nimport matplotlib.pyplot as plt\n\nax = df['Observed'].plot(title='Daily Average Flow', ylabel=\"Flow ($m^3/s$)\")\nplt.savefig(\"my_plot.png\")",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/06_data_cleaning.html",
+    "href": "module2_time_series/06_data_cleaning.html",
+    "title": "14  Data Cleaning",
+    "section": "",
+    "text": "14.1 Missing Values\nData cleaning is an essential step in any MIKE+ modelling workflow to ensure your input data is complete. This section covers handling missing values (e.g. nan). Additionally, it introduces the topic of detecting anomalies in time series data.\nDHI’s modelling engines typically require complete datasets for calculations, and thus dfs0 files, which are often used as inputs, should not contain missing values. For example, a rainfall boundary condition cannot have the value nan.\nAssume we have a DateFrame with missing values on 1993-12-06:\nShow Plotting Code\nax = df.plot()\nax.axvspan(\n    xmin=\"1993-12-06 00:00\",\n    xmax=\"1993-12-07 00:00\",\n    color='grey',\n    alpha=0.3,\n    label=\"Missing Data\"\n)\nax.legend(loc=\"upper right\")\nCount the number of missing values (e.g. nan) for each time series by summing the result of isna().\ndf.isna().sum()\n\nST 2: WL (m)    48\ndtype: int64",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Data Cleaning</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/06_data_cleaning.html#missing-values",
+    "href": "module2_time_series/06_data_cleaning.html#missing-values",
+    "title": "14  Data Cleaning",
+    "section": "",
+    "text": "Note\n\n\n\nMissing numerical data is typically represented by nan. These arise from various sources, such as sensor malfunctions during data collection, gaps that occur during data transmission, or they might be the result of previous data processing or cleaning steps.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Data Cleaning</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/06_data_cleaning.html#imputation",
+    "href": "module2_time_series/06_data_cleaning.html#imputation",
+    "title": "14  Data Cleaning",
+    "section": "14.2 Imputation",
+    "text": "14.2 Imputation\nThe process of filling missing values is known as imputation.\nFor missing values between valid data points (i.e. bounded), using the .interpolate() method is a common and effective approach.\n\ndf_interpolated = df.interpolate(method='time')\n\n\n\nShow Plotting Code\nax = df.plot()\nax.axvspan(\n    xmin=\"1993-12-06 00:00\",\n    xmax=\"1993-12-07 00:00\",\n    color='grey',\n    alpha=0.3,\n    label=\"Missing Data\"\n)\ndf_interpolated.columns = [\"Interpolation\"]\ndf_interpolated.loc[\"1993-12-06\"].plot(ax=ax)\nax.legend(loc=\"upper right\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe example above uses method='time', which is a linear interpolation that considers non-equidistant DatetimeIndex indices. Refer to Pandas’s documentation for additional interpolation methods, such as polynomial.\n\n\nFor missing values appearing at the very beginning or end of your dataset (i.e. unbounded), you can make use of:\n\n.fillna()\n.ffill()\n.bfill()\n\n\n\n\n\n\n\nTip\n\n\n\nRecall: these imputation methods were introduced in the section on resampling, where upsampling introduced nan values.\n\n\nSame example as above, but using ffill().\n\ndf_interpolated = df.ffill()\n\n\n\nShow Plotting Code\nax = df.plot()\nax.axvspan(\n    xmin=\"1993-12-06 00:00\",\n    xmax=\"1993-12-07 00:00\",\n    color='grey',\n    alpha=0.3,\n    label=\"Missing Data\"\n)\ndf_interpolated.columns = [\"Interpolation\"]\ndf_interpolated.loc[\"1993-12-06\"].plot(ax=ax)\nax.legend(loc=\"upper right\")\n\n\n\n\n\n\n\n\n\nSame example as above, but using bfill().\n\ndf_interpolated = df.bfill()\n\n\n\nShow Plotting Code\nax = df.plot()\nax.axvspan(\n    xmin=\"1993-12-06 00:00\",\n    xmax=\"1993-12-07 00:00\",\n    color='grey',\n    alpha=0.3,\n    label=\"Missing Data\"\n)\ndf_interpolated.columns = [\"Interpolation\"]\ndf_interpolated.loc[\"1993-12-06\"].plot(ax=ax)\nax.legend(loc=\"upper right\")\n\n\n\n\n\n\n\n\n\nSame example as above, but using fillna().\n\ndf_interpolated = df.fillna(0.1) # specify the value to fill with\n\n\n\nShow Plotting Code\nax = df.plot()\nax.axvspan(\n    xmin=\"1993-12-06 00:00\",\n    xmax=\"1993-12-07 00:00\",\n    color='grey',\n    alpha=0.3,\n    label=\"Missing Data\"\n)\ndf_interpolated.columns = [\"Interpolation\"]\ndf_interpolated.loc[\"1993-12-06\"].plot(ax=ax)\nax.legend(loc=\"upper right\")",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Data Cleaning</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/06_data_cleaning.html#anomaly-detection-rule-based",
+    "href": "module2_time_series/06_data_cleaning.html#anomaly-detection-rule-based",
+    "title": "14  Data Cleaning",
+    "section": "14.3 Anomaly Detection (Rule-Based)",
+    "text": "14.3 Anomaly Detection (Rule-Based)\n\n\n\n\n\n\nTip\n\n\n\nShort on time? This section provides an introduction to a useful package but can be considered optional for core module understanding.\n\n\nBeyond clearly missing values, time series data can also contain anomalies. Identifying and addressing these anomalies is crucial for building robust MIKE+ models.\nAnomaly detection is a broad and complex field. This section offers a basic introduction to rule-based anomaly detection using DHI’s tsod Python package.\n\n14.3.1 Install tsod\nuv pip install tsod\n\n\n14.3.2 The Detector Concept\ntsod operates using a concept called “detectors.” Each detector is designed to implement a specific rule or heuristic to identify anomalies. Example anomaly detectors:\n\nRangeDetector: Flags values outside a set range.\nConstantValueDetector: Detects unchanging values over time.\nDiffDetector: Catches large changes between points.\nRollingStdDetector: Finds points far from rolling standard deviation.\n\nThere’s also the CombinedDetector, which allows combining the rules of several detectors.\n\n\n14.3.3 Detecting Anomalies\nLet’s walk through a minimal example workflow using the RangeDetector to illustrate the typical process.\nStart by plotting the original time series.\n\ndf.plot()\n\n\n\n\n\n\n\n\n\nPrep Data: tsod detectors generally expect a Pandas Series as input. Let’s create a sample Series that includes an obvious anomaly.\n\n\ndata_anomaly = [1.0, 1.1, 1.0, 1.2, 5.0, 1.1, 1.0, 1.2]\nseries_anomaly = pd.Series(data_anomaly, name=\"Flow_Anomaly\")\nseries_anomaly\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[14], line 2\n      1 data_anomaly = [1.0, 1.1, 1.0, 1.2, 5.0, 1.1, 1.0, 1.2]\n----&gt; 2 series_anomaly = pd.Series(data_anomaly, name=\"Flow_Anomaly\")\n      3 series_anomaly\n\nNameError: name 'pd' is not defined\n\n\n\n\nDetect & Visualize Anomalies: Now, we’ll import the RollingStdDetector from tsod.detectors, initialize it with appropriate parameters (like window_size and n_std for the number of standard deviations), and then apply it to our series to get the anomaly_mask.\n\n\nfrom tsod.detectors import RollingStdDetector\n\ndetector = RollingStdDetector(window_size=3, n_std=1.5)\nanomaly_mask = detector.detect(series_anomaly)\nanomaly_mask\n\n\n---------------------------------------------------------------------------\nImportError                               Traceback (most recent call last)\nCell In[15], line 1\n----&gt; 1 from tsod.detectors import RollingStdDetector\n      3 detector = RollingStdDetector(window_size=3, n_std=1.5)\n      4 anomaly_mask = detector.detect(series_anomaly)\n\nImportError: cannot import name 'RollingStdDetector' from 'tsod.detectors' (C:\\Users\\rywm\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\tsod\\detectors.py)\n\n\n\nAfter detection, it’s good practice to visualize the original series and highlight the detected anomalies to verify the detector’s performance.\n\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8,4))\nseries_anomaly.plot(ax=ax, label=\"Original Flow\")\nif anomaly_mask.any():\n    series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, label=\"Detected Anomaly\")\nax.legend()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[16], line 4\n      1 import matplotlib.pyplot as plt\n      3 fig, ax = plt.subplots(figsize=(8,4))\n----&gt; 4 series_anomaly.plot(ax=ax, label=\"Original Flow\")\n      5 if anomaly_mask.any():\n      6     series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, label=\"Detected Anomaly\")\n\nNameError: name 'series_anomaly' is not defined\n\n\n\n\n\n\n\n\n\n\n\nConvert Anomalies to NaN: Once you’re satisfied with the detected anomalies, the next step is to convert these anomalous values in your original data to np.nan. This uses the boolean anomaly_mask for indexing. (Ensure numpy is imported as np, which we did at the start of this section).\n\n\nseries_cleaned = series_anomaly.copy()\nseries_cleaned[anomaly_mask] = np.nan\nseries_cleaned\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[17], line 1\n----&gt; 1 series_cleaned = series_anomaly.copy()\n      2 series_cleaned[anomaly_mask] = np.nan\n      3 series_cleaned\n\nNameError: name 'series_anomaly' is not defined\n\n\n\n\nImpute NaNs: With the identified anomalies now represented as NaNs, you can use the imputation methods discussed earlier in the “Missing Values” section (like .interpolate() or .fillna()) to fill these gaps. For instance, using linear interpolation:\n\n\nseries_imputed = series_cleaned.interpolate(method='linear')\nseries_imputed\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 series_imputed = series_cleaned.interpolate(method='linear')\n      2 series_imputed\n\nNameError: name 'series_cleaned' is not defined\n\n\n\nOptionally, you can plot the final imputed series to visually inspect the result of the cleaning process and compare it with the original data.\n\nfig, ax = plt.subplots(figsize=(8,4))\nseries_imputed.plot(ax=ax, label=\"Imputed Flow\", marker='.')\nseries_anomaly.plot(ax=ax, label=\"Original Flow\", alpha=0.6, style='--')\nif anomaly_mask.any():\n    series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, alpha=0.6, label=\"Original Anomaly\")\nax.legend()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[19], line 2\n      1 fig, ax = plt.subplots(figsize=(8,4))\n----&gt; 2 series_imputed.plot(ax=ax, label=\"Imputed Flow\", marker='.')\n      3 series_anomaly.plot(ax=ax, label=\"Original Flow\", alpha=0.6, style='--')\n      4 if anomaly_mask.any():\n\nNameError: name 'series_imputed' is not defined\n\n\n\n\n\n\n\n\n\n\nThis workflow provides a structured way to improve data quality by addressing both missing data and detectable anomalies before using the data in your MIKE+ models.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Data Cleaning</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/07_writing_dfs0.html",
+    "href": "module2_time_series/07_writing_dfs0.html",
+    "title": "15  Writing DFS0 Files",
+    "section": "",
+    "text": "15.1 DataFrame to Dataset: Basic\nThis section focuses on the crucial step of exporting your processed data back into a format MIKE+ can understand. The primary goal is to convert a Pandas DataFrame, perhaps containing cleaned rainfall data, into a DFS0 file. The typical workflow involves transforming the Pandas DataFrame into a mikeio.Dataset object, and then writing this Dataset to a DFS0 file.\nFirst, let’s assume you have a Pandas DataFrame ready. For instance, here’s a look at a simple DataFrame, df_rain, containing some rainfall data with a DatetimeIndex:\nimport pandas as pd\nimport mikeio\n\n# Sample DataFrame (replace with actual data loading in a real scenario)\ntime_index = pd.to_datetime([\"2023-01-01 00:00\", \"2023-01-01 01:00\", \"2023-01-01 02:00\"])\ndata_values = {\"Rainfall_mm\": [0.5, 1.2, 0.8]}\ndf_rain = pd.DataFrame(data_values, index=time_index)\ndf_rain.head()\n\n\n\n\n\n\n\n\nRainfall_mm\n\n\n\n\n2023-01-01 00:00:00\n0.5\n\n\n2023-01-01 01:00:00\n1.2\n\n\n2023-01-01 02:00:00\n0.8\nConverting this DataFrame to a basic mikeio.Dataset is straightforward using mikeio.from_pandas():\nds_basic = mikeio.from_pandas(df_rain)\nds_basic\n\n&lt;mikeio.Dataset&gt;\ndims: (time:3)\ntime: 2023-01-01 00:00:00 - 2023-01-01 02:00:00 (3 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  Rainfall_mm &lt;Undefined&gt; (undefined)",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/07_writing_dfs0.html#dataframe-to-dataset-basic",
+    "href": "module2_time_series/07_writing_dfs0.html#dataframe-to-dataset-basic",
+    "title": "15  Writing DFS0 Files",
+    "section": "",
+    "text": "Tip\n\n\n\nEnsure your DataFrame’s index is a DatetimeIndex for time series DFS0 files. This is crucial for MIKE IO to correctly interpret the time information.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/07_writing_dfs0.html#item-metadata-iteminfo",
+    "href": "module2_time_series/07_writing_dfs0.html#item-metadata-iteminfo",
+    "title": "15  Writing DFS0 Files",
+    "section": "15.2 Item Metadata: ItemInfo",
+    "text": "15.2 Item Metadata: ItemInfo\nWhile the basic conversion works, MIKE software requires specific metadata for each data item, such as its type, unit, and how values are interpreted over time. This is where mikeio.ItemInfo comes in. If we inspect the items of our ds_basic created above, you’ll notice default, often incorrect, metadata:\n\nds_basic.items\n\n[Rainfall_mm &lt;Undefined&gt; (undefined)]\n\n\n\n\n\n\n\n\nNote\n\n\n\nWithout custom ItemInfo, mikeio uses default values. These often need adjustment, especially itemtype, unit, and data_value_type, to ensure MIKE+ interprets your data correctly.\n\n\nThe mikeio.ItemInfo class allows you to define these essential properties for each item in your dataset:\n\nname: (str) The name of the item, typically derived from your DataFrame column name.\nitemtype: (A mikeio.EUMType object) This is a DHI-specific enumeration defining the physical quantity (e.g., mikeio.EUMType.Rainfall for rainfall, mikeio.EUMType.Water_Level for water level).\nunit: (A mikeio.EUMUnit object) This is a DHI-specific enumeration for the unit of measurement (e.g., mikeio.EUMUnit.mm for millimeters, mikeio.EUMUnit.meter for meters).\ndata_value_type: (str) This string specifies how the data values relate to the time steps. The default is �Instantaneous�. Other common options include:\n\n�Instantaneous�: Value at a specific point in time.\n�Accumulated�: Value accumulated over the entire period up to the timestamp.\n�StepAccumulated�: Value accumulated over the preceding time step.\n�MeanStepBackward�: Average value over the preceding time step.\n�MeanStepForward�: Average value over the following time step.\n\n\n\n\n\n\n\n\nNote\n\n\n\nRefer to the MIKE+ documentation or the DHI EUM documentation for precise definitions and appropriate use of each data_value_type.\n\n\nFor example, to define ItemInfo for our rainfall data, which is measured in millimeters and, for this example, we’ll consider it as an accumulated value:\n\nfrom mikeio import ItemInfo\nfrom mikeio.eum import EUMType, EUMUnit\n\n# Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example\ndf_rain.columns = [\"Rainfall_Gauge1\"]\n\nrainfall_item_info = ItemInfo(\n    name=\"Rainfall_Gauge1\", \n    itemtype=EUMType.Rainfall,\n    unit=EUMUnit.mm,\n    data_value_type=\"Accumulated\" \n)\nrainfall_item_info\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[4], line 10\n      4 # Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example\n      5 df_rain.columns = [\"Rainfall_Gauge1\"]\n      7 rainfall_item_info = ItemInfo(\n      8     name=\"Rainfall_Gauge1\", \n      9     itemtype=EUMType.Rainfall,\n---&gt; 10     unit=EUMUnit.mm,\n     11     data_value_type=\"Accumulated\" \n     12 )\n     13 rainfall_item_info\n\nAttributeError: type object 'EUMUnit' has no attribute 'mm'\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nProviding accurate ItemInfo is key for ensuring compatibility with MIKE software and correctly interpreting the meaning of your data within the MIKE ecosystem.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/07_writing_dfs0.html#specifying-iteminfo-on-conversion",
+    "href": "module2_time_series/07_writing_dfs0.html#specifying-iteminfo-on-conversion",
+    "title": "15  Writing DFS0 Files",
+    "section": "15.3 Specifying ItemInfo on Conversion",
+    "text": "15.3 Specifying ItemInfo on Conversion\nTo use your custom ItemInfo when converting a DataFrame, you pass a list of ItemInfo objects to the items argument of mikeio.from_pandas(). Each ItemInfo object in the list should correspond to a column in your DataFrame that you want to include in the Dataset. The name attribute of the ItemInfo object is used to map it to the correct DataFrame column.\nHere’s how you convert the df_rain DataFrame (with the “Rainfall_Gauge1” column) using the rainfall_item_info we defined:\n\n# df_rain and rainfall_item_info are from previous code blocks\nds_with_custom_info = mikeio.from_pandas(df_rain, items=[rainfall_item_info])\nds_with_custom_info.items\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[5], line 2\n      1 # df_rain and rainfall_item_info are from previous code blocks\n----&gt; 2 ds_with_custom_info = mikeio.from_pandas(df_rain, items=[rainfall_item_info])\n      3 ds_with_custom_info.items\n\nNameError: name 'rainfall_item_info' is not defined",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/07_writing_dfs0.html#dataset-to-dfs0-file",
+    "href": "module2_time_series/07_writing_dfs0.html#dataset-to-dfs0-file",
+    "title": "15  Writing DFS0 Files",
+    "section": "15.4 Dataset to DFS0 File",
+    "text": "15.4 Dataset to DFS0 File\nThe final step is to save your carefully prepared Dataset object, now containing the correct data and metadata, to a DFS0 file. This is done using the .to_dfs() method of the Dataset object. You simply provide the desired output file path.\n\n# ds_with_custom_info is from the previous code block\noutput_file_path = \"data/rainfall_processed.dfs0\"\nds_with_custom_info.to_dfs(output_file_path)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[6], line 3\n      1 # ds_with_custom_info is from the previous code block\n      2 output_file_path = \"data/rainfall_processed.dfs0\"\n----&gt; 3 ds_with_custom_info.to_dfs(output_file_path)\n\nNameError: name 'ds_with_custom_info' is not defined\n\n\n\nThis will create a file named rainfall_processed.dfs0 in your ‘data’ directory (ensure this directory exists or adjust the path accordingly). You can then use this DFS0 file in your MIKE+ models or other DHI software.",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+    ]
+  },
+  {
+    "objectID": "module2_time_series/homework.html",
+    "href": "module2_time_series/homework.html",
+    "title": "Homework",
+    "section": "",
+    "text": "These exercises will guide you through a complete workflow: loading data from a common format (CSV), cleaning and preparing it using Pandas, visualizing it, and finally, converting it into a DFS0 file suitable for MIKE+ using MIKE IO.\nExercise 1: Load, Inspect, and Prepare Rainfall Data from CSV\nThis exercise focuses on ingesting external data into a familiar Pandas DataFrame structure, performing initial inspections, and basic preparations.\n\nFirst, ensure that mikeio, pandas, and matplotlib are installed in your Python environment. If you need a reminder on how to do this, please refer to the setup instructions in Module 1.\nDownload the rainfall data CSV file. Click here to download rainfall_data.csv and save it into your project folder, perhaps in a data/homework/ subdirectory.\nNow, load the rainfall_data.csv file into a Pandas DataFrame. You can use the pd.read_csv() function for this.\n\nimport pandas as pd\n\n# Assuming the file is in 'data/homework/rainfall_data.csv' relative to your script/notebook\ncsv_filepath = \"data/homework/rainfall_data.csv\" \ndf = pd.read_csv(csv_filepath)\n\n\n---------------------------------------------------------------------------\nFileNotFoundError                         Traceback (most recent call last)\nCell In[1], line 5\n      3 # Assuming the file is in 'data/homework/rainfall_data.csv' relative to your script/notebook\n      4 csv_filepath = \"data/homework/rainfall_data.csv\" \n----&gt; 5 df = pd.read_csv(csv_filepath)\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:1026, in read_csv(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)\n   1013 kwds_defaults = _refine_defaults_read(\n   1014     dialect,\n   1015     delimiter,\n   (...)   1022     dtype_backend=dtype_backend,\n   1023 )\n   1024 kwds.update(kwds_defaults)\n-&gt; 1026 return _read(filepath_or_buffer, kwds)\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:620, in _read(filepath_or_buffer, kwds)\n    617 _validate_names(kwds.get(\"names\", None))\n    619 # Create the parser.\n--&gt; 620 parser = TextFileReader(filepath_or_buffer, **kwds)\n    622 if chunksize or iterator:\n    623     return parser\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:1620, in TextFileReader.__init__(self, f, engine, **kwds)\n   1617     self.options[\"has_index_names\"] = kwds[\"has_index_names\"]\n   1619 self.handles: IOHandles | None = None\n-&gt; 1620 self._engine = self._make_engine(f, self.engine)\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:1880, in TextFileReader._make_engine(self, f, engine)\n   1878     if \"b\" not in mode:\n   1879         mode += \"b\"\n-&gt; 1880 self.handles = get_handle(\n   1881     f,\n   1882     mode,\n   1883     encoding=self.options.get(\"encoding\", None),\n   1884     compression=self.options.get(\"compression\", None),\n   1885     memory_map=self.options.get(\"memory_map\", False),\n   1886     is_text=is_text,\n   1887     errors=self.options.get(\"encoding_errors\", \"strict\"),\n   1888     storage_options=self.options.get(\"storage_options\", None),\n   1889 )\n   1890 assert self.handles is not None\n   1891 f = self.handles.handle\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\pandas\\io\\common.py:873, in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\n    868 elif isinstance(handle, str):\n    869     # Check whether the filename is to be opened in binary mode.\n    870     # Binary mode does not support 'encoding' and 'newline'.\n    871     if ioargs.encoding and \"b\" not in ioargs.mode:\n    872         # Encoding\n--&gt; 873         handle = open(\n    874             handle,\n    875             ioargs.mode,\n    876             encoding=ioargs.encoding,\n    877             errors=errors,\n    878             newline=\"\",\n    879         )\n    880     else:\n    881         # Binary mode\n    882         handle = open(handle, ioargs.mode)\n\nFileNotFoundError: [Errno 2] No such file or directory: 'data/homework/rainfall_data.csv'\n\n\n\nInspect the DataFrame to understand its structure and content:\n\nDisplay the first 5 rows using the .head() method. This gives you a quick look at the data.\n\ndf.head()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[2], line 1\n----&gt; 1 df.head()\n\nNameError: name 'df' is not defined\n\n\n\nPrint summary information using the .info() method. This will show column data types and non-null counts.\n\ndf.info()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[3], line 1\n----&gt; 1 df.info()\n\nNameError: name 'df' is not defined\n\n\n\n\nThe ‘Timestamp’ column currently likely holds strings but should represent time. Convert this column to datetime objects using pd.to_datetime(), and then set this ‘Timestamp’ column as the DataFrame’s index using df.set_index().\n\ndf['Timestamp'] = pd.to_datetime(df['Timestamp'])\ndf = df.set_index('Timestamp')\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 df['Timestamp'] = pd.to_datetime(df['Timestamp'])\n      2 df = df.set_index('Timestamp')\n\nNameError: name 'df' is not defined\n\n\n\nRe-check the DataFrame’s structure using .info() again. Confirm that the index is now a DatetimeIndex and note the data type of the ‘Rainfall_mm’ column.\n\ndf.info()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[5], line 1\n----&gt; 1 df.info()\n\nNameError: name 'df' is not defined\n\n\n\nUse the .describe() method on the ‘Rainfall_mm’ column to get summary statistics. What are the mean, min, and max rainfall values? Do these values seem reasonable for hourly rainfall data?\n\ndf['Rainfall_mm'].describe()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[6], line 1\n----&gt; 1 df['Rainfall_mm'].describe()\n\nNameError: name 'df' is not defined\n\n\n\n\nExercise 2: Clean Data and Define MIKE IO Metadata\nBefore converting to DFS0, data often needs cleaning. Additionally, MIKE IO requires specific metadata for proper interpretation of the data within MIKE software.\n\nCheck if there are any missing values (NaNs) in the ‘Rainfall_mm’ column. The .isnull().sum() combination is very useful here.\n\ndf['Rainfall_mm'].isnull().sum()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 df['Rainfall_mm'].isnull().sum()\n\nNameError: name 'df' is not defined\n\n\n\nIf missing values exist (the previous command would show a count greater than zero), impute them using linear interpolation. This is a common method for filling gaps in time series data. Apply the .interpolate(method='linear') method directly to the ‘Rainfall_mm’ column.\n\nAfter interpolation, verify that no missing values remain by running the check from step 1 again.\n\n\ndf['Rainfall_mm'] = df['Rainfall_mm'].interpolate(method='linear')\ndf['Rainfall_mm'].isnull().sum()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[8], line 1\n----&gt; 1 df['Rainfall_mm'] = df['Rainfall_mm'].interpolate(method='linear')\n      2 df['Rainfall_mm'].isnull().sum()\n\nNameError: name 'df' is not defined\n\n\n\nIdentify the appropriate MIKE IO metadata for your rainfall data. This involves determining the item name, EUM Type, EUM Unit, and Data Value Type.\n\nItem Name: This will typically be the column name from your DataFrame. In this case, it’s ‘Rainfall_mm’.\nEUM Type: What is the DHI EUM Type for rainfall?\n\nHint: You’ll need to import EUMType from mikeio.eum. You can then explore its attributes to find a suitable type for rainfall (e.g., mikeio.eum.EUMType.Rainfall).\n\nEUM Unit: What is the DHI EUM Unit for rainfall measured in millimeters?\n\nHint: Similar to EUM Type, import EUMUnit from mikeio.eum and find the unit for millimeters (e.g., mikeio.eum.EUMUnit.mm).\n\nData Value Type: Given that the rainfall data represents the total amount that has fallen within each time step (e.g., the total mm in the hour ending at the timestamp), what data_value_type is most appropriate? Common options include ‘Instantaneous’, ‘Accumulated’, ‘StepAccumulated’, ‘MeanStepBackward’, ‘MeanStepForward’.\n\n\n\n\n\n\nTip\n\n\n\n‘StepAccumulated’ is often used for incremental rainfall totals recorded over a time step, like hourly rainfall.\n\n\n\n\nExercise 3: Visualize Cleaned Rainfall Data and Save Plot\nVisualizing the data is a crucial step to ensure it looks as expected before further processing or file conversion.\n\nUsing the cleaned Pandas DataFrame from Exercise 2 (after NaN imputation):\n\nCreate a line plot of the ‘Rainfall_mm’ time series. The .plot() method on a Pandas Series makes this straightforward.\n\n\n# Ensure matplotlib is available for plotting\nimport matplotlib.pyplot as plt\n\ndf['Rainfall_mm'].plot()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[9], line 4\n      1 # Ensure matplotlib is available for plotting\n      2 import matplotlib.pyplot as plt\n----&gt; 4 df['Rainfall_mm'].plot()\n\nNameError: name 'df' is not defined\n\n\n\nCustomize your plot to make it more informative:\n\nAdd a title (e.g., “Hourly Rainfall Data”).\nSet an appropriate label for the y-axis (e.g., “Rainfall (mm)”).\nEnsure the x-axis (time) is clearly labeled (Pandas often does this well by default if the index is a DatetimeIndex).\nHint: You can use plt.title(), plt.ylabel(), plt.xlabel() from matplotlib.pyplot after calling df.plot(), or pass arguments like title and ylabel directly to the .plot() method.\n\n\ndf['Rainfall_mm'].plot(title='Hourly Rainfall Data', ylabel='Rainfall (mm)', xlabel='Time')\nplt.show() # Ensures the plot is displayed\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[10], line 1\n----&gt; 1 df['Rainfall_mm'].plot(title='Hourly Rainfall Data', ylabel='Rainfall (mm)', xlabel='Time')\n      2 plt.show() # Ensures the plot is displayed\n\nNameError: name 'df' is not defined\n\n\n\nSave the plot as a PNG file named rainfall_timeseries.png.\n\nHint: If using matplotlib.pyplot (often imported as plt), use plt.savefig(). Remember to call this before plt.show() if you are in a script, or ensure the plot object is correctly handled in a Jupyter environment.\n\n\n# Assuming the plot from the previous step is still the active one\n# For this example, we'll replot and save\ndf['Rainfall_mm'].plot(title='Hourly Rainfall Data', ylabel='Rainfall (mm)', xlabel='Time')\nplt.savefig('rainfall_timeseries.png')\nplt.close() # Closes the plot figure to free up memory\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[11], line 3\n      1 # Assuming the plot from the previous step is still the active one\n      2 # For this example, we'll replot and save\n----&gt; 3 df['Rainfall_mm'].plot(title='Hourly Rainfall Data', ylabel='Rainfall (mm)', xlabel='Time')\n      4 plt.savefig('rainfall_timeseries.png')\n      5 plt.close() # Closes the plot figure to free up memory\n\nNameError: name 'df' is not defined\n\n\n\n\nExercise 4: Create DFS0 File with MIKE IO\nThis exercise converts your prepared Pandas DataFrame into a MIKE IO Dataset object with the correct metadata, and then writes it to a DFS0 file.\n\nImport ItemInfo from mikeio. You’ll also need EUMType and EUMUnit if you haven’t imported them already.\n\nfrom mikeio import ItemInfo\nfrom mikeio.eum import EUMType, EUMUnit\nimport mikeio # For mikeio.from_pandas\n\nCreate an ItemInfo object for your rainfall data series. Use ‘Rainfall_mm’ for the name argument, and the EUMType, EUMUnit, and data_value_type you identified in Exercise 2. For example, EUMType.Rainfall, EUMUnit.mm, and data_value_type=\"StepAccumulated\".\n\nitem_rainfall = ItemInfo(\n    name='Rainfall_mm', \n    itemtype=EUMType.Rainfall, \n    unit=EUMUnit.mm, \n    data_value_type='StepAccumulated'\n)\nprint(item_rainfall)\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[13], line 4\n      1 item_rainfall = ItemInfo(\n      2     name='Rainfall_mm', \n      3     itemtype=EUMType.Rainfall, \n----&gt; 4     unit=EUMUnit.mm, \n      5     data_value_type='StepAccumulated'\n      6 )\n      7 print(item_rainfall)\n\nAttributeError: type object 'EUMUnit' has no attribute 'mm'\n\n\n\nConvert your cleaned Pandas DataFrame (from Exercise 2) to a mikeio.Dataset using mikeio.from_pandas().\n\nPass your DataFrame as the first argument.\nPass a Python list containing your single ItemInfo object (e.g., [item_rainfall]) to the items argument.\n\n\nds = mikeio.from_pandas(df, items=[item_rainfall])\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[14], line 1\n----&gt; 1 ds = mikeio.from_pandas(df, items=[item_rainfall])\n\nNameError: name 'df' is not defined\n\n\n\nInspect the created Dataset by printing its items attribute (e.g., print(ds.items)). Verify that the name, type, unit, and data value type match what you intended.\n\nprint(ds.items)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[15], line 1\n----&gt; 1 print(ds.items)\n\nNameError: name 'ds' is not defined\n\n\n\nSave the Dataset to a DFS0 file named rainfall_output.dfs0 using the .to_dfs() method of the Dataset object.\n\nds.to_dfs(\"rainfall_output.dfs0\")\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[16], line 1\n----&gt; 1 ds.to_dfs(\"rainfall_output.dfs0\")\n\nNameError: name 'ds' is not defined\n\n\n\n\nExercise 5: Verify the Created DFS0 File\nIt’s good practice to verify that the file you created is correct and contains the data as expected.\n\nRead the rainfall_output.dfs0 file you just created back into a new mikeio.Dataset object using mikeio.read().\n\nds_verify = mikeio.read(\"rainfall_output.dfs0\")\n\n\n---------------------------------------------------------------------------\nFileNotFoundError                         Traceback (most recent call last)\nCell In[17], line 1\n----&gt; 1 ds_verify = mikeio.read(\"rainfall_output.dfs0\")\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\mikeio\\__init__.py:122, in read(filename, items, time, keepdims, **kwargs)\n    117 if \"dfs\" not in ext:\n    118     raise ValueError(\n    119         \"mikeio.read() is only supported for dfs files. Use mikeio.open for mesh files.\"\n    120     )\n--&gt; 122 dfs = open(filename)\n    123 if isinstance(dfs, Mesh):\n    124     raise ValueError(\"mikeio.read() is not supported for Mesh files\")\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\mikeio\\__init__.py:183, in open(filename, **kwargs)\n    177     raise Exception(\n    178         f\"{ext} is not a supported format for mikeio.open. Valid formats are {valid_formats}\"\n    179     )\n    181 reader_klass = READERS[ext]\n--&gt; 183 return reader_klass(filename, **kwargs)\n\nFile ~\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\mikeio\\dfs\\_dfs0.py:102, in Dfs0.__init__(self, filename)\n    100 path = Path(filename)\n    101 if not path.exists():\n--&gt; 102     raise FileNotFoundError(path)\n    104 dfs = DfsFileFactory.DfsGenericOpen(str(path))\n    105 self._source = dfs\n\nFileNotFoundError: rainfall_output.dfs0\n\n\n\nInspect the items attribute of this new Dataset. Does the metadata look correct and match what you specified?\n\nprint(ds_verify.items)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 print(ds_verify.items)\n\nNameError: name 'ds_verify' is not defined\n\n\n\nConvert this new Dataset object back into a Pandas DataFrame using its .to_dataframe() method.\n\ndf_verify = ds_verify.to_dataframe()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[19], line 1\n----&gt; 1 df_verify = ds_verify.to_dataframe()\n\nNameError: name 'ds_verify' is not defined\n\n\n\nDisplay the head() and info() of this new DataFrame. Compare it to the DataFrame you had before saving to DFS0 (from Exercise 2 or 3, after cleaning). Are they consistent in terms of data, index, and column names?\n\ndf_verify.head()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[20], line 1\n----&gt; 1 df_verify.head()\n\nNameError: name 'df_verify' is not defined\n\n\n\n\ndf_verify.info()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[21], line 1\n----&gt; 1 df_verify.info()\n\nNameError: name 'df_verify' is not defined\n\n\n\n(Optional) Use the .describe() method on the rainfall column of this newly loaded DataFrame. Do the statistics match those from Exercise 1, step 7 (or rather, the statistics of the cleaned data before saving)?\n\ndf_verify['Rainfall_mm'].describe()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[22], line 1\n----&gt; 1 df_verify['Rainfall_mm'].describe()\n\nNameError: name 'df_verify' is not defined\n\n\n\n\nPractice Exercises (optional)\nFor further practice, consider exploring the following: * Try loading a DFS0 file with multiple items. * Experiment with different resampling techniques on your rainfall data (e.g., calculating daily totals). * Explore other data_value_type options when creating ItemInfo and observe how MIKE+ might interpret them differently (you might need to check MIKE+ documentation for this).",
+    "crumbs": [
+      "Module 2 - Time Series",
+      "Homework"
+    ]
+  }
+]
