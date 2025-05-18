@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; MIKE IO Basics – Getting started with Python for MIKE+</title>
+<title>9&nbsp; MIKE IO – Getting started with Python for MIKE+</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -313,7 +313,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/01_mikeio.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/01_mikeio.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -439,13 +439,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/01_mikeio.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/02_reading_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -475,7 +475,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/07_writing_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -525,9 +525,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/01_mikeio.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/01_mikeio.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></h1>
 </div>
 
 
@@ -601,7 +601,7 @@ Tip
 <section id="quick-glance" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="quick-glance"><span class="header-section-number">9.4</span> Quick glance</h2>
 <p>Let’s take a quick look at some core MIKE IO objects and how to access them. When you read a <code>dfs0</code> file, MIKE IO typically returns a <code>Dataset</code> object.</p>
-<div id="cb2a70f3" class="cell" data-execution_count="1">
+<div id="f8da1f29" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeio</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.read(<span class="st">"data/sirius_idf_rainfall.dfs0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -620,15 +620,15 @@ Note
 </div>
 </div>
 <p>This <code>Dataset</code> object, <code>ds</code>, holds the data and metadata. You can easily access its contents, such as the items:</p>
-<div id="55d1f22d" class="cell" data-execution_count="2">
+<div id="b393df9f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ds.items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The time axis is a Pandas <code>DatetimeIndex</code>, shared between all items:</p>
-<div id="9fc86669" class="cell" data-execution_count="3">
+<div id="10cd30f3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ds.time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To access data for a specific item, you can select it from the <code>Dataset</code>, which returns a <code>DataArray</code> object:</p>
-<div id="081b1fef" class="cell" data-execution_count="4">
+<div id="f9146b69" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> ds[<span class="dv">0</span>] <span class="co"># Access the first item from ds.items</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1118,8 +1118,8 @@ Each <code>DataArray</code> within a <code>Dataset</code> represents an “item.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../module2_time_series/02_reading_dfs0.html" class="pagination-link" aria-label="Read dfs0 to Pandas">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../module2_time_series/02_reading_dfs0.html" class="pagination-link" aria-label="Reading dfs0">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

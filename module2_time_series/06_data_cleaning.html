@@ -410,13 +410,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/01_mikeio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/02_reading_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/07_writing_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -487,9 +487,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#imputation" id="toc-imputation" class="nav-link" data-scroll-target="#imputation"><span class="header-section-number">14.2</span> Imputation</a></li>
   <li><a href="#anomaly-detection-rule-based" id="toc-anomaly-detection-rule-based" class="nav-link" data-scroll-target="#anomaly-detection-rule-based"><span class="header-section-number">14.3</span> Anomaly Detection (Rule-Based)</a>
   <ul class="collapse">
-  <li><a href="#install-tsod" id="toc-install-tsod" class="nav-link" data-scroll-target="#install-tsod"><span class="header-section-number">14.3.1</span> Install <code>tsod</code></a></li>
+  <li><a href="#install-tsod" id="toc-install-tsod" class="nav-link" data-scroll-target="#install-tsod"><span class="header-section-number">14.3.1</span> Install tsod</a></li>
   <li><a href="#the-detector-concept" id="toc-the-detector-concept" class="nav-link" data-scroll-target="#the-detector-concept"><span class="header-section-number">14.3.2</span> The Detector Concept</a></li>
   <li><a href="#detecting-anomalies" id="toc-detecting-anomalies" class="nav-link" data-scroll-target="#detecting-anomalies"><span class="header-section-number">14.3.3</span> Detecting Anomalies</a></li>
+  <li><a href="#impute-anomalies" id="toc-impute-anomalies" class="nav-link" data-scroll-target="#impute-anomalies"><span class="header-section-number">14.3.4</span> Impute anomalies</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -535,7 +536,7 @@ Note
 </div>
 </div>
 <p>Assume we have a DateFrame with missing values on 1993-12-06:</p>
-<div id="c249c19d" class="cell" data-execution_count="2">
+<div id="a69e156a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show Plotting Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot()</span>
@@ -557,7 +558,7 @@ Note
 </div>
 </div>
 <p>Count the number of missing values (e.g.&nbsp;<code>nan</code>) for each time series by summing the result of <code>isna()</code>.</p>
-<div id="f5a6ef18" class="cell" data-execution_count="3">
+<div id="127a2063" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>ST 2: WL (m)    48
@@ -569,10 +570,10 @@ dtype: int64</code></pre>
 <h2 data-number="14.2" class="anchored" data-anchor-id="imputation"><span class="header-section-number">14.2</span> Imputation</h2>
 <p>The process of filling missing values is known as imputation.</p>
 <p>For missing values <em>between</em> valid data points (i.e.&nbsp;bounded), using the <code>.interpolate()</code> method is a common and effective approach.</p>
-<div id="a602fc53" class="cell" data-execution_count="4">
+<div id="9326bdad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_interpolated <span class="op">=</span> df.interpolate(method<span class="op">=</span><span class="st">'time'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="43bb9e43" class="cell" data-execution_count="5">
+<div id="9fff6b81" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show Plotting Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot()</span>
@@ -628,10 +629,10 @@ Tip
 </div>
 </div>
 <p>Same example as above, but using <code>ffill()</code>.</p>
-<div id="f2901328" class="cell" data-execution_count="6">
+<div id="bc1ca36a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_interpolated <span class="op">=</span> df.ffill()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="72e476e6" class="cell" data-execution_count="7">
+<div id="2bc7f700" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show Plotting Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot()</span>
@@ -655,10 +656,10 @@ Tip
 </div>
 </div>
 <p>Same example as above, but using <code>bfill()</code>.</p>
-<div id="5a7260b4" class="cell" data-execution_count="8">
+<div id="1e827c41" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_interpolated <span class="op">=</span> df.bfill()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="05490d38" class="cell" data-execution_count="9">
+<div id="219a9544" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show Plotting Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot()</span>
@@ -682,10 +683,10 @@ Tip
 </div>
 </div>
 <p>Same example as above, but using <code>fillna()</code>.</p>
-<div id="22a3db1b" class="cell" data-execution_count="10">
+<div id="1fe3c78a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_interpolated <span class="op">=</span> df.fillna(<span class="fl">0.1</span>) <span class="co"># specify the value to fill with</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4853f719" class="cell" data-execution_count="11">
+<div id="a3ae9ae3" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show Plotting Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot()</span>
@@ -727,26 +728,26 @@ Tip
 <p>Beyond clearly missing values, time series data can also contain anomalies. Identifying and addressing these anomalies is crucial for building robust MIKE+ models.</p>
 <p>Anomaly detection is a broad and complex field. This section offers a basic introduction to rule-based anomaly detection using DHI’s <a href="https://github.com/DHI/tsod">tsod Python package</a>.</p>
 <section id="install-tsod" class="level3" data-number="14.3.1">
-<h3 data-number="14.3.1" class="anchored" data-anchor-id="install-tsod"><span class="header-section-number">14.3.1</span> Install <code>tsod</code></h3>
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="install-tsod"><span class="header-section-number">14.3.1</span> Install tsod</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>uv pip install tsod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-detector-concept" class="level3" data-number="14.3.2">
 <h3 data-number="14.3.2" class="anchored" data-anchor-id="the-detector-concept"><span class="header-section-number">14.3.2</span> The Detector Concept</h3>
 <p><code>tsod</code> operates using a concept called “detectors.” Each detector is designed to implement a specific rule or heuristic to identify anomalies. Example anomaly detectors:</p>
 <ul>
-<li><strong>RangeDetector:</strong> Flags values outside a set range.</li>
-<li><strong>ConstantValueDetector:</strong> Detects unchanging values over time.</li>
-<li><strong>DiffDetector:</strong> Catches large changes between points.</li>
-<li><strong>RollingStdDetector:</strong> Finds points far from rolling standard deviation.</li>
+<li><code>RangeDetector</code>: Flags values outside a set range.</li>
+<li><code>ConstantValueDetector</code>: Detects unchanging values over time.</li>
+<li><code>DiffDetector</code>: Catches large changes between points.</li>
+<li><code>RollingStdDetector</code>: Finds points far from rolling standard deviation.</li>
 </ul>
 <p>There’s also the <code>CombinedDetector</code>, which allows combining the rules of several detectors.</p>
 </section>
 <section id="detecting-anomalies" class="level3" data-number="14.3.3">
 <h3 data-number="14.3.3" class="anchored" data-anchor-id="detecting-anomalies"><span class="header-section-number">14.3.3</span> Detecting Anomalies</h3>
-<p>Let’s walk through a minimal example workflow using the <code>RangeDetector</code> to illustrate the typical process.</p>
-<p>Start by plotting the original time series.</p>
-<div id="11a4ddf0" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Plot the initial time series.</p>
+<div id="c2b75cba" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> df[<span class="st">"ST 2: WL (m)"</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ts.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -755,147 +756,110 @@ Tip
 </div>
 </div>
 </div>
-<ol type="1">
-<li><strong>Prep Data</strong>: <code>tsod</code> detectors generally expect a Pandas Series as input. Let’s create a sample Series that includes an obvious anomaly.</li>
-</ol>
-<div id="3871abb3" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_anomaly <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">1.0</span>, <span class="fl">1.2</span>, <span class="fl">5.0</span>, <span class="fl">1.1</span>, <span class="fl">1.0</span>, <span class="fl">1.2</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>series_anomaly <span class="op">=</span> pd.Series(data_anomaly, name<span class="op">=</span><span class="st">"Flow_Anomaly"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>series_anomaly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[14]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> data_anomaly = [<span class="ansi-green-fg">1.0</span>, <span class="ansi-green-fg">1.1</span>, <span class="ansi-green-fg">1.0</span>, <span class="ansi-green-fg">1.2</span>, <span class="ansi-green-fg">5.0</span>, <span class="ansi-green-fg">1.1</span>, <span class="ansi-green-fg">1.0</span>, <span class="ansi-green-fg">1.2</span>]
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> series_anomaly = <span class="ansi-yellow-bg">pd</span>.Series(data_anomaly, name=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Flow_Anomaly</span><span class="ansi-yellow-fg">"</span>)
-<span class="ansi-green-fg">      3</span> series_anomaly
-
-<span class="ansi-red-fg">NameError</span>: name 'pd' is not defined</pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
-</div>
-<ol start="2" type="1">
-<li><strong>Detect &amp; Visualize Anomalies</strong>: Now, we’ll import the <code>RollingStdDetector</code> from <code>tsod.detectors</code>, initialize it with appropriate parameters (like <code>window_size</code> and <code>n_std</code> for the number of standard deviations), and then apply it to our series to get the <code>anomaly_mask</code>.</li>
-</ol>
-<div id="baa8fcdb" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tsod.detectors <span class="im">import</span> RollingStdDetector</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>detector <span class="op">=</span> RollingStdDetector(window_size<span class="op">=</span><span class="dv">3</span>, n_std<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>anomaly_mask <span class="op">=</span> detector.detect(series_anomaly)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>anomaly_mask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[15]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">tsod</span><span class="ansi-blue-fg ansi-bold">.</span><span class="ansi-blue-fg ansi-bold">detectors</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">import</span> RollingStdDetector
-<span class="ansi-green-fg">      3</span> detector = RollingStdDetector(window_size=<span class="ansi-green-fg">3</span>, n_std=<span class="ansi-green-fg">1.5</span>)
-<span class="ansi-green-fg">      4</span> anomaly_mask = detector.detect(series_anomaly)
-
-<span class="ansi-red-fg">ImportError</span>: cannot import name 'RollingStdDetector' from 'tsod.detectors' (C:\Users\rywm\Repos\getting-started-with-python-for-mike-plus-dev-latest\book\.venv\Lib\site-packages\tsod\detectors.py)</pre>
+<div class="callout-body-container callout-body">
+<p><em>tsod</em> operates on <code>Series</code>. Select the subject <code>Series</code> from the <code>DataFrame</code> object as needed.</p>
 </div>
 </div>
-</div>
-<p>After detection, it’s good practice to visualize the original series and highlight the detected anomalies to verify the detector’s performance.</p>
-<div id="b450cdd2" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>series_anomaly.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Original Flow"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> anomaly_mask.<span class="bu">any</span>():</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    series_anomaly[anomaly_mask].plot(ax<span class="op">=</span>ax, style<span class="op">=</span><span class="st">'ro'</span>, markersize<span class="op">=</span><span class="dv">7</span>, label<span class="op">=</span><span class="st">"Detected Anomaly"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[16]</span><span class="ansi-green-fg">, line 4</span>
-<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">matplotlib</span><span class="ansi-blue-fg ansi-bold">.</span><span class="ansi-blue-fg ansi-bold">pyplot</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">plt</span>
-<span class="ansi-green-fg">      3</span> fig, ax = plt.subplots(figsize=(<span class="ansi-green-fg">8</span>,<span class="ansi-green-fg">4</span>))
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> <span class="ansi-yellow-bg">series_anomaly</span>.plot(ax=ax, label=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Original Flow</span><span class="ansi-yellow-fg">"</span>)
-<span class="ansi-green-fg">      5</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> anomaly_mask.any():
-<span class="ansi-green-fg">      6</span>     series_anomaly[anomaly_mask].plot(ax=ax, style=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">ro</span><span class="ansi-yellow-fg">'</span>, markersize=<span class="ansi-green-fg">7</span>, label=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Detected Anomaly</span><span class="ansi-yellow-fg">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'series_anomaly' is not defined</pre>
+<p>Select and instantiate a detector. If we know water levels must be in the range -0.4m to 0.4m, then a <code>RangeDetector</code> should be used.</p>
+<div id="64ae3524" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tsod.detectors <span class="im">import</span> RangeDetector</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>detector <span class="op">=</span> RangeDetector(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    min_value <span class="op">=</span> <span class="op">-</span><span class="fl">0.4</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    max_value <span class="op">=</span> <span class="fl">0.4</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>detector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>RangeDetector(min: -4.0e-01, max: 4.0e-01)</code></pre>
 </div>
 </div>
+<p>Detect anomalies for a given <code>Series</code> using the <code>detect()</code> method of the instantiated detector.</p>
+<div id="345ce272" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>anomaly_mask <span class="op">=</span> detector.detect(ts)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>anomaly_mask.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>1993-12-02 00:00:00    False
+1993-12-02 00:30:00    False
+1993-12-02 01:00:00    False
+1993-12-02 01:30:00    False
+1993-12-02 02:00:00    False
+Freq: 30min, Name: ST 2: WL (m), dtype: bool</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <em>mask</em> refers to a boolean indexer. In the example above, values are <em>true</em> for anomalies and false otherwise.</p>
+</div>
+</div>
+<p>Plot the detected anomalies.</p>
+<div id="0718b716" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ts.plot()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ts[anomaly_mask].plot(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    style<span class="op">=</span><span class="st">'ro'</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Anomaly"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># horizontal lines to validate ranges</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="fl">0.4</span>, color<span class="op">=</span><span class="st">'grey'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="op">-</span><span class="fl">0.4</span>, color<span class="op">=</span><span class="st">'grey'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06_data_cleaning_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="06_data_cleaning_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<ol start="3" type="1">
-<li><strong>Convert Anomalies to <code>NaN</code></strong>: Once you’re satisfied with the detected anomalies, the next step is to convert these anomalous values in your original data to <code>np.nan</code>. This uses the boolean <code>anomaly_mask</code> for indexing. (Ensure <code>numpy</code> is imported as <code>np</code>, which we did at the start of this section).</li>
-</ol>
-<div id="6f5b8f26" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>series_cleaned <span class="op">=</span> series_anomaly.copy()</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>series_cleaned[anomaly_mask] <span class="op">=</span> np.nan</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>series_cleaned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[17]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> series_cleaned = <span class="ansi-yellow-bg">series_anomaly</span>.copy()
-<span class="ansi-green-fg">      2</span> series_cleaned[anomaly_mask] = np.nan
-<span class="ansi-green-fg">      3</span> series_cleaned
-
-<span class="ansi-red-fg">NameError</span>: name 'series_anomaly' is not defined</pre>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li><strong>Impute <code>NaN</code>s</strong>: With the identified anomalies now represented as <code>NaN</code>s, you can use the imputation methods discussed earlier in the “Missing Values” section (like <code>.interpolate()</code> or <code>.fillna()</code>) to fill these gaps. For instance, using linear interpolation:</li>
-</ol>
-<div id="39f57f51" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>series_imputed <span class="op">=</span> series_cleaned.interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>series_imputed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[18]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> series_imputed = <span class="ansi-yellow-bg">series_cleaned</span>.interpolate(method=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">linear</span><span class="ansi-yellow-fg">'</span>)
-<span class="ansi-green-fg">      2</span> series_imputed
-
-<span class="ansi-red-fg">NameError</span>: name 'series_cleaned' is not defined</pre>
-</div>
-</div>
-</div>
-<p>Optionally, you can plot the final imputed series to visually inspect the result of the cleaning process and compare it with the original data.</p>
-<div id="f75adc39" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>series_imputed.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Imputed Flow"</span>, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>series_anomaly.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Original Flow"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, style<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> anomaly_mask.<span class="bu">any</span>():</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    series_anomaly[anomaly_mask].plot(ax<span class="op">=</span>ax, style<span class="op">=</span><span class="st">'ro'</span>, markersize<span class="op">=</span><span class="dv">7</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, label<span class="op">=</span><span class="st">"Original Anomaly"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> fig, ax = plt.subplots(figsize=(<span class="ansi-green-fg">8</span>,<span class="ansi-green-fg">4</span>))
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">series_imputed</span>.plot(ax=ax, label=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Imputed Flow</span><span class="ansi-yellow-fg">"</span>, marker=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">.</span><span class="ansi-yellow-fg">'</span>)
-<span class="ansi-green-fg">      3</span> series_anomaly.plot(ax=ax, label=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Original Flow</span><span class="ansi-yellow-fg">"</span>, alpha=<span class="ansi-green-fg">0.6</span>, style=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">--</span><span class="ansi-yellow-fg">'</span>)
-<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> anomaly_mask.any():
-
-<span class="ansi-red-fg">NameError</span>: name 'series_imputed' is not defined</pre>
-</div>
-</div>
+<p>Replace anomalies with <code>nan</code>.</p>
+<div id="6738feaa" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ts_cleaned <span class="op">=</span> ts.copy()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>ts_cleaned[anomaly_mask] <span class="op">=</span> np.nan</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ts_cleaned.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06_data_cleaning_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="06_data_cleaning_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This workflow provides a structured way to improve data quality by addressing both missing data and detectable anomalies before using the data in your MIKE+ models.</p>
+</section>
+<section id="impute-anomalies" class="level3" data-number="14.3.4">
+<h3 data-number="14.3.4" class="anchored" data-anchor-id="impute-anomalies"><span class="header-section-number">14.3.4</span> Impute anomalies</h3>
+<p>Impute anomalies by treating them just like missing values.</p>
+<div id="149547be" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ts_cleaned <span class="op">=</span> ts_cleaned.interpolate(method<span class="op">=</span><span class="st">'time'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ts_cleaned.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_data_cleaning_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1353,8 +1317,8 @@ Tip
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../module2_time_series/07_writing_dfs0.html" class="pagination-link" aria-label="Writing DFS0 Files">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../module2_time_series/07_writing_dfs0.html" class="pagination-link" aria-label="Writing dfs0">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

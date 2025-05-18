@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Read dfs0 to Pandas – Getting started with Python for MIKE+</title>
+<title>10&nbsp; Reading dfs0 – Getting started with Python for MIKE+</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/02_reading_dfs0.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/02_reading_dfs0.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -413,13 +413,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/01_mikeio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/02_reading_dfs0.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -449,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/07_writing_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -497,9 +497,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/02_reading_dfs0.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/02_reading_dfs0.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></h1>
 </div>
 
 
@@ -531,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="10.2" class="anchored" data-anchor-id="datasets"><span class="header-section-number">10.2</span> Datasets</h2>
 <p>The primary function for reading MIKE IO files is <code>mikeio.read()</code>. It returns a <code>Dataset</code> object, which is a container for one or more <code>DataArray</code> objects (e.g.&nbsp;a specific time series).</p>
 <p>Reading a dfs0 file into a Dataset is as simple as calling the <code>read()</code> method with the dfs0 file path as the argument:</p>
-<div id="0bbb1e51" class="cell" data-execution_count="2">
+<div id="00d30ccc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.read(<span class="st">"data/sirius_idf_rainfall.dfs0"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -570,7 +570,7 @@ Read() loads entire dfs0 into memory by default
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>By default, <code>mikeio.read()</code> loads the entire <code>dfs0</code> file into memory. This is fine for smaller files, but for very large <code>dfs0</code> files, you might want to load only specific items or a particular time range to conserve memory and improve performance. You can do this directly with the <code>items</code> or <code>time</code> arguments in the <code>read()</code> function. For example, to read only the first item (index 0):</p>
-<div id="1fbe633b" class="cell" data-execution_count="3">
+<div id="47917da8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.read(<span class="st">"data/sirius_idf_rainfall.dfs0"</span>, items<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -583,7 +583,7 @@ items:
 </div>
 </div>
 <p>Similarly, to read only the data for the first time step (index 0):</p>
-<div id="e0240fc4" class="cell" data-execution_count="4">
+<div id="067662af" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.read(<span class="st">"data/sirius_idf_rainfall.dfs0"</span>, time<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -611,7 +611,7 @@ items:
 <h2 data-number="10.3" class="anchored" data-anchor-id="dataarrays"><span class="header-section-number">10.3</span> DataArrays</h2>
 <p><code>DataArray</code> objects are accessed via the <code>Dataset</code> object after reading.</p>
 <p>Select a specific <code>DataArray</code> from the <code>Dataset</code> by its index or its name. For example, to select the first <code>DataArray</code> by its index:</p>
-<div id="3b75b3e4" class="cell" data-execution_count="5">
+<div id="0f4de954" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> ds[<span class="dv">0</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>da</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -624,7 +624,7 @@ values: 0.0</code></pre>
 </div>
 </div>
 <p>Alternatively, select a <code>DataArray</code> by its name using square brackets:</p>
-<div id="8607b589" class="cell" data-execution_count="6">
+<div id="8d8c260f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> ds[<span class="st">" F=20"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>da</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -641,7 +641,7 @@ values: 0.0</code></pre>
 <section id="convert-to-pandas" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="convert-to-pandas"><span class="header-section-number">10.4</span> Convert to Pandas</h2>
 <p>You can convert an entire <code>Dataset</code> (which might contain multiple time series) into a Pandas DataFrame. Each item in the <code>Dataset</code> will become a column in the DataFrame.</p>
-<div id="4bb47442" class="cell" data-execution_count="7">
+<div id="654b42d5" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.read(<span class="st">"data/sirius_idf_rainfall.dfs0"</span>)</span>
@@ -734,7 +734,7 @@ values: 0.0</code></pre>
 </div>
 </div>
 <p>Similarly, a single <code>DataArray</code> can be converted to a Pandas DataFrame (which will have one data column).</p>
-<div id="e9d4920c" class="cell" data-execution_count="8">
+<div id="57fa0984" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> ds[<span class="st">" F=20"</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_T20 <span class="op">=</span> da.to_dataframe()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df_T20.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -777,7 +777,7 @@ values: 0.0</code></pre>
 </div>
 </div>
 <p>Once your data is in a DataFrame, you can use all of Pandas’ powerful methods. For instance, you can easily plot a time series:</p>
-<div id="374ea393" class="cell" data-execution_count="9">
+<div id="05c64593" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_T20.plot(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Rainfall for Return Period F=20"</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    ylabel<span class="op">=</span><span class="st">"Rainfall (mm/hr)"</span></span>
@@ -791,7 +791,7 @@ values: 0.0</code></pre>
 </div>
 </div>
 <p>Or get some descriptive statistics:</p>
-<div id="a62ca326" class="cell" data-execution_count="10">
+<div id="6e799918" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -1381,8 +1381,8 @@ Learning Python’s scientific ecosystem pays off…
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../module2_time_series/01_mikeio.html" class="pagination-link" aria-label="MIKE IO Basics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></span>
+      <a href="../module2_time_series/01_mikeio.html" class="pagination-link" aria-label="MIKE IO">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

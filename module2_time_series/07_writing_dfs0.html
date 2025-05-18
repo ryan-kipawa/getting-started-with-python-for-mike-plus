@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Writing DFS0 Files – Getting started with Python for MIKE+</title>
+<title>15&nbsp; Writing dfs0 – Getting started with Python for MIKE+</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/07_writing_dfs0.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/07_writing_dfs0.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -413,13 +413,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/01_mikeio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">MIKE IO</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/02_reading_dfs0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read dfs0 to Pandas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -449,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module2_time_series/07_writing_dfs0.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -497,9 +497,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/07_writing_dfs0.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module2_time_series/index.html">Module 2 - Time Series</a></li><li class="breadcrumb-item"><a href="../module2_time_series/07_writing_dfs0.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing DFS0 Files</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Writing dfs0</span></h1>
 </div>
 
 
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dataframe-to-dataset-basic" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="dataframe-to-dataset-basic"><span class="header-section-number">15.1</span> DataFrame to <code>Dataset</code>: Basic</h2>
 <p>First, let’s assume you have a Pandas DataFrame ready. For instance, here’s a look at a simple DataFrame, <code>df_rain</code>, containing some rainfall data with a <code>DatetimeIndex</code>:</p>
-<div id="5147d2d5" class="cell" data-execution_count="1">
+<div id="4717eabb" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeio</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -560,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Converting this DataFrame to a basic <code>mikeio.Dataset</code> is straightforward using <code>mikeio.from_pandas()</code>:</p>
-<div id="cebf6e0e" class="cell" data-execution_count="2">
+<div id="84edeb78" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ds_basic <span class="op">=</span> mikeio.from_pandas(df_rain)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ds_basic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -589,7 +589,7 @@ Tip
 <section id="item-metadata-iteminfo" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="item-metadata-iteminfo"><span class="header-section-number">15.2</span> Item Metadata: <code>ItemInfo</code></h2>
 <p>While the basic conversion works, MIKE software requires specific metadata for each data item, such as its type, unit, and how values are interpreted over time. This is where <code>mikeio.ItemInfo</code> comes in. If we inspect the items of our <code>ds_basic</code> created above, you’ll notice default, often incorrect, metadata:</p>
-<div id="eaa42255" class="cell" data-execution_count="3">
+<div id="6c1e67f7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ds_basic.items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>[Rainfall_mm &lt;Undefined&gt; (undefined)]</code></pre>
@@ -636,7 +636,7 @@ Note
 </div>
 </div>
 <p>For example, to define <code>ItemInfo</code> for our rainfall data, which is measured in millimeters and, for this example, we’ll consider it as an accumulated value:</p>
-<div id="d3e7fd4b" class="cell" data-execution_count="4">
+<div id="cc80415f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mikeio <span class="im">import</span> ItemInfo</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mikeio.eum <span class="im">import</span> EUMType, EUMUnit</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -687,7 +687,7 @@ Tip
 <h2 data-number="15.3" class="anchored" data-anchor-id="specifying-iteminfo-on-conversion"><span class="header-section-number">15.3</span> Specifying <code>ItemInfo</code> on Conversion</h2>
 <p>To use your custom <code>ItemInfo</code> when converting a DataFrame, you pass a list of <code>ItemInfo</code> objects to the <code>items</code> argument of <code>mikeio.from_pandas()</code>. Each <code>ItemInfo</code> object in the list should correspond to a column in your DataFrame that you want to include in the <code>Dataset</code>. The <code>name</code> attribute of the <code>ItemInfo</code> object is used to map it to the correct DataFrame column.</p>
 <p>Here’s how you convert the <code>df_rain</code> DataFrame (with the “Rainfall_Gauge1” column) using the <code>rainfall_item_info</code> we defined:</p>
-<div id="454939dc" class="cell" data-execution_count="5">
+<div id="6c21cf6e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df_rain and rainfall_item_info are from previous code blocks</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info <span class="op">=</span> mikeio.from_pandas(df_rain, items<span class="op">=</span>[rainfall_item_info])</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info.items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -708,7 +708,7 @@ Tip
 <section id="dataset-to-dfs0-file" class="level2" data-number="15.4">
 <h2 data-number="15.4" class="anchored" data-anchor-id="dataset-to-dfs0-file"><span class="header-section-number">15.4</span> <code>Dataset</code> to DFS0 File</h2>
 <p>The final step is to save your carefully prepared <code>Dataset</code> object, now containing the correct data and metadata, to a DFS0 file. This is done using the <code>.to_dfs()</code> method of the <code>Dataset</code> object. You simply provide the desired output file path.</p>
-<div id="649ea95d" class="cell" data-execution_count="6">
+<div id="46ce729f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ds_with_custom_info is from the previous code block</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>output_file_path <span class="op">=</span> <span class="st">"data/rainfall_processed.dfs0"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info.to_dfs(output_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

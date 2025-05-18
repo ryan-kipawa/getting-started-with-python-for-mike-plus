@@ -395,7 +395,7 @@
     "href": "module1_foundations/python_basics.html#using-libraries",
     "title": "6  Python Basics",
     "section": "",
-    "text": "Note\n\n\n\nThe terms package, library, and module are used interchangeably throughout this course.\n\n\n\n6.1.1 Import libraries\nImport libraries using the import statement:\n\nimport math\n\nOr import specific functionality from a library:\n\nfrom math import sqrt\n\n\n\n6.1.2 Objects\nAll imports are objects containing some functionality. Objects have members accessible via the dot notation:\n\nmath.pi\n\n3.141592653589793\n\n\nDot accessors can be chained together, since all members are also objects.\n\nmath.pi.is_integer()\n\nFalse\n\n\nThere are a few common types of objects to be aware of:\n\nModules: reusable code you can import into your program.\nClasses: templates for creating objects with specific properties and behaviors.\nFunctions / Methods: blocks of code that return a result.\nData: any stored information (e.g. numbers, text).\n\nSee the type of an object with:\n\ntype(math)\n\nmodule\n\n\nSee the members of an object with:\n\ndir(math)\n\nGet help for an object:\n\nhelp(math)\n\nGood libraries have documentation. For example, see the documentation for math.\n\n\n6.1.3 Using Functions / Methods\n\n\n\n\n\n\nNote\n\n\n\nThis course will use the terms ‘function’ and ‘method’ interchangeably.\n\n\nUse a function by invoking it with round brackets:\n\nsqrt(25)\n\n5.0\n\n\nBetween the brackets is the function arguments. There’s different ways of specifying arguments. For example, there could be a list of arguments:\n\nmath.pow(2, 3)\n\n8.0\n\n\n\n\n6.1.4 Using Classes\nSome library functionality is provided via a class that needs to be instantiated before using it.\nBelow, the Random class is instantiated and assigned to the identifier my_random for reference later on.\n\nfrom random import Random\nmy_random = Random()\n\nAn instantiation of a class is called an instance, and is also an object whose functionality is accessible with the dot notation:\n\nmy_random.random() # returns a random number\n\n0.07627326615508245",
+    "text": "Note\n\n\n\nThe terms package, library, and module are used interchangeably throughout this course.\n\n\n\n6.1.1 Import libraries\nImport libraries using the import statement:\n\nimport math\n\nOr import specific functionality from a library:\n\nfrom math import sqrt\n\n\n\n6.1.2 Objects\nAll imports are objects containing some functionality. Objects have members accessible via the dot notation:\n\nmath.pi\n\n3.141592653589793\n\n\nDot accessors can be chained together, since all members are also objects.\n\nmath.pi.is_integer()\n\nFalse\n\n\nThere are a few common types of objects to be aware of:\n\nModules: reusable code you can import into your program.\nClasses: templates for creating objects with specific properties and behaviors.\nFunctions / Methods: blocks of code that return a result.\nData: any stored information (e.g. numbers, text).\n\nSee the type of an object with:\n\ntype(math)\n\nmodule\n\n\nSee the members of an object with:\n\ndir(math)\n\nGet help for an object:\n\nhelp(math)\n\nGood libraries have documentation. For example, see the documentation for math.\n\n\n6.1.3 Using Functions / Methods\n\n\n\n\n\n\nNote\n\n\n\nThis course will use the terms ‘function’ and ‘method’ interchangeably.\n\n\nUse a function by invoking it with round brackets:\n\nsqrt(25)\n\n5.0\n\n\nBetween the brackets is the function arguments. There’s different ways of specifying arguments. For example, there could be a list of arguments:\n\nmath.pow(2, 3)\n\n8.0\n\n\n\n\n6.1.4 Using Classes\nSome library functionality is provided via a class that needs to be instantiated before using it.\nBelow, the Random class is instantiated and assigned to the identifier my_random for reference later on.\n\nfrom random import Random\nmy_random = Random()\n\nAn instantiation of a class is called an instance, and is also an object whose functionality is accessible with the dot notation:\n\nmy_random.random() # returns a random number\n\n0.9535667185900356",
     "crumbs": [
       "Module 1 - Foundations",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Python Basics</span>"
@@ -591,122 +591,122 @@
   {
     "objectID": "module2_time_series/01_mikeio.html",
     "href": "module2_time_series/01_mikeio.html",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "",
     "text": "9.1 What is MIKE IO?\nThis section introduces MIKE IO, a fundamental DHI Python package. You’ll learn what MIKE IO is, the scope of its usage in this course, how to install it, and grasp its basic concepts. We provide a brief overview here; the next section delves into more detail.\nMIKE IO is an open-source Python package developed by DHI, which you might recall from Module 1. It empowers modelers with full flexibility by bridging the gap between various MIKE file formats and Scientific Python’s rich and powerful package ecosystem.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/01_mikeio.html#usage-in-course",
     "href": "module2_time_series/01_mikeio.html#usage-in-course",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "9.2 Usage in course",
     "text": "9.2 Usage in course\nFor MIKE+ modelers, a key file format is dfs0, DHI’s standard for tabular time series data. You’re likely familiar with dfs0 files for storing data such as rainfall, water levels, or discharge.\nThis course primarily focuses on the dfs0 functionality of MIKE IO, since it’s most relevant for handling time series data in MIKE+. While MIKE IO also supports other formats like dfs2, dfsu, and mesh files, they are intermediate topics beyond the scope of this introductory course.\n\n\n\n\n\n\nAlternative ways of using MIKE IO\n\n\n\n\n\nIt’s important to note that this course primarily focuses on using MIKE IO to get time series data into Pandas DataFrames. This approach is chosen to:\n\nReduce the initial learning curve for Python beginners by leveraging Pandas skills.\nProvide a method that is sufficiently powerful for most common time series tasks in MIKE+ modelling.\n\nMIKE IO itself has a lot of other useful functionalities, especially for working directly with Dataset and DataArray objects, and for handling multidimensional data (like dfs2 or dfsu files). We encourage you explore the official MIKE IO documentation after mastering the basics of Pandas.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/01_mikeio.html#installation",
     "href": "module2_time_series/01_mikeio.html#installation",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "9.3 Installation",
     "text": "9.3 Installation\nInstall MIKE IO with:\nuv pip install mikeio\n\n\n\n\n\n\nTip\n\n\n\nAlways check the official MIKE IO’s documentation for the most up-to-date installation instructions and information on the latest versions.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/01_mikeio.html#quick-glance",
     "href": "module2_time_series/01_mikeio.html#quick-glance",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "9.4 Quick glance",
     "text": "9.4 Quick glance\nLet’s take a quick look at some core MIKE IO objects and how to access them. When you read a dfs0 file, MIKE IO typically returns a Dataset object.\n\nimport mikeio\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\n\n\n\n\n\n\n\nNote\n\n\n\nExample dfs0 is from MIKE+ Example Project: Sirius.\n\n\nThis Dataset object, ds, holds the data and metadata. You can easily access its contents, such as the items:\n\nds.items\n\nThe time axis is a Pandas DatetimeIndex, shared between all items:\n\nds.time\n\nTo access data for a specific item, you can select it from the Dataset, which returns a DataArray object:\n\nda = ds[0] # Access the first item from ds.items",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/01_mikeio.html#key-concepts",
     "href": "module2_time_series/01_mikeio.html#key-concepts",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "9.5 Key Concepts",
     "text": "9.5 Key Concepts\nUnderstanding a few key concepts in MIKE IO will be helpful as you progress through this course:\n\n\nDataset\n\nA Dataset is a collection of one or more DataArray objects that share the same time axis. Think of it as the entire content of a dfs0 file.\n\nDataArray\n\nA DataArray holds the data for a single item, including its time series values and associated metadata. This is comparable to a single column in a dfs0 file when viewed in a tabular format.\n\nItems\n\nEach DataArray within a Dataset represents an “item.” An item is characterized by its name, type (e.g., water level, discharge), unit (e.g., meters, m\\(^3\\)/s), and value type (e.g., instantaneous, accumulated), which are crucial for correct data interpretation in MIKE software.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/01_mikeio.html#additional-reading-optional",
     "href": "module2_time_series/01_mikeio.html#additional-reading-optional",
-    "title": "9  MIKE IO Basics",
+    "title": "9  MIKE IO",
     "section": "9.6 Additional reading (optional)",
     "text": "9.6 Additional reading (optional)\nThe following sections of MIKE IO’s documentation are particularly relevant for this course:\n\nGetting started\nData Structures\nDataArray\nDataset\nDfs0\nEUM (Units and Types)",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO Basics</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>MIKE IO</span>"
     ]
   },
   {
     "objectID": "module2_time_series/02_reading_dfs0.html",
     "href": "module2_time_series/02_reading_dfs0.html",
-    "title": "10  Read dfs0 to Pandas",
+    "title": "10  Reading dfs0",
     "section": "",
     "text": "10.1 Workflow\nThis section guides you through loading time series data from dfs0 files into Pandas DataFrames. This approach allows you to leverage your existing Pandas skills, learned in Module 1, for powerful time series analysis and manipulation.\nThe general workflow for working with dfs0 data is as follows:",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Reading dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/02_reading_dfs0.html#workflow",
     "href": "module2_time_series/02_reading_dfs0.html#workflow",
-    "title": "10  Read dfs0 to Pandas",
+    "title": "10  Reading dfs0",
     "section": "",
     "text": "Read dfs0 file into Dataset\nSubset Dataset for specific items and times (optional)\nConvert Dataset (or DataArray) to DataFrame\nPerform some additional analysis via the DataFrame",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Reading dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/02_reading_dfs0.html#datasets",
     "href": "module2_time_series/02_reading_dfs0.html#datasets",
-    "title": "10  Read dfs0 to Pandas",
+    "title": "10  Reading dfs0",
     "section": "10.2 Datasets",
     "text": "10.2 Datasets\nThe primary function for reading MIKE IO files is mikeio.read(). It returns a Dataset object, which is a container for one or more DataArray objects (e.g. a specific time series).\nReading a dfs0 file into a Dataset is as simple as calling the read() method with the dfs0 file path as the argument:\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=10 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  2:   F=5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  3:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  4:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  5:   F=0.5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  6:   F=0.2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  7:   F=0.1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  8:   F=0.05 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\nNotice the representation of the Dataset object shows information about:\n\nTotal number of time steps\nTimestamps for first and last time step\nAll the items (i.e. DataArrays) available\n\n\n\n\n\n\n\nRead() loads entire dfs0 into memory by default\n\n\n\n\n\nBy default, mikeio.read() loads the entire dfs0 file into memory. This is fine for smaller files, but for very large dfs0 files, you might want to load only specific items or a particular time range to conserve memory and improve performance. You can do this directly with the items or time arguments in the read() function. For example, to read only the first item (index 0):\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\", items=0)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: (time:22)\ntime: 2019-01-01 00:00:00 - 2019-01-02 00:00:00 (22 non-equidistant records)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n\n\nSimilarly, to read only the data for the first time step (index 0):\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\", time=0)\nds\n\n&lt;mikeio.Dataset&gt;\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nitems:\n  0:   F=20 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  1:   F=10 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  2:   F=5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  3:   F=2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  4:   F=1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  5:   F=0.5 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  6:   F=0.2 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  7:   F=0.1 &lt;Rainfall Intensity&gt; (mm per hour) - 3\n  8:   F=0.05 &lt;Rainfall Intensity&gt; (mm per hour) - 3",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Reading dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/02_reading_dfs0.html#dataarrays",
     "href": "module2_time_series/02_reading_dfs0.html#dataarrays",
-    "title": "10  Read dfs0 to Pandas",
+    "title": "10  Reading dfs0",
     "section": "10.3 DataArrays",
     "text": "10.3 DataArrays\nDataArray objects are accessed via the Dataset object after reading.\nSelect a specific DataArray from the Dataset by its index or its name. For example, to select the first DataArray by its index:\n\nda = ds[0]\nda\n\n&lt;mikeio.DataArray&gt;\nname:  F=20\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nvalues: 0.0\n\n\nAlternatively, select a DataArray by its name using square brackets:\n\nda = ds[\" F=20\"]\nda\n\n&lt;mikeio.DataArray&gt;\nname:  F=20\ndims: ()\ntime: 2019-01-01 00:00:00 (time-invariant)\ngeometry: GeometryUndefined()\nvalues: 0.0\n\n\nNotice the representation of the DataArray object is also informative, just like the Dataset object.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Reading dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/02_reading_dfs0.html#convert-to-pandas",
     "href": "module2_time_series/02_reading_dfs0.html#convert-to-pandas",
-    "title": "10  Read dfs0 to Pandas",
+    "title": "10  Reading dfs0",
     "section": "10.4 Convert to Pandas",
     "text": "10.4 Convert to Pandas\nYou can convert an entire Dataset (which might contain multiple time series) into a Pandas DataFrame. Each item in the Dataset will become a column in the DataFrame.\n\nimport pandas as pd\n\nds = mikeio.read(\"data/sirius_idf_rainfall.dfs0\")\ndf = ds.to_dataframe()\ndf.head()\n\n\n\n\n\n\n\n\nF=20\nF=10\nF=5\nF=2\nF=1\nF=0.5\nF=0.2\nF=0.1\nF=0.05\n\n\n\n\n2019-01-01 00:00:00\n0.00\n0.000000\n0.0\n0.0\n0.000000\n0.000000\n0.000000\n0.000000\n0.0\n\n\n2019-01-01 06:00:00\n0.15\n0.283333\n0.4\n0.4\n0.466667\n0.683333\n0.966667\n1.316667\n1.4\n\n\n2019-01-01 07:00:00\n0.20\n0.400000\n0.6\n0.6\n0.800000\n1.100000\n1.600000\n2.200000\n2.3\n\n\n2019-01-01 08:00:00\n0.30\n0.600000\n0.7\n0.8\n0.900000\n1.400000\n2.000000\n2.800000\n3.1\n\n\n2019-01-01 09:00:00\n0.30\n0.600000\n0.9\n1.0\n1.200000\n1.800000\n2.600000\n3.600000\n4.0\n\n\n\n\n\n\n\nSimilarly, a single DataArray can be converted to a Pandas DataFrame (which will have one data column).\n\nda = ds[\" F=20\"]\ndf_T20 = da.to_dataframe()\ndf_T20.head()\n\n\n\n\n\n\n\n\nF=20\n\n\n\n\n2019-01-01 00:00:00\n0.00\n\n\n2019-01-01 06:00:00\n0.15\n\n\n2019-01-01 07:00:00\n0.20\n\n\n2019-01-01 08:00:00\n0.30\n\n\n2019-01-01 09:00:00\n0.30\n\n\n\n\n\n\n\nOnce your data is in a DataFrame, you can use all of Pandas’ powerful methods. For instance, you can easily plot a time series:\n\ndf_T20.plot(\n    title=\"Rainfall for Return Period F=20\",\n    ylabel=\"Rainfall (mm/hr)\"\n)\n\n\n\n\n\n\n\n\nOr get some descriptive statistics:\n\ndf.describe().T\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nF=20\n22.0\n2.158333\n4.824954\n0.0\n0.300\n0.60\n1.80\n22.799999\n\n\nF=10\n22.0\n4.039394\n9.101874\n0.0\n0.525\n1.10\n3.00\n43.200001\n\n\nF=5\n22.0\n5.890909\n13.389296\n0.0\n0.725\n1.60\n4.65\n63.599998\n\n\nF=2\n22.0\n9.408333\n17.422466\n0.0\n0.825\n2.00\n8.40\n75.599998\n\n\nF=1\n22.0\n12.641667\n25.616199\n0.0\n0.950\n2.40\n9.75\n114.000000\n\n\nF=0.5\n22.0\n15.833333\n30.442241\n0.0\n1.425\n3.40\n13.50\n134.399994\n\n\nF=0.2\n22.0\n22.475000\n36.939988\n0.0\n2.075\n5.30\n23.40\n151.199997\n\n\nF=0.1\n22.0\n27.500758\n39.726610\n0.0\n2.900\n7.60\n34.05\n153.600006\n\n\nF=0.05\n22.0\n30.627272\n42.803784\n0.0\n3.200\n8.65\n39.75\n158.399994\n\n\n\n\n\n\n\n\n\n\n\n\n\nLearning Python’s scientific ecosystem pays off…\n\n\n\nNotice that using a common structure for data (e.g. DataFrame) unlocks familiar analyses independent of the original data source file format (e.g. dfs0, csv). This is an example of why converting data into a format compatible with the scientific Python ecosystem is useful.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Read dfs0 to Pandas</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Reading dfs0</span>"
     ]
   },
   {
@@ -945,7 +945,7 @@
     "href": "module2_time_series/06_data_cleaning.html#anomaly-detection-rule-based",
     "title": "14  Data Cleaning",
     "section": "14.3 Anomaly Detection (Rule-Based)",
-    "text": "14.3 Anomaly Detection (Rule-Based)\n\n\n\n\n\n\nTip\n\n\n\nShort on time? This section provides an introduction to a useful package but can be considered optional for core module understanding.\n\n\nBeyond clearly missing values, time series data can also contain anomalies. Identifying and addressing these anomalies is crucial for building robust MIKE+ models.\nAnomaly detection is a broad and complex field. This section offers a basic introduction to rule-based anomaly detection using DHI’s tsod Python package.\n\n14.3.1 Install tsod\nuv pip install tsod\n\n\n14.3.2 The Detector Concept\ntsod operates using a concept called “detectors.” Each detector is designed to implement a specific rule or heuristic to identify anomalies. Example anomaly detectors:\n\nRangeDetector: Flags values outside a set range.\nConstantValueDetector: Detects unchanging values over time.\nDiffDetector: Catches large changes between points.\nRollingStdDetector: Finds points far from rolling standard deviation.\n\nThere’s also the CombinedDetector, which allows combining the rules of several detectors.\n\n\n14.3.3 Detecting Anomalies\nLet’s walk through a minimal example workflow using the RangeDetector to illustrate the typical process.\nStart by plotting the original time series.\n\ndf.plot()\n\n\n\n\n\n\n\n\n\nPrep Data: tsod detectors generally expect a Pandas Series as input. Let’s create a sample Series that includes an obvious anomaly.\n\n\ndata_anomaly = [1.0, 1.1, 1.0, 1.2, 5.0, 1.1, 1.0, 1.2]\nseries_anomaly = pd.Series(data_anomaly, name=\"Flow_Anomaly\")\nseries_anomaly\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[14], line 2\n      1 data_anomaly = [1.0, 1.1, 1.0, 1.2, 5.0, 1.1, 1.0, 1.2]\n----&gt; 2 series_anomaly = pd.Series(data_anomaly, name=\"Flow_Anomaly\")\n      3 series_anomaly\n\nNameError: name 'pd' is not defined\n\n\n\n\nDetect & Visualize Anomalies: Now, we’ll import the RollingStdDetector from tsod.detectors, initialize it with appropriate parameters (like window_size and n_std for the number of standard deviations), and then apply it to our series to get the anomaly_mask.\n\n\nfrom tsod.detectors import RollingStdDetector\n\ndetector = RollingStdDetector(window_size=3, n_std=1.5)\nanomaly_mask = detector.detect(series_anomaly)\nanomaly_mask\n\n\n---------------------------------------------------------------------------\nImportError                               Traceback (most recent call last)\nCell In[15], line 1\n----&gt; 1 from tsod.detectors import RollingStdDetector\n      3 detector = RollingStdDetector(window_size=3, n_std=1.5)\n      4 anomaly_mask = detector.detect(series_anomaly)\n\nImportError: cannot import name 'RollingStdDetector' from 'tsod.detectors' (C:\\Users\\rywm\\Repos\\getting-started-with-python-for-mike-plus-dev-latest\\book\\.venv\\Lib\\site-packages\\tsod\\detectors.py)\n\n\n\nAfter detection, it’s good practice to visualize the original series and highlight the detected anomalies to verify the detector’s performance.\n\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8,4))\nseries_anomaly.plot(ax=ax, label=\"Original Flow\")\nif anomaly_mask.any():\n    series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, label=\"Detected Anomaly\")\nax.legend()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[16], line 4\n      1 import matplotlib.pyplot as plt\n      3 fig, ax = plt.subplots(figsize=(8,4))\n----&gt; 4 series_anomaly.plot(ax=ax, label=\"Original Flow\")\n      5 if anomaly_mask.any():\n      6     series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, label=\"Detected Anomaly\")\n\nNameError: name 'series_anomaly' is not defined\n\n\n\n\n\n\n\n\n\n\n\nConvert Anomalies to NaN: Once you’re satisfied with the detected anomalies, the next step is to convert these anomalous values in your original data to np.nan. This uses the boolean anomaly_mask for indexing. (Ensure numpy is imported as np, which we did at the start of this section).\n\n\nseries_cleaned = series_anomaly.copy()\nseries_cleaned[anomaly_mask] = np.nan\nseries_cleaned\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[17], line 1\n----&gt; 1 series_cleaned = series_anomaly.copy()\n      2 series_cleaned[anomaly_mask] = np.nan\n      3 series_cleaned\n\nNameError: name 'series_anomaly' is not defined\n\n\n\n\nImpute NaNs: With the identified anomalies now represented as NaNs, you can use the imputation methods discussed earlier in the “Missing Values” section (like .interpolate() or .fillna()) to fill these gaps. For instance, using linear interpolation:\n\n\nseries_imputed = series_cleaned.interpolate(method='linear')\nseries_imputed\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 series_imputed = series_cleaned.interpolate(method='linear')\n      2 series_imputed\n\nNameError: name 'series_cleaned' is not defined\n\n\n\nOptionally, you can plot the final imputed series to visually inspect the result of the cleaning process and compare it with the original data.\n\nfig, ax = plt.subplots(figsize=(8,4))\nseries_imputed.plot(ax=ax, label=\"Imputed Flow\", marker='.')\nseries_anomaly.plot(ax=ax, label=\"Original Flow\", alpha=0.6, style='--')\nif anomaly_mask.any():\n    series_anomaly[anomaly_mask].plot(ax=ax, style='ro', markersize=7, alpha=0.6, label=\"Original Anomaly\")\nax.legend()\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[19], line 2\n      1 fig, ax = plt.subplots(figsize=(8,4))\n----&gt; 2 series_imputed.plot(ax=ax, label=\"Imputed Flow\", marker='.')\n      3 series_anomaly.plot(ax=ax, label=\"Original Flow\", alpha=0.6, style='--')\n      4 if anomaly_mask.any():\n\nNameError: name 'series_imputed' is not defined\n\n\n\n\n\n\n\n\n\n\nThis workflow provides a structured way to improve data quality by addressing both missing data and detectable anomalies before using the data in your MIKE+ models.",
+    "text": "14.3 Anomaly Detection (Rule-Based)\n\n\n\n\n\n\nTip\n\n\n\nShort on time? This section provides an introduction to a useful package but can be considered optional for core module understanding.\n\n\nBeyond clearly missing values, time series data can also contain anomalies. Identifying and addressing these anomalies is crucial for building robust MIKE+ models.\nAnomaly detection is a broad and complex field. This section offers a basic introduction to rule-based anomaly detection using DHI’s tsod Python package.\n\n14.3.1 Install tsod\nuv pip install tsod\n\n\n14.3.2 The Detector Concept\ntsod operates using a concept called “detectors.” Each detector is designed to implement a specific rule or heuristic to identify anomalies. Example anomaly detectors:\n\nRangeDetector: Flags values outside a set range.\nConstantValueDetector: Detects unchanging values over time.\nDiffDetector: Catches large changes between points.\nRollingStdDetector: Finds points far from rolling standard deviation.\n\nThere’s also the CombinedDetector, which allows combining the rules of several detectors.\n\n\n14.3.3 Detecting Anomalies\nPlot the initial time series.\n\nts = df[\"ST 2: WL (m)\"]\nts.plot()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\ntsod operates on Series. Select the subject Series from the DataFrame object as needed.\n\n\nSelect and instantiate a detector. If we know water levels must be in the range -0.4m to 0.4m, then a RangeDetector should be used.\n\nfrom tsod.detectors import RangeDetector\n\ndetector = RangeDetector(\n    min_value = -0.4,\n    max_value = 0.4\n)\ndetector\n\nRangeDetector(min: -4.0e-01, max: 4.0e-01)\n\n\nDetect anomalies for a given Series using the detect() method of the instantiated detector.\n\nanomaly_mask = detector.detect(ts)\nanomaly_mask.head()\n\n1993-12-02 00:00:00    False\n1993-12-02 00:30:00    False\n1993-12-02 01:00:00    False\n1993-12-02 01:30:00    False\n1993-12-02 02:00:00    False\nFreq: 30min, Name: ST 2: WL (m), dtype: bool\n\n\n\n\n\n\n\n\nNote\n\n\n\nA mask refers to a boolean indexer. In the example above, values are true for anomalies and false otherwise.\n\n\nPlot the detected anomalies.\n\nax = ts.plot()\nts[anomaly_mask].plot(\n    ax=ax,\n    style='ro',\n    label=\"Anomaly\",\n    alpha=0.5\n)\nax.legend()\n\n# horizontal lines to validate ranges\nax.axhline(0.4, color='grey', alpha=0.5)\nax.axhline(-0.4, color='grey', alpha=0.5)\n\n\n\n\n\n\n\n\nReplace anomalies with nan.\n\nimport numpy as np\n\nts_cleaned = ts.copy()\nts_cleaned[anomaly_mask] = np.nan\nts_cleaned.plot()\n\n\n\n\n\n\n\n\n\n\n14.3.4 Impute anomalies\nImpute anomalies by treating them just like missing values.\n\nts_cleaned = ts_cleaned.interpolate(method='time')\nts_cleaned.plot()",
     "crumbs": [
       "Module 2 - Time Series",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Data Cleaning</span>"
@@ -954,56 +954,56 @@
   {
     "objectID": "module2_time_series/07_writing_dfs0.html",
     "href": "module2_time_series/07_writing_dfs0.html",
-    "title": "15  Writing DFS0 Files",
+    "title": "15  Writing dfs0",
     "section": "",
     "text": "15.1 DataFrame to Dataset: Basic\nThis section focuses on the crucial step of exporting your processed data back into a format MIKE+ can understand. The primary goal is to convert a Pandas DataFrame, perhaps containing cleaned rainfall data, into a DFS0 file. The typical workflow involves transforming the Pandas DataFrame into a mikeio.Dataset object, and then writing this Dataset to a DFS0 file.\nFirst, let’s assume you have a Pandas DataFrame ready. For instance, here’s a look at a simple DataFrame, df_rain, containing some rainfall data with a DatetimeIndex:\nimport pandas as pd\nimport mikeio\n\n# Sample DataFrame (replace with actual data loading in a real scenario)\ntime_index = pd.to_datetime([\"2023-01-01 00:00\", \"2023-01-01 01:00\", \"2023-01-01 02:00\"])\ndata_values = {\"Rainfall_mm\": [0.5, 1.2, 0.8]}\ndf_rain = pd.DataFrame(data_values, index=time_index)\ndf_rain.head()\n\n\n\n\n\n\n\n\nRainfall_mm\n\n\n\n\n2023-01-01 00:00:00\n0.5\n\n\n2023-01-01 01:00:00\n1.2\n\n\n2023-01-01 02:00:00\n0.8\nConverting this DataFrame to a basic mikeio.Dataset is straightforward using mikeio.from_pandas():\nds_basic = mikeio.from_pandas(df_rain)\nds_basic\n\n&lt;mikeio.Dataset&gt;\ndims: (time:3)\ntime: 2023-01-01 00:00:00 - 2023-01-01 02:00:00 (3 records)\ngeometry: GeometryUndefined()\nitems:\n  0:  Rainfall_mm &lt;Undefined&gt; (undefined)",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/07_writing_dfs0.html#dataframe-to-dataset-basic",
     "href": "module2_time_series/07_writing_dfs0.html#dataframe-to-dataset-basic",
-    "title": "15  Writing DFS0 Files",
+    "title": "15  Writing dfs0",
     "section": "",
     "text": "Tip\n\n\n\nEnsure your DataFrame’s index is a DatetimeIndex for time series DFS0 files. This is crucial for MIKE IO to correctly interpret the time information.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/07_writing_dfs0.html#item-metadata-iteminfo",
     "href": "module2_time_series/07_writing_dfs0.html#item-metadata-iteminfo",
-    "title": "15  Writing DFS0 Files",
+    "title": "15  Writing dfs0",
     "section": "15.2 Item Metadata: ItemInfo",
     "text": "15.2 Item Metadata: ItemInfo\nWhile the basic conversion works, MIKE software requires specific metadata for each data item, such as its type, unit, and how values are interpreted over time. This is where mikeio.ItemInfo comes in. If we inspect the items of our ds_basic created above, you’ll notice default, often incorrect, metadata:\n\nds_basic.items\n\n[Rainfall_mm &lt;Undefined&gt; (undefined)]\n\n\n\n\n\n\n\n\nNote\n\n\n\nWithout custom ItemInfo, mikeio uses default values. These often need adjustment, especially itemtype, unit, and data_value_type, to ensure MIKE+ interprets your data correctly.\n\n\nThe mikeio.ItemInfo class allows you to define these essential properties for each item in your dataset:\n\nname: (str) The name of the item, typically derived from your DataFrame column name.\nitemtype: (A mikeio.EUMType object) This is a DHI-specific enumeration defining the physical quantity (e.g., mikeio.EUMType.Rainfall for rainfall, mikeio.EUMType.Water_Level for water level).\nunit: (A mikeio.EUMUnit object) This is a DHI-specific enumeration for the unit of measurement (e.g., mikeio.EUMUnit.mm for millimeters, mikeio.EUMUnit.meter for meters).\ndata_value_type: (str) This string specifies how the data values relate to the time steps. The default is �Instantaneous�. Other common options include:\n\n�Instantaneous�: Value at a specific point in time.\n�Accumulated�: Value accumulated over the entire period up to the timestamp.\n�StepAccumulated�: Value accumulated over the preceding time step.\n�MeanStepBackward�: Average value over the preceding time step.\n�MeanStepForward�: Average value over the following time step.\n\n\n\n\n\n\n\n\nNote\n\n\n\nRefer to the MIKE+ documentation or the DHI EUM documentation for precise definitions and appropriate use of each data_value_type.\n\n\nFor example, to define ItemInfo for our rainfall data, which is measured in millimeters and, for this example, we’ll consider it as an accumulated value:\n\nfrom mikeio import ItemInfo\nfrom mikeio.eum import EUMType, EUMUnit\n\n# Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example\ndf_rain.columns = [\"Rainfall_Gauge1\"]\n\nrainfall_item_info = ItemInfo(\n    name=\"Rainfall_Gauge1\", \n    itemtype=EUMType.Rainfall,\n    unit=EUMUnit.mm,\n    data_value_type=\"Accumulated\" \n)\nrainfall_item_info\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[4], line 10\n      4 # Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example\n      5 df_rain.columns = [\"Rainfall_Gauge1\"]\n      7 rainfall_item_info = ItemInfo(\n      8     name=\"Rainfall_Gauge1\", \n      9     itemtype=EUMType.Rainfall,\n---&gt; 10     unit=EUMUnit.mm,\n     11     data_value_type=\"Accumulated\" \n     12 )\n     13 rainfall_item_info\n\nAttributeError: type object 'EUMUnit' has no attribute 'mm'\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nProviding accurate ItemInfo is key for ensuring compatibility with MIKE software and correctly interpreting the meaning of your data within the MIKE ecosystem.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/07_writing_dfs0.html#specifying-iteminfo-on-conversion",
     "href": "module2_time_series/07_writing_dfs0.html#specifying-iteminfo-on-conversion",
-    "title": "15  Writing DFS0 Files",
+    "title": "15  Writing dfs0",
     "section": "15.3 Specifying ItemInfo on Conversion",
     "text": "15.3 Specifying ItemInfo on Conversion\nTo use your custom ItemInfo when converting a DataFrame, you pass a list of ItemInfo objects to the items argument of mikeio.from_pandas(). Each ItemInfo object in the list should correspond to a column in your DataFrame that you want to include in the Dataset. The name attribute of the ItemInfo object is used to map it to the correct DataFrame column.\nHere’s how you convert the df_rain DataFrame (with the “Rainfall_Gauge1” column) using the rainfall_item_info we defined:\n\n# df_rain and rainfall_item_info are from previous code blocks\nds_with_custom_info = mikeio.from_pandas(df_rain, items=[rainfall_item_info])\nds_with_custom_info.items\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[5], line 2\n      1 # df_rain and rainfall_item_info are from previous code blocks\n----&gt; 2 ds_with_custom_info = mikeio.from_pandas(df_rain, items=[rainfall_item_info])\n      3 ds_with_custom_info.items\n\nNameError: name 'rainfall_item_info' is not defined",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing dfs0</span>"
     ]
   },
   {
     "objectID": "module2_time_series/07_writing_dfs0.html#dataset-to-dfs0-file",
     "href": "module2_time_series/07_writing_dfs0.html#dataset-to-dfs0-file",
-    "title": "15  Writing DFS0 Files",
+    "title": "15  Writing dfs0",
     "section": "15.4 Dataset to DFS0 File",
     "text": "15.4 Dataset to DFS0 File\nThe final step is to save your carefully prepared Dataset object, now containing the correct data and metadata, to a DFS0 file. This is done using the .to_dfs() method of the Dataset object. You simply provide the desired output file path.\n\n# ds_with_custom_info is from the previous code block\noutput_file_path = \"data/rainfall_processed.dfs0\"\nds_with_custom_info.to_dfs(output_file_path)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[6], line 3\n      1 # ds_with_custom_info is from the previous code block\n      2 output_file_path = \"data/rainfall_processed.dfs0\"\n----&gt; 3 ds_with_custom_info.to_dfs(output_file_path)\n\nNameError: name 'ds_with_custom_info' is not defined\n\n\n\nThis will create a file named rainfall_processed.dfs0 in your ‘data’ directory (ensure this directory exists or adjust the path accordingly). You can then use this DFS0 file in your MIKE+ models or other DHI software.",
     "crumbs": [
       "Module 2 - Time Series",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing DFS0 Files</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Writing dfs0</span>"
     ]
   },
   {
