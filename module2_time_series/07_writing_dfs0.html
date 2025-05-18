@@ -486,10 +486,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dataframe-to-dataset-basic" id="toc-dataframe-to-dataset-basic" class="nav-link active" data-scroll-target="#dataframe-to-dataset-basic"><span class="header-section-number">15.1</span> DataFrame to <code>Dataset</code>: Basic</a></li>
-  <li><a href="#item-metadata-iteminfo" id="toc-item-metadata-iteminfo" class="nav-link" data-scroll-target="#item-metadata-iteminfo"><span class="header-section-number">15.2</span> Item Metadata: <code>ItemInfo</code></a></li>
-  <li><a href="#specifying-iteminfo-on-conversion" id="toc-specifying-iteminfo-on-conversion" class="nav-link" data-scroll-target="#specifying-iteminfo-on-conversion"><span class="header-section-number">15.3</span> Specifying <code>ItemInfo</code> on Conversion</a></li>
-  <li><a href="#dataset-to-dfs0-file" id="toc-dataset-to-dfs0-file" class="nav-link" data-scroll-target="#dataset-to-dfs0-file"><span class="header-section-number">15.4</span> <code>Dataset</code> to DFS0 File</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link active" data-scroll-target="#workflow"><span class="header-section-number">15.1</span> Workflow</a></li>
+  <li><a href="#example-source-data" id="toc-example-source-data" class="nav-link" data-scroll-target="#example-source-data"><span class="header-section-number">15.2</span> Example Source Data</a></li>
+  <li><a href="#dataframe-to-dataset" id="toc-dataframe-to-dataset" class="nav-link" data-scroll-target="#dataframe-to-dataset"><span class="header-section-number">15.3</span> DataFrame to Dataset</a></li>
+  <li><a href="#item-metadata" id="toc-item-metadata" class="nav-link" data-scroll-target="#item-metadata"><span class="header-section-number">15.4</span> Item Metadata</a></li>
+  <li><a href="#dataset-to-dfs0" id="toc-dataset-to-dfs0" class="nav-link" data-scroll-target="#dataset-to-dfs0"><span class="header-section-number">15.5</span> Dataset to dfs0</a></li>
   </ul>
 </nav>
     </div>
@@ -516,19 +517,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This section focuses on the crucial step of exporting your processed data back into a format MIKE+ can understand. The primary goal is to convert a Pandas DataFrame, perhaps containing cleaned rainfall data, into a DFS0 file. The typical workflow involves transforming the Pandas DataFrame into a <code>mikeio.Dataset</code> object, and then writing this <code>Dataset</code> to a DFS0 file.</p>
-<section id="dataframe-to-dataset-basic" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="dataframe-to-dataset-basic"><span class="header-section-number">15.1</span> DataFrame to <code>Dataset</code>: Basic</h2>
-<p>First, let’s assume you have a Pandas DataFrame ready. For instance, here’s a look at a simple DataFrame, <code>df_rain</code>, containing some rainfall data with a <code>DatetimeIndex</code>:</p>
-<div id="4717eabb" class="cell" data-execution_count="1">
+<p>Creating dfs0 files is a common need for MIKE+ modellers (e.g.&nbsp;rainfall from csv). This section focuses on how to create dfs0 files from a Pandas DataFrame.</p>
+<section id="workflow" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="workflow"><span class="header-section-number">15.1</span> Workflow</h2>
+<p>The general workflow for creating <code>dfs0</code> files from a <code>DataFrame</code> is as follows:</p>
+<ol type="1">
+<li>Map <code>ItemInfo</code> objects to each column (optional)</li>
+<li>Create a <code>Dataset</code> object from the <code>DataFrame</code></li>
+<li>Save the <code>Dataset</code> object to a <code>dfs0</code> file.</li>
+</ol>
+</section>
+<section id="example-source-data" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="example-source-data"><span class="header-section-number">15.2</span> Example Source Data</h2>
+<p>The following DataFrame will be used in this section as an example.</p>
+<div id="3522bce0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeio</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample DataFrame (replace with actual data loading in a real scenario)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>time_index <span class="op">=</span> pd.to_datetime([<span class="st">"2023-01-01 00:00"</span>, <span class="st">"2023-01-01 01:00"</span>, <span class="st">"2023-01-01 02:00"</span>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_values <span class="op">=</span> {<span class="st">"Rainfall_mm"</span>: [<span class="fl">0.5</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>]}</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_rain <span class="op">=</span> pd.DataFrame(data_values, index<span class="op">=</span>time_index)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df_rain.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/rain_events_2021_july.csv"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    index_col<span class="op">=</span><span class="st">"time"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    parse_dates<span class="op">=</span><span class="va">True</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -537,21 +547,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Rainfall_mm</th>
+<th data-quarto-table-cell-role="th">rainfall</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-01-01 00:00:00</td>
-<td>0.5</td>
+<td data-quarto-table-cell-role="th">2021-07-02 09:51:00</td>
+<td>0.000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-01-01 01:00:00</td>
-<td>1.2</td>
+<td data-quarto-table-cell-role="th">2021-07-02 09:52:00</td>
+<td>3.333</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-01-01 02:00:00</td>
-<td>0.8</td>
+<td data-quarto-table-cell-role="th">2021-07-02 09:53:00</td>
+<td>0.333</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021-07-02 09:54:00</td>
+<td>0.333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2021-07-02 09:55:00</td>
+<td>0.333</td>
 </tr>
 </tbody>
 </table>
@@ -559,114 +581,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Converting this DataFrame to a basic <code>mikeio.Dataset</code> is straightforward using <code>mikeio.from_pandas()</code>:</p>
-<div id="84edeb78" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ds_basic <span class="op">=</span> mikeio.from_pandas(df_rain)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ds_basic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get familiar with the data. Notice:</p>
+<ul>
+<li>The time axis is non-equidistant</li>
+<li>Values represent rainfall depth since the last time step.</li>
+<li>Rainfall events always start at values of zero.</li>
+</ul>
+<div id="e1214b1e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>&lt;mikeio.Dataset&gt;
-dims: (time:3)
-time: 2023-01-01 00:00:00 - 2023-01-01 02:00:00 (3 records)
-geometry: GeometryUndefined()
-items:
-  0:  Rainfall_mm &lt;Undefined&gt; (undefined)</code></pre>
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">rainfall</td>
+<td>1086.0</td>
+<td>1.120283</td>
+<td>3.219804</td>
+<td>0.0</td>
+<td>0.185</td>
+<td>0.37</td>
+<td>0.667</td>
+<td>36.667</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
+<div id="49ba4a9e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_writing_dfs0_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Ensure your DataFrame’s index is a <code>DatetimeIndex</code> for time series DFS0 files. This is crucial for MIKE IO to correctly interpret the time information.</p>
+</div>
+<div id="f39028d0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.plot.hist(bins<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_writing_dfs0_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This subset shows the division between two rainfall events:</p>
+<div id="1f7f8e83" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="st">"2021-07-25 17:32:00"</span>:<span class="st">"2021-07-25 20:30:00"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">rainfall</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2021-07-25 17:32:00</td>
+<td>0.476</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021-07-25 17:33:00</td>
+<td>0.476</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2021-07-25 17:34:00</td>
+<td>0.476</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021-07-25 20:28:00</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2021-07-25 20:29:00</td>
+<td>3.333</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021-07-25 20:30:00</td>
+<td>0.667</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </section>
-<section id="item-metadata-iteminfo" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="item-metadata-iteminfo"><span class="header-section-number">15.2</span> Item Metadata: <code>ItemInfo</code></h2>
-<p>While the basic conversion works, MIKE software requires specific metadata for each data item, such as its type, unit, and how values are interpreted over time. This is where <code>mikeio.ItemInfo</code> comes in. If we inspect the items of our <code>ds_basic</code> created above, you’ll notice default, often incorrect, metadata:</p>
-<div id="6c1e67f7" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ds_basic.items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>[Rainfall_mm &lt;Undefined&gt; (undefined)]</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Without custom <code>ItemInfo</code>, <code>mikeio</code> uses default values. These often need adjustment, especially <code>itemtype</code>, <code>unit</code>, and <code>data_value_type</code>, to ensure MIKE+ interprets your data correctly.</p>
-</div>
-</div>
-<p>The <code>mikeio.ItemInfo</code> class allows you to define these essential properties for each item in your dataset:</p>
-<ul>
-<li><code>name</code>: (str) The name of the item, typically derived from your DataFrame column name.</li>
-<li><code>itemtype</code>: (A <code>mikeio.EUMType</code> object) This is a DHI-specific enumeration defining the physical quantity (e.g., <code>mikeio.EUMType.Rainfall</code> for rainfall, <code>mikeio.EUMType.Water_Level</code> for water level).</li>
-<li><code>unit</code>: (A <code>mikeio.EUMUnit</code> object) This is a DHI-specific enumeration for the unit of measurement (e.g., <code>mikeio.EUMUnit.mm</code> for millimeters, <code>mikeio.EUMUnit.meter</code> for meters).</li>
-<li><code>data_value_type</code>: (str) This string specifies how the data values relate to the time steps. The default is �Instantaneous�. Other common options include:
-<ul>
-<li>�Instantaneous�: Value at a specific point in time.</li>
-<li>�Accumulated�: Value accumulated over the entire period up to the timestamp.</li>
-<li>�StepAccumulated�: Value accumulated over the preceding time step.</li>
-<li>�MeanStepBackward�: Average value over the preceding time step.</li>
-<li>�MeanStepForward�: Average value over the following time step.</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Refer to the MIKE+ documentation or the DHI EUM documentation for precise definitions and appropriate use of each <code>data_value_type</code>.</p>
-</div>
-</div>
-<p>For example, to define <code>ItemInfo</code> for our rainfall data, which is measured in millimeters and, for this example, we’ll consider it as an accumulated value:</p>
-<div id="cc80415f" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mikeio <span class="im">import</span> ItemInfo</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mikeio.eum <span class="im">import</span> EUMType, EUMUnit</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_rain.columns <span class="op">=</span> [<span class="st">"Rainfall_Gauge1"</span>]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>rainfall_item_info <span class="op">=</span> ItemInfo(</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Rainfall_Gauge1"</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    itemtype<span class="op">=</span>EUMType.Rainfall,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    unit<span class="op">=</span>EUMUnit.mm,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    data_value_type<span class="op">=</span><span class="st">"Accumulated"</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>rainfall_item_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 10</span>
-<span class="ansi-green-fg">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Re-using df_rain from the previous example, but changing column name for clarity in this ItemInfo example</span>
-<span class="ansi-green-fg">      5</span> df_rain.columns = [<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Rainfall_Gauge1</span><span class="ansi-yellow-fg">"</span>]
-<span class="ansi-green-fg">      7</span> rainfall_item_info = ItemInfo(
-<span class="ansi-green-fg">      8</span>     name=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Rainfall_Gauge1</span><span class="ansi-yellow-fg">"</span>, 
-<span class="ansi-green-fg">      9</span>     itemtype=EUMType.Rainfall,
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">10</span>     unit=<span class="ansi-yellow-bg">EUMUnit</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mm</span>,
-<span class="ansi-green-fg">     11</span>     data_value_type=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Accumulated</span><span class="ansi-yellow-fg">"</span> 
-<span class="ansi-green-fg">     12</span> )
-<span class="ansi-green-fg">     13</span> rainfall_item_info
-
-<span class="ansi-red-fg">AttributeError</span>: type object 'EUMUnit' has no attribute 'mm'</pre>
-</div>
+<section id="dataframe-to-dataset" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="dataframe-to-dataset"><span class="header-section-number">15.3</span> DataFrame to Dataset</h2>
+<p>Converting a <code>DataFrame</code> to a <code>Dataset</code> is straightforward using <code>mikeio.from_pandas()</code>:</p>
+<div id="55cf4ab2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.from_pandas(df)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>&lt;mikeio.Dataset&gt;
+dims: (time:1086)
+time: 2021-07-02 09:51:00 - 2021-07-31 13:16:00 (1086 non-equidistant records)
+geometry: GeometryUndefined()
+items:
+  0:  rainfall &lt;Undefined&gt; (undefined)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -676,6 +717,34 @@ Note
 </div>
 <div class="callout-title-container flex-fill">
 Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ensure your DataFrame’s index is a <code>DatetimeIndex</code> for time series dfs0 files. This is crucial for MIKE IO to correctly interpret the time information.</p>
+</div>
+</div>
+<p>Notice that the item type and unit are “undefined”. Let’s inspect the <code>ItemInfo</code> MIKE IO used by default:</p>
+<div id="2b3608eb" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> ds[<span class="dv">0</span>].item</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Item Name: </span><span class="sc">{</span>item<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Item Type: </span><span class="sc">{</span>item<span class="sc">.</span><span class="bu">type</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Item Unit: </span><span class="sc">{</span>item<span class="sc">.</span>unit<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Item Data Value Type: </span><span class="sc">{</span>item<span class="sc">.</span>data_value_type<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Item Name: rainfall
+Item Type: Undefined
+Item Unit: undefined
+Item Data Value Type: Instantaneous</code></pre>
+</div>
+</div>
+<p>This highlights the need to almost always define item metadata before calling <code>from_pandas()</code></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -683,49 +752,109 @@ Tip
 </div>
 </div>
 </section>
-<section id="specifying-iteminfo-on-conversion" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="specifying-iteminfo-on-conversion"><span class="header-section-number">15.3</span> Specifying <code>ItemInfo</code> on Conversion</h2>
-<p>To use your custom <code>ItemInfo</code> when converting a DataFrame, you pass a list of <code>ItemInfo</code> objects to the <code>items</code> argument of <code>mikeio.from_pandas()</code>. Each <code>ItemInfo</code> object in the list should correspond to a column in your DataFrame that you want to include in the <code>Dataset</code>. The <code>name</code> attribute of the <code>ItemInfo</code> object is used to map it to the correct DataFrame column.</p>
-<p>Here’s how you convert the <code>df_rain</code> DataFrame (with the “Rainfall_Gauge1” column) using the <code>rainfall_item_info</code> we defined:</p>
-<div id="6c21cf6e" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df_rain and rainfall_item_info are from previous code blocks</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info <span class="op">=</span> mikeio.from_pandas(df_rain, items<span class="op">=</span>[rainfall_item_info])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info.items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># df_rain and rainfall_item_info are from previous code blocks</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> ds_with_custom_info = mikeio.from_pandas(df_rain, items=[<span class="ansi-yellow-bg">rainfall_item_info</span>])
-<span class="ansi-green-fg">      3</span> ds_with_custom_info.items
-
-<span class="ansi-red-fg">NameError</span>: name 'rainfall_item_info' is not defined</pre>
+<section id="item-metadata" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="item-metadata"><span class="header-section-number">15.4</span> Item Metadata</h2>
+<p>Please review <a href="https://dhi.github.io/mikeio/user-guide/eum.html">MIKE IO’s user guide on EUM</a> before proceeding.</p>
+<p>Create an <code>ItemInfo</code> object for our example rainfall data:</p>
+<div id="c62799d8" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> mikeio.ItemInfo(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">"Rainfall"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    itemtype <span class="op">=</span> mikeio.EUMType.Rainfall_Depth,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    unit <span class="op">=</span> mikeio.EUMUnit.millimeter,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    data_value_type<span class="op">=</span> <span class="st">"StepAccumulated"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Rainfall &lt;Rainfall Depth&gt; (millimeter) - 2</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Data Value Type">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Value Type
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>Data Value Type</code> specifies how data values relate to time steps. Common options include:</p>
+<ul>
+<li><strong>Instantaneous</strong>: Value at a specific point in time.</li>
+<li><strong>Accumulated</strong>: Value aggregated over the entire period up to the timestamp.</li>
+<li><strong>StepAccumulated</strong>: Value aggregated over the preceding time interval.</li>
+<li><strong>MeanStepBackward</strong>: Average value over the preceding time interval.</li>
+</ul>
+<p>Refer to MIKE+ documentation for explanation of these options.</p>
+</div>
+</div>
+</div>
+<p>Let’s recreate the <code>Dataset</code> using the <code>ItemInfo</code> object for our rainfall.</p>
+<div id="bb413e8c" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> mikeio.from_pandas(df, items<span class="op">=</span>[item])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;mikeio.Dataset&gt;
+dims: (time:1086)
+time: 2021-07-02 09:51:00 - 2021-07-31 13:16:00 (1086 non-equidistant records)
+geometry: GeometryUndefined()
+items:
+  0:  rainfall &lt;Rainfall Depth&gt; (millimeter) - 2</code></pre>
+</div>
+</div>
+<p>Notice the item info is now correct on the <code>Dataset</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Mapping items to column by name">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mapping items to column by name
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The order of <code>items</code> matches the order of the <code>DataFrame</code> columns. You may prefer to explicitly name the columns:</p>
+<div id="70f31f84" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mikeio.from_pandas(df, items<span class="op">=</span>{</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rainfall"</span> : item</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;mikeio.Dataset&gt;
+dims: (time:1086)
+time: 2021-07-02 09:51:00 - 2021-07-31 13:16:00 (1086 non-equidistant records)
+geometry: GeometryUndefined()
+items:
+  0:  rainfall &lt;Rainfall Depth&gt; (millimeter) - 2</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="dataset-to-dfs0-file" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="dataset-to-dfs0-file"><span class="header-section-number">15.4</span> <code>Dataset</code> to DFS0 File</h2>
-<p>The final step is to save your carefully prepared <code>Dataset</code> object, now containing the correct data and metadata, to a DFS0 file. This is done using the <code>.to_dfs()</code> method of the <code>Dataset</code> object. You simply provide the desired output file path.</p>
-<div id="46ce729f" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ds_with_custom_info is from the previous code block</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>output_file_path <span class="op">=</span> <span class="st">"data/rainfall_processed.dfs0"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ds_with_custom_info.to_dfs(output_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># ds_with_custom_info is from the previous code block</span>
-<span class="ansi-green-fg">      2</span> output_file_path = <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">data/rainfall_processed.dfs0</span><span class="ansi-yellow-fg">"</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> <span class="ansi-yellow-bg">ds_with_custom_info</span>.to_dfs(output_file_path)
-
-<span class="ansi-red-fg">NameError</span>: name 'ds_with_custom_info' is not defined</pre>
+<section id="dataset-to-dfs0" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="dataset-to-dfs0"><span class="header-section-number">15.5</span> Dataset to dfs0</h2>
+<p>The final step is to save your carefully prepared <code>Dataset</code> object, now containing the correct data and metadata, to a dfs0 file. This is done using the <code>.to_dfs()</code> method of the <code>Dataset</code> object.</p>
+<div id="36d7a01e" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ds.to_dfs(<span class="st">"rainfall.dfs0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will create a file named <code>rainfall.dfs0</code> ready to be used in MIKE+.</p>
+<p>Confirm it worked by reading the dfs0 file back into a <code>Dataset</code> (optional).</p>
+<div id="8a26af55" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ds_validation <span class="op">=</span> mikeio.read(<span class="st">"rainfall.dfs0"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ds_validation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>&lt;mikeio.Dataset&gt;
+dims: (time:1086)
+time: 2021-07-02 09:51:00 - 2021-07-31 13:16:00 (1086 non-equidistant records)
+geometry: GeometryUndefined()
+items:
+  0:  rainfall &lt;Rainfall Depth&gt; (millimeter) - 2</code></pre>
 </div>
 </div>
-</div>
-<p>This will create a file named <code>rainfall_processed.dfs0</code> in your ‘data’ directory (ensure this directory exists or adjust the path accordingly). You can then use this DFS0 file in your MIKE+ models or other DHI software.</p>
 
 
 </section>
