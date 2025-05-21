@@ -1,0 +1,126 @@
+---
+comments: false
+---
+
+# Homework {.unnumbered}
+
+**Exercise 1**
+
+1.  Download [network.res1d](data/network.res1d){download="network.res1d"} into a new project folder.
+2.  Create an empty Jupyter Notebook and import `mikeio1d`.
+3.  Open the `network.res1d` file into a `Res1D` object.
+4.  Use the `info()` method to get an overview of the results.
+5.  Read all 'WaterLevel' quantities for all nodes into a Pandas `DataFrame`.
+6.  Display the `describe()` statistics for this `DataFrame`.
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d")
+res.info()
+df = res.nodes.WaterLevel.read()
+df.describe()
+```
+
+**Exercise 2**
+
+1.  Continue with the `Res1D` object from Exercise 1 (or reopen `network.res1d`).
+2.  Access the reach named "101l1".
+3.  Print the static properties: `length` and `n_gridpoints` for this reach.
+4.  Plot the 'WaterLevel' time series for reach "101l1".
+5.  On a separate plot, plot the 'Discharge' time series for reach "101l1".
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d")
+reach = res.reaches["101l1"]
+print(reach.length)
+print(reach.n_gridpoints)
+reach.WaterLevel.plot()
+reach.Discharge.plot()
+```
+
+**Exercise 3**
+
+1.  Reopen `network.res1d` using `mikeio1d.open()`.
+2.  This time, during the `open()` call, specify that you only want to load:
+    *   Nodes: "1", "5", and "10".
+    *   Quantities: Only "WaterLevel".
+    *   Time range: From "1994-08-07 17:00:00" to "1994-08-07 17:30:00".
+3.  Read the data from the resulting `Res1D` object into a Pandas `DataFrame`.
+4.  Print the `head()` of this `DataFrame`. How many columns does it have?
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+
+res = mikeio1d.open(
+    "data/network.res1d",
+    nodes=["1", "5", "10"],
+    quantities=["WaterLevel"],
+    time=("1994-08-07 17:00:00", "1994-08-07 17:30:00")
+)
+df = res.read()
+df.head()
+```
+
+**Exercise 4**
+
+1.  Open `network.res1d` into a `Res1D` object.
+2.  Access the first grid point on the reach named "100l1".
+3.  Plot its water level.
+4.  Access the last grid point on the reach named "100l1".
+5.  Plot its water level.
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d")
+res.reaches["100l1"][0].WaterLevel.plot()
+res.reaches["100l1"][-1].WaterLevel.plot()
+```
+
+**Exercise 5**
+
+1.  Download [model.res1d](data/model.res1d){download="model.res1d"} into a new project folder.
+2.  Open `model.res1d` into a `Res1D` object.
+3.  Read the discharge of reach `G60F260_G60F240_l1` into a Pandas DateFrame. Use the discharge closest to the end node.
+4.  Confirm the end node of the reach is a node of type `Outlet` with id `G60F240`.
+5.  Download [observed.csv](data/observed.csv){download="observed.csv"} into your project folder.
+6.  Read observed flows from the CSV file into a DataFrame (remembering to use a DatetimeIndex). These represent observed flows of the reach referenced in step 3 above.
+7.  Plot the time series comparison of model vs observed for the following events:
+    a.  2021-07-31 12:00 to 2021-07-31 15:45
+    b.  2021-07-28 17:25 to 2021-07-28 20:55
+    c.  2021-06-21 06:55 to 2021-06-21 18:00
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+import pandas as pd
+
+df_obs = pd.read_csv("data/observed.csv", index_col=0, parse_dates=True)
+df_obs.columns = ["Observed"]
+
+res = mikeio1d.open("data/model.res1d")
+df_mod = res.reaches["G60F260_G60F240_l1"][3].Discharge.read()
+df_mod.columns = ["Model"]
+
+df = pd.concat([df_obs, df_mod], axis=1)
+df.loc["2021-07-31 12:00" : "2021-07-31 15:45"].plot()
+df.loc["2021-07-28 17:25" : "2021-07-28 20:55"].plot()
+df.loc["2021-06-21 06:55" : "2021-06-21 18:00"].plot()
+```

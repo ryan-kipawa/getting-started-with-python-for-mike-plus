@@ -1,0 +1,109 @@
+# MIKE IO 1D
+
+This section introduces *MIKE IO 1D*, a specialized Python package for working with 1D network result files from MIKE+ models.
+
+## What is MIKE IO 1D?
+
+MIKE IO 1D is an open-source Python package developed by DHI, forming an integral part of DHI's Python ecosystem. Similar to MIKE IO, it empowers modelers with full flexibility by bridging the gap between various MIKE 1D file formats and [Scientific Python](..\module1_foundations\scientific_python.qmd)'s rich and powerful package ecosystem.
+
+## MIKE IO vs MIKE IO 1D
+
+MIKE IO 1D is specifically tailored for interacting with MIKE 1D modelling files, such as network result files (e.g., `.res1d`) and cross-section files (e.g., `.xns11`). MIKE IO, on the other hand, primarily handles n-dimensional data files (e.g., `.dfs0`, `.dfs2`, `.dfsu`) for gridded or mesh-based data. MIKE+ modellers will often require both packages to support their workflows.
+
+::: {.callout-tip title="History of MIKE IO 1D" collapse="true"}
+MIKE IO 1D was historically part of MIKE IO. It was split into a separate library due to fundamental differences in 1D functionality and the then-objectives of MIKE IO.
+:::
+
+## Usage in course
+Most MIKE+ models (collection system, water distribution, rivers) require handling network result files (e.g. res1d, res, resx). We introduce a subset of MIKE IO 1D's features that are useful for such workflows.
+
+While MIKE IO 1D includes other features, like cross-sectional data, this module excludes them to keep the content manageable for beginners. We encourage you to explore MIKE IO 1D's documentation and examples of these features when you're ready.
+
+## Installation
+
+Install MIKE IO 1D with:
+
+```powershell
+uv pip install mikeio1d
+```
+
+::: {.callout-tip}
+Always check the official [MIKE IO 1D's documentation](https://dhi.github.io/mikeio1d/) for the latest installation instructions.
+:::
+
+## Network Structure
+
+Understanding MIKE 1D's network structure (e.g., nodes, reaches, catchments, gridpoints) is crucial when you work with MIKE IO 1D. You may already have a solid understanding of these concepts as a MIKE+ modeller. Please refer to [MIKE IO 1D's documentation](https://dhi.github.io/mikeio1d/user-guide/network.html) for a brief refresher on the topic. For detailed information, refer to MIKE+'s documentation.
+
+## Quick glance
+
+Let's take a quick look at some core MIKE IO 1D objects and how to access them. When you open a network result file (e.g. res1d, res), MIKE IO 1D returns a `Res1D` object.
+
+```{python}
+#| output: false
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d") 
+```
+::: {.callout-note title="All network result file types (res1d, res, etc.) return a Res1D object on `open()`" collapse="true"}
+MIKE IO 1D opens all result file types with `open()`, returning a `Res1D` object regardless of the initial file extension. Refer to [MIKE IO 1D's documentation on this](https://dhi.github.io/mikeio1d/user-guide/res1d.html#supported-file-types) for details.
+:::
+
+::: {.callout-tip}
+The `Res1D` object is the core container for network results, analogous to the `Dataset` object in MIKE IO.
+:::
+
+All results within a `Res1D` object share a common time axis, much like data items in a `.dfs0` file.
+
+```{python}
+#| output: false
+res.time_index
+```
+
+MIKE IO 1D provides access to standard result quantities (e.g., Water Level, Discharge).
+
+```{python}
+#| output: false
+res.quantities
+```
+
+Additionally, it includes derived quantities (e.g., Water Depth) that are calculated on-the-fly, similar to MIKE+.
+
+```{python}
+#| output: false
+res.derived_quantities
+```
+
+::: {.callout-note}
+Derived quantities are not stored in the result file, thus they always require calculation at runtime (even by MIKE+).
+:::
+
+You can convert quantities at network locations into Pandas DataFrames.
+```{python}
+#| output: false
+res.nodes["101"].WaterLevel.to_dataframe()
+```
+
+## Key Concepts
+
+Understanding these core concepts will help you navigate MIKE IO 1D:
+
+-   **Res1D**: This is the primary object representing the contents of a network result file (e.g., `.res1d`). It acts as the main entry point to all data.
+-   **Locations**: Results are associated with specific locations within the network model, such as nodes, reaches, or specific grid points along a reach.
+-   **Quantities**: Time series data with a concrete type, like 'WaterLevel' or 'Discharge', at a specific network location.
+
+Imagine a hierarchy: a `Res1D` object contains various `Locations` (nodes, reaches, catchments). Each `Location` can have multiple `Quantities` available as time series data.
+
+!["MIKE IO 1D Data Structure"](../images/mikeio1d_data_structure.svg)
+
+::: {.callout-note}
+This is a simplified diagram that excludes some details covered later in the module. For example, the hierarchical group of reaches could be further divided into gridpoints along each reach.
+:::
+
+## Additional reading (optional) {.clear}
+
+The following are useful resources for learning MIKE IO 1D:
+
+- [MIKE IO 1D's official documentation](https://dhi.github.io/mikeio1d/)
+- [MIKE IO 1D Example Notebooks](https://github.com/DHI/mikeio1d/tree/main/notebooks)
+- [MIKE IO 1D's GitHub repository](https://github.com/DHI/mikeio1d)

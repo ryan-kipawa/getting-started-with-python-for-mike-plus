@@ -1,0 +1,163 @@
+# Reading res1d
+
+This section guides you through loading network results (e.g., from `res1d` files) into Pandas DataFrames. The approach is similar to that used with MIKE IO, allowing you to apply your DataFrame knowledge to network results.
+
+## Workflow
+
+The general workflow for network results in MIKE IO 1D is as follows:
+
+1.  Open the network result file to obtain a `Res1D` object.
+2.  Optionally, subset this `Res1D` object to select specific locations, quantities, or time steps.
+3.  Convert the (subsetted) data to a DataFrame.
+4.  Perform some additional analysis via the DataFrame.
+
+::: {.callout-tip}
+This workflow is quite similar to the one you learned in Module 2 for handling `dfs0` files with MIKE IO. The core idea of opening a file, accessing data, and then often converting to a DataFrame remains consistent.
+:::
+
+## Res1D
+
+The `Res1D` object is central to interacting with 1D network result files. It acts as the primary container for your simulation data, analogous to MIKE IO's `Dataset` object for other DHI file types.
+
+To start, you open your result file using `mikeio1d.open()`:
+
+```{python}
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d")
+res
+```
+
+::: {.callout-note}
+MIKE IO uses `read()` to create a `Dataset`, whereas MIKE IO 1D uses `open()` to create a `Res1D` object.
+:::
+
+Get an overview of key meta data with `info()`.
+```{python}
+res.info()
+```
+
+Notice the this produces similar information to that of a MIKE IO `Dataset`:
+
+- Total number of time steps
+- Timestamps for first and last time step
+- All available quantities
+
+Like `dfs0` files, all results within a `Res1D` object share a common time axis.
+
+## Convert to DataFrame
+
+The `read()` method is the primary way to convert data from a `Res1D` object (or its subsets) into a Pandas DataFrame. This is a versatile method that can be called at various levels.
+
+You can convert the entire content of the `Res1D` object into a single DataFrame. Each quantity at a specific location becomes a column in the DataFrame.
+
+```{python}
+df = res.read()
+df.head()
+```
+
+The `DataFrame` above includes all reaches and nodes, which results in many columns. To create more manageable DataFrames, call `read()` on data subsets (e.g., by location or quantity).
+
+For example, all results for the location group `reaches`:
+```{python}
+df_reaches = res.reaches.read()
+df_reaches.head()
+```
+
+Or results for a reach named `100l1`:
+```{python}
+df_reach_100l1 = res.reaches["100l1"].read()
+df_reach_100l1.head()
+```
+
+Or just the `Discharge` quantity of the previous reach.
+```{python}
+df_reach_100l1_q = res.reaches["100l1"].Discharge.read()
+df_reach_100l1_q.head()
+```
+
+In the coming sections, we will cover how to explore the network structure of `Res1D` and select data. For now, just know that it's possible to call `read()` from various sub-objects of `Res1D` to obtain a `DataFrame`. 
+
+::: {.callout-tip}
+Once you have your network data in a Pandas DataFrame using `.read()`, you can apply all the powerful analysis, manipulation, and visualization techniques you learned in Module 1 and Module 2.
+:::
+
+## Plotting and other formats
+
+For convenience, a `plot()` method is available anywhere that `read()` can be called. This allows for quick visualization of the data.
+
+```{python}
+res.reaches["100l1"].Discharge.plot()
+```
+
+Similarly, wherever `read()` is available, you can export data to other common formats. For example:
+
+```{python}
+res.reaches["100l1"].Discharge.to_dfs0("discharge_of_interest.dfs0")
+```
+
+```{python}
+res.reaches["100l1"].Discharge.to_csv("discharge_of_interest.csv")
+```
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import os
+os.remove("discharge_of_interest.dfs0")
+os.remove("discharge_of_interest.csv")
+```
+
+## Practical Example
+
+Let's combine some of these concepts to accomplish the following objectives:
+
+1. Get descriptive statistics of all node water levels
+2. Get descriptive statistics of all reach discharges
+
+First, open the result file.
+```{python}
+import mikeio1d
+
+res = mikeio1d.open("data/network.res1d")
+```
+
+Then, get our node water levels and reach discharges into DataFrames.
+```{python}
+df_nodes_wl = res.nodes.WaterLevel.read()
+df_reaches_q = res.reaches.Discharge.read()
+```
+
+Use `describe()` on each DataFrame, just like from previous modules.
+
+```{python}
+wl_stats = df_nodes_wl.describe().T
+wl_stats.head()
+```
+
+```{python}
+q_stats = df_reaches_q.describe().T
+q_stats.head()
+```
+
+From here we might want to use existing Pandas functionality to export our data for reporting purposes:
+
+```{python}
+wl_stats.to_excel("node_water_levels.xlsx")
+q_stats.to_excel("reaches_discharges.xlsx")
+```
+
+::: {.callout-tip}
+You need to install a Python package like `openpyxl` to use Pandas' `to_excel()` method.
+:::
+
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import os
+os.remove("node_water_levels.xlsx")
+os.remove("reaches_discharges.xlsx")
+```
