@@ -94,7 +94,7 @@ Understanding these core concepts will help you navigate MIKE IO 1D:
 
 Imagine a hierarchy: a `Res1D` object contains various `Locations` (nodes, reaches, catchments). Each `Location` can have multiple `Quantities` available as time series data.
 
-[!["MIKE IO 1D Data Structure"](../images/mikeio1d_data_structure.svg)]
+!["MIKE IO 1D Data Structure"](../images/mikeio1d_data_structure.svg)
 
 ::: {.callout-note}
 This is a simplified diagram that excludes some details covered later in the module. For example, the hierarchical group of reaches could be further divided into gridpoints along each reach.
