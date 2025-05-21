@@ -62,7 +62,7 @@ for node_id, node in res.nodes.items():
 
 ## Catchments
 
-Catchments are handled similarly to nodes but are typically found in a separate result file, often related to rainfall-runoff simulations.
+You handle catchments similarly to nodes, but they are typically in a separate result file, often from rainfall-runoff simulations.
 
 ```{python}
 res_rr.catchments
@@ -137,7 +137,7 @@ for reach_name, reach in res.reaches.items():
 Specific reach objects are also both list- and dictionary-like, mapping to their constituent gridpoint objects. Gridpoints are the locations along a reach where results are calculated.
 
 ::: {.callout-note}
-Reaches also allow sequential indexing (e.g., `[0]` for the first gridpoint, `[-1]` for the last) for convenient access to gridpoints. This is *different* than Python dictionaries.
+Unlike Python dictionaries, reaches also support sequential indexing (e.g., `[0]` for the first gridpoint) for convenient gridpoint access.
 :::
 
 Access the first gridpoint of reach "101l1":

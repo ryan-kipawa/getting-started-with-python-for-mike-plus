@@ -30,7 +30,7 @@ Similar to MIKE IO, selecting data via `open()` is generally most performant sin
 
 When dealing with network results, you often want to focus on specific parts of your model, like certain nodes or reaches.
 
-Purely using DataFrames can be difficult due to large number of columns and column header format. For example, this DataFrame has 495 columns:
+Selecting data purely with DataFrames can be difficult due to the large number of columns and their header format. For example, this DataFrame has 495 columns:
 
 ```{python}
 df = res.read()
@@ -102,7 +102,7 @@ df.head()
 ```
 
 ::: {.callout-note}
-Selecting quantities with the fluent-like API needs to be done on a location group, or a more specific element. It cannot be done via the top-level `Res1D` object. To do that, it's better to filter on `open()`.
+You must use the fluent-like API for quantity selection on a location group (e.g., `res.reaches.Discharge`) or a specific element, not directly on the top-level `Res1D` object. For top-level quantity filtering, use the `quantities` parameter in `open()`.
 :::
 
 Similar to location filtering, it's also more computationally efficient to do this on `open()`:
@@ -141,7 +141,7 @@ df = res.read()
 df.iloc[:3]
 ```
 
-It's more efficient to do this on opening the file with `open()`, just like with other subsets. To select time steps when opening the file, use the `time` parameter to specify the start and end bounds.
+As with other selections, filtering by time when opening the file with `open()` is more efficient. To select time steps when opening the file, use the `time` parameter to specify the start and end bounds.
 
 ```{python}
 res = mikeio1d.open("data/network.res1d", time=('1994-08-07 16:35:00', '1994-08-07 16:38'))

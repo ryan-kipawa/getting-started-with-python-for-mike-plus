@@ -1,3 +1,7 @@
+---
+comments: false
+---
+
 # Welcome to Module 3! {.unnumbered}
 
 To be completed.

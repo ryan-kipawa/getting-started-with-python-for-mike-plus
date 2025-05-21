@@ -47,7 +47,7 @@ Like `dfs0` files, all results within a `Res1D` object share a common time axis.
 
 ## Convert to DataFrame
 
-The primary method for converting data from a `Res1D` object (or its subsets) into a pandas DataFrame is `read()`. This is a versatile method that can be called at various levels.
+The `read()` method is the primary way to convert data from a `Res1D` object (or its subsets) into a Pandas DataFrame. This is a versatile method that can be called at various levels.
 
 You can convert the entire content of the `Res1D` object into a single DataFrame. Each quantity at a specific location becomes a column in the DataFrame.
 
@@ -56,7 +56,7 @@ df = res.read()
 df.head()
 ```
 
-Notice the `DataFrame` above includes all reaches and nodes, resulting in many columns. Obtain more manageable DataFrames via calling `read()` on subsets of data by location and/or quantity.
+Notice the `DataFrame` above includes all reaches and nodes, resulting in many columns. You can obtain more manageable DataFrames by calling `read()` on data subsets (e.g., by location or quantity).
 
 For example, all results for the location group `reaches`:
 ```{python}
@@ -86,7 +86,7 @@ For convenience, a `plot()` method is available anywhere that `read()` can be ca
 res.reaches["100l1"].Discharge.plot()
 ```
 
-Similarly, where `read()` is available, you may export data to other common formats. For example:
+Similarly, wherever `read()` is available, you can export data to other common formats. For example:
 
 ```{python}
 res.reaches["100l1"].Discharge.to_dfs0("discharge_of_interest.dfs0")
