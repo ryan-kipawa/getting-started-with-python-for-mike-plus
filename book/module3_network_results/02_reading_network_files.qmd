@@ -1,6 +1,6 @@
 # Reading res1d
 
-This section guides you through loading network results data (e.g. res1d) into Pandas DataFrames. We take a similar approach as we did with MIKE IO, enabling you to build on previously gained knowledge of DataFrames by expanding its scope to network results.
+This section guides you through loading network results (e.g., from `res1d` files) into Pandas DataFrames. The approach is similar to that used with MIKE IO, allowing you to apply your DataFrame knowledge to network results.
 
 ## Workflow
 
@@ -56,7 +56,7 @@ df = res.read()
 df.head()
 ```
 
-Notice the `DataFrame` above includes all reaches and nodes, resulting in many columns. You can obtain more manageable DataFrames by calling `read()` on data subsets (e.g., by location or quantity).
+The `DataFrame` above includes all reaches and nodes, which results in many columns. To create more manageable DataFrames, call `read()` on data subsets (e.g., by location or quantity).
 
 For example, all results for the location group `reaches`:
 ```{python}

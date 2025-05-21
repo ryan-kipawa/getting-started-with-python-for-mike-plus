@@ -8,7 +8,7 @@ MIKE IO 1D is an open-source Python package developed by DHI, forming an integra
 
 ## MIKE IO vs MIKE IO 1D
 
-MIKE IO 1D is specifically tailored for interacting with MIKE 1D modelling files, such as network result files (e.g., `.res1d`) and cross-section files (e.g., `.xns11`). MIKE IO, on the other hand, primarily focuses on n-dimensional data files (like `.dfs0`, `.dfs2`, `.dfsu`) for gridded or mesh-based. MIKE+ modellers will often require both packages to support their workflows.
+MIKE IO 1D is specifically tailored for interacting with MIKE 1D modelling files, such as network result files (e.g., `.res1d`) and cross-section files (e.g., `.xns11`). MIKE IO, on the other hand, primarily handles n-dimensional data files (e.g., `.dfs0`, `.dfs2`, `.dfsu`) for gridded or mesh-based data. MIKE+ modellers will often require both packages to support their workflows.
 
 ::: {.callout-tip title="History of MIKE IO 1D" collapse="true"}
 MIKE IO 1D was historically part of MIKE IO. It was split into a separate library due to fundamental differences in 1D functionality and the then-objectives of MIKE IO.

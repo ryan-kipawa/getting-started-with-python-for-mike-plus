@@ -37,7 +37,7 @@ df = res.read()
 df.head()
 ```
 
-To select the "Water Level" quantity for node "1" via the `DataFrame`, we need to concatenate that information with ':' as a separator:
+To select the 'Water Level' quantity for node '1' from the `DataFrame`, you need to use a column name formed by concatenating the quantity and ID with a ':' separator:
 ```{python}
 df[["WaterLevel:1"]]
 ```
@@ -47,7 +47,7 @@ Similarly, to select the "Water Level" of reach "100l1" at chainage 47.6827:
 df[["WaterLevel:100l1:47.6827"]]
 ```
 
-Clearly this is not a friendly format. For example, what if I want all quantities of this particular reach? This motivated the fluent-like API illustrated in the previous section.
+This format is not very user-friendly, especially for selecting all quantities of a specific reach. The fluent-like API, shown earlier, offers a more intuitive way to do this.
 
 ```{python}
 res.reaches["100l1"].read()
@@ -200,5 +200,5 @@ for event in calibration_events:
         ax.grid()
         ax.set_title(f"Calibration Plot for Reach '{reach}'")
         
-        # save figure to png here using with standard matplotlib functionality...
+        # optional: save the figure to a PNG file using standard Matplotlib functionality
 ```
