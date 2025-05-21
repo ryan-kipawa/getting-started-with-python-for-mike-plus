@@ -1,0 +1,204 @@
+# Data Selection
+
+This section covers how to select specific subsets of network result data.
+
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+from mikeio1d import Res1D
+
+res = Res1D("data/network.res1d")
+res_rr = Res1D("data/catchments.res1d")
+```
+
+## Alternative Methods
+
+There are various ways of selecting subsets of network result data. This section covers three main approaches:
+
+1. Using Pandas `DataFrame`.
+2. Using the `Res1D` object to subset locations and quantities.
+3. Using `mikeio1d.open()`.
+
+::: {.callout-tip title="Memory considerations" collapse="true"}
+Similar to MIKE IO, selecting data via `open()` is generally most performant since it avoids loading the entire file into memory.
+:::
+
+## Selecting Locations
+
+When dealing with network results, you often want to focus on specific parts of your model, like certain nodes or reaches.
+
+Selecting data purely with DataFrames can be difficult due to the large number of columns and their header format. For example, this DataFrame has 495 columns:
+
+```{python}
+df = res.read()
+df.head()
+```
+
+To select the 'Water Level' quantity for node '1' from the `DataFrame`, you need to use a column name formed by concatenating the quantity and ID with a ':' separator:
+```{python}
+df[["WaterLevel:1"]]
+```
+
+Similarly, to select the "Water Level" of reach "100l1" at chainage 47.6827:
+```{python}
+df[["WaterLevel:100l1:47.6827"]]
+```
+
+This format is not very user-friendly, especially for selecting all quantities of a specific reach. The fluent-like API, shown earlier, offers a more intuitive way to do this.
+
+```{python}
+res.reaches["100l1"].read()
+```
+
+A more computationally efficient approach is to select locations when you open the file. You can specify lists of IDs for `nodes`, `reaches`, or `catchments`. For example:
+
+```{python}
+res = mikeio1d.open("data/network.res1d", reaches=["100l1"])
+df = res.read()
+df.head()
+```
+
+Similarly for nodes:
+```{python}
+res = mikeio1d.open("data/network.res1d", nodes=["1", "2"])
+df = res.read()
+df.head()
+```
+
+And for catchments:
+```{python}
+res = mikeio1d.open("data/catchments.res1d", catchments=["100_16_16"])
+df = res.read()
+df.head()
+```
+
+## Selecting Quantities
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+from mikeio1d import Res1D
+
+res = Res1D("data/network.res1d")
+res_rr = Res1D("data/catchments.res1d")
+```
+Just as with locations, you can select specific physical quantities (like Water Level or Discharge). Trying to pick these out from a full DataFrame is one approach:
+
+```{python}
+df = res.read()
+discharge_columns = [column for column in df.columns if "Discharge" in column]
+df[discharge_columns].head()
+```
+
+However, it's often expressed more succinctly using the `Res1D` fluent-like API:
+```{python}
+df = res.reaches.Discharge.read()
+df.head()
+```
+
+::: {.callout-note}
+You must use the fluent-like API for quantity selection on a location group (e.g., `res.reaches.Discharge`) or a specific element, not directly on the top-level `Res1D` object. For top-level quantity filtering, use the `quantities` parameter in `open()`.
+:::
+
+Similar to location filtering, it's also more computationally efficient to do this on `open()`:
+```{python}
+res = mikeio1d.open("data/network.res1d", quantities=["Discharge"])
+df = res.read()
+df.head()
+```
+
+::: {.callout-tip title="Where do I find quantity names?" collapse="true"}
+To see all available quantities in a `Res1D` object (`res`), you can inspect `res.quantities`. To see all possible MIKE 1D quantities, you can get a list as follows:
+
+```{python}
+from mikeio1d.res1d import mike1d_quantities
+
+all_quantities = mike1d_quantities()
+```
+:::
+
+## Selecting Time Steps
+```{python}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+import mikeio1d
+from mikeio1d import Res1D
+
+res = Res1D("data/network.res1d")
+res_rr = Res1D("data/catchments.res1d")
+```
+Filtering by time is another common requirement. If you have your data in a Pandas DataFrame, you can use the time indexing techniques covered in Module 2. For example, the first three time steps:
+
+```{python}
+df = res.read()
+df.iloc[:3]
+```
+
+As with other selections, filtering by time when opening the file with `open()` is more efficient. To select time steps when opening the file, use the `time` parameter to specify the start and end bounds.
+
+```{python}
+res = mikeio1d.open("data/network.res1d", time=('1994-08-07 16:35:00', '1994-08-07 16:38'))
+res.read()
+```
+
+To select every nth time step, you can use the `step_every` parameter:
+
+```{python}
+res = mikeio1d.open("data/network.res1d", step_every=5)
+res.read().head()
+```
+
+Notice that these options are similar to when loading network result files in MIKE+:
+
+![Loading network results in MIKE+](../images/mikeplus_loading_results.png)
+
+## Practical Example
+
+Imagine you're calibrating a MIKE+ model. There's two specific points in the network where you have observed flow data. You also have a list of calibration event time stamps you deem relevant. Let's use Python to automate generating some plots that could be useful during the calibration process.
+
+First, make a list of the reach IDs where the flow meters are.
+
+```{python}
+calibration_points = ["12l1", "116l1"]
+```
+
+Next let's define the event start and stop times. 
+```{python}
+calibration_events = [
+    ("1994-08-07 17:00", "1994-08-07 18:30"),
+    # here we could add another event, but for this example we only use one
+]
+```
+
+Load the flow meter data from csv.
+```{python}
+import pandas as pd
+df_obs = pd.read_csv("data/flow_meter_data.csv", index_col=0, parse_dates=True)
+df_obs.head()
+```
+
+Now let's create plots for each calibration point:
+```{python}
+for event in calibration_events:
+    event_start = event[0]  # event start time
+    event_end = event[1]    # event end time
+
+    res = mikeio1d.open("data/network.res1d", time=(event_start, event_end))
+    df_obs_event = df_obs.loc[event_start : event_end]
+
+    for reach in calibration_points:
+        ax = res.reaches[reach].Discharge.plot()
+        df_obs_event[f"{reach}_observed"].plot(ax=ax, color='grey', linestyle="--", zorder=-1)
+        ax.legend()
+        ax.grid()
+        ax.set_title(f"Calibration Plot for Reach '{reach}'")
+        
+        # optional: save the figure to a PNG file using standard Matplotlib functionality
+```

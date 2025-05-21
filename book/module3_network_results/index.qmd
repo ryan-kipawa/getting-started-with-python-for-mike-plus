@@ -1,3 +1,23 @@
-# Introduction
+---
+comments: false
+---
 
-Coming soon...
+# Welcome to Module 3! {.unnumbered}
+
+This module dives into the specifics of handling 1D network model results, a common task for MIKE+ users working with collection systems, water distribution networks, or river models. Our focus is on equipping you to efficiently access, analyze, and prepare 1D simulation outputs using Python:
+
+- Open and read network result files (e.g., `.res1d`, `.res`, `.resx`).
+- Explore and navigate the network structure (nodes, reaches, catchments, gridpoints).
+- Select and subset specific data by location, quantity, and time.
+- Convert network data to Pandas DataFrames for further analysis and visualization.
+- Export selected network data to common formats like dfs0 or csv.
+
+You'll be introduced to a powerful new library: MIKE IO 1D. Let's begin!
+
+::: {.callout-tip title="Where can I download sample data to follow along?" collapse="true"}
+All of the sample data used in this module is available for download:
+
+- [network.res1d](data/network.res1d)
+- [catchments.res1d](data/catchments.res1d)
+- [flow_meter_data.csv](data/flow_meter_data.csv)
+:::

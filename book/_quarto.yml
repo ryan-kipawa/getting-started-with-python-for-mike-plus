@@ -54,8 +54,13 @@ book:
        - module2_time_series/homework.qmd
 
     - part: "Module 3 - Network Results"
-      #chapters:
-      # - module3_network_results\index.qmd
+      chapters:
+       - module3_network_results/index.qmd
+       - module3_network_results/01_overview_mikeio1d.qmd
+       - module3_network_results/02_reading_network_files.qmd
+       - module3_network_results/03_exploring_network_and_results.qmd
+       - module3_network_results/04_selecting_network_data.qmd
+       - module3_network_results/homework.qmd
 
     - part: "Module 4 - Calibration Plots and Statistics"
       #chapters:
