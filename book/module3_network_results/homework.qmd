@@ -4,4 +4,52 @@ comments: false
 
 # Homework {.unnumbered}
 
-To be completed.
+**Exercise 1**
+
+1.  Download the [network.res1d file](data/network.res1d){download="network.res1d"} into a new project folder.
+2.  Create an empty Jupyter Notebook and import `mikeio1d`.
+3.  Open the `network.res1d` file into a `Res1D` object.
+4.  Use the `info()` method to get an overview of the results.
+5.  Read all 'WaterLevel' quantities for all nodes into a Pandas `DataFrame`.
+6.  Display the `describe()` statistics for this `DataFrame`.
+
+**Exercise 2**
+
+1.  Continue with the `Res1D` object from Exercise 1 (or reopen `data/network.res1d`).
+2.  Access the reach named "101l1".
+3.  Print the static properties: `length` and `n_gridpoints` for this reach.
+4.  Plot the 'WaterLevel' time series for reach "101l1".
+5.  On a separate plot, plot the 'Discharge' time series for reach "101l1".
+
+**Exercise 3**
+
+1.  Reopen `data/network.res1d` using `mikeio1d.open()`.
+2.  This time, during the `open()` call, specify that you only want to load:
+    *   Nodes: "1", "5", and "10".
+    *   Quantities: Only "WaterLevel".
+    *   Time range: From "1994-08-07 17:00:00" to "1994-08-07 17:30:00".
+3.  Read the data from the resulting `Res1D` object into a Pandas `DataFrame`.
+4.  Print the `head()` of this `DataFrame`. How many columns does it have?
+
+**Exercise 4**
+
+1.  Open `data/network.res1d` into a `Res1D` object.
+2.  Access the reach named "100l1".
+3.  Iterate through all gridpoints of reach "100l1". For each gridpoint, print its `chainage` and `bottom_level`.
+4.  Create a single plot showing the 'WaterLevel' for the first gridpoint (index `0`) and the last gridpoint (index `-1`) of reach "100l1". Use different line styles or colors for clarity and add a legend.
+
+**Exercise 5**
+
+1.  Download the [catchments.res1d file](data/catchments.res1d){download="catchments.res1d"} into your project folder.
+2.  Open `data/catchments.res1d` into a `Res1D` object.
+3.  Access the catchment named "100_16_16".
+4.  Print its static property: `area`.
+5.  Plot the 'TotalRunOff' time series for this catchment.
+6.  Export the 'TotalRunOff' time series for catchment "100_16_16" to a `dfs0` file named `catchment_100_16_16_runoff.dfs0`.
+
+**Exercise 6**
+
+1. Open `data/network.res1d` into a `Res1D` object.
+2. Find all reaches that are connected to node "1" (i.e., where "1" is either the `start_node` or `end_node` of the reach).
+3. For each of these connected reaches, print its name.
+4. Create a separate plot of the 'Discharge' time series for each of these connected reaches. (Hint: You might want to create a loop and generate multiple plots or subplots).
