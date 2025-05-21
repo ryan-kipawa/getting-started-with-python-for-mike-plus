@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nodes" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="nodes"><span class="header-section-number">18.1</span> Nodes</h2>
 <p>Node data is accessible via the <code>Res1D</code> object, typically named <code>res</code> in our examples. The <code>res.nodes</code> attribute provides access to all nodes in your result file.</p>
-<div id="767bde79" class="cell" data-execution_count="2">
+<div id="b95bac2c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>res.nodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 &lt;ResultNodes&gt; (119)
@@ -592,7 +592,7 @@ Tip
 </div>
 </div>
 <p>The <code>nodes</code> object behaves like a Python dictionary, where node IDs are the keys and specific node objects are the values. You can access a specific node by its ID.</p>
-<div id="54043683" class="cell" data-execution_count="3">
+<div id="fb9c1fab" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>res.nodes[<span class="st">"1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 &lt;Manhole: 1&gt;
@@ -608,14 +608,14 @@ Tip
 </div>
 <p>Each node object contains both dynamic quantities (time series results like water level) and static properties (like invert level).</p>
 <p>To access a dynamic quantity:</p>
-<div id="83e5cf83" class="cell" data-execution_count="4">
+<div id="2860d618" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>res.nodes[<span class="st">"1"</span>].WaterLevel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;Quantity: Water level (m)&gt;</code></pre>
 </div>
 </div>
 <p>As shown in the last section, dynamic quantities can be converted to a DataFrame with <code>read()</code>, or plotted with <code>plot()</code>:</p>
-<div id="bce1afaf" class="cell" data-execution_count="5">
+<div id="12e99383" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res.nodes[<span class="st">"1"</span>].WaterLevel.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -626,14 +626,14 @@ Tip
 </div>
 </div>
 <p>To access a static property:</p>
-<div id="0b78bdcf" class="cell" data-execution_count="6">
+<div id="4290b5ad" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>res.nodes[<span class="st">"1"</span>].bottom_level</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>195.0500030517578</code></pre>
 </div>
 </div>
 <p>You can iterate through all nodes, similar to a Python dictionary. For example:</p>
-<div id="64c44a20" class="cell" data-execution_count="7">
+<div id="9efc775b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node_id, node <span class="kw">in</span> res.nodes.items():</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.<span class="bu">type</span> <span class="op">==</span> <span class="st">"Outlet"</span>:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        display(node)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -664,7 +664,7 @@ Tip
 <section id="catchments" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="catchments"><span class="header-section-number">18.2</span> Catchments</h2>
 <p>You handle catchments similarly to nodes, but they are typically in a separate result file, often from rainfall-runoff simulations.</p>
-<div id="36d30526" class="cell" data-execution_count="8">
+<div id="e60e5d2c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>res_rr.catchments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 &lt;ResultCatchments&gt; (31)
@@ -695,7 +695,7 @@ Why are separate result files used?
 </div>
 </div>
 <p>The <code>catchments</code> object also acts like a dictionary, with catchment IDs as keys.</p>
-<div id="f2a95c14" class="cell" data-execution_count="9">
+<div id="5a1837a5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>res_rr.catchments[<span class="st">"100_16_16"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 &lt;Catchment: 100_16_16&gt;
@@ -710,7 +710,7 @@ Why are separate result files used?
 </div>
 </div>
 <p>Catchment objects also have dynamic quantities and static properties. For instance, <code>TotalRunOff</code> is a dynamic quantity, and <code>area</code> is a static property.</p>
-<div id="e4069928" class="cell" data-execution_count="10">
+<div id="bd1e76e9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>res_rr.catchments[<span class="st">"100_16_16"</span>].TotalRunOff.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -720,14 +720,14 @@ Why are separate result files used?
 </div>
 </div>
 </div>
-<div id="ffde948a" class="cell" data-execution_count="11">
+<div id="e0bc0415" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>res_rr.catchments[<span class="st">"100_16_16"</span>].area</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>22800.0</code></pre>
 </div>
 </div>
 <p>Just like nodes, you can iterate through catchments like a Python dictionary. For example:</p>
-<div id="5dd6af0d" class="cell" data-execution_count="12">
+<div id="03dea23e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> catchment_id, catchment <span class="kw">in</span> res_rr.catchments.items():</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"28"</span> <span class="kw">in</span> catchment_id:</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        display(catchment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -758,7 +758,7 @@ Why are separate result files used?
 <section id="reaches" class="level2" data-number="18.3">
 <h2 data-number="18.3" class="anchored" data-anchor-id="reaches"><span class="header-section-number">18.3</span> Reaches</h2>
 <p>Reaches are accessed similarly to nodes and catchments. A key difference is that individual reach objects also contain gridpoints.</p>
-<div id="c9d1d9cf" class="cell" data-execution_count="13">
+<div id="95d4f05e" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>res.reaches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 &lt;ResultReaches&gt; (118)
@@ -773,7 +773,7 @@ Why are separate result files used?
 </div>
 </div>
 <p>The <code>reaches</code> object is dictionary-like, with reach names as keys and specific reach objects as values.</p>
-<div id="acfaa4e7" class="cell" data-execution_count="14">
+<div id="fb3e673e" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"101l1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 &lt;Reach: 101l1&gt;
@@ -788,7 +788,7 @@ Why are separate result files used?
 </div>
 </div>
 <p>Each reach object contains dynamic quantities and static properties.</p>
-<div id="4a6904d4" class="cell" data-execution_count="15">
+<div id="3483b5cf" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"101l1"</span>].WaterLevel.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -811,14 +811,14 @@ Tip
 <p>Notice that two water levels are plotted above, representing the start and end H-points of the reach.</p>
 </div>
 </div>
-<div id="8b22c48c" class="cell" data-execution_count="16">
+<div id="14ccdc6c" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"101l1"</span>].n_gridpoints</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>3</code></pre>
 </div>
 </div>
 <p>Just like before, you can iterate through reaches like a Python dictionary. For example:</p>
-<div id="37a797c5" class="cell" data-execution_count="17">
+<div id="311f15c3" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This may print multiple lines</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> reach_name, reach <span class="kw">in</span> res.reaches.items():</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> reach.start_node <span class="op">==</span> <span class="st">"1"</span>:</span>
@@ -853,7 +853,7 @@ Note
 </div>
 </div>
 <p>Access the first gridpoint of reach “101l1”:</p>
-<div id="890ca0d5" class="cell" data-execution_count="18">
+<div id="fa1ab26a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"101l1"</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 &lt;ResultGridPoint&gt;
@@ -868,7 +868,7 @@ Note
 </div>
 </div>
 <p>Access the last gridpoint of reach “101l1”:</p>
-<div id="bbf20f12" class="cell" data-execution_count="19">
+<div id="caf33558" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"101l1"</span>][<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 &lt;ResultGridPoint&gt;
@@ -883,7 +883,7 @@ Note
 </div>
 </div>
 <p>You can also access gridpoints by their chainage value. Chainage can be a float or a string.</p>
-<div id="3e248524" class="cell" data-execution_count="20">
+<div id="0a2602db" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"100l1"</span>][<span class="st">'23.841'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 &lt;ResultGridPoint&gt;
@@ -899,7 +899,7 @@ Note
 </div>
 <p>Notice that each gridpoint has its own dynamic quantities and static properties.</p>
 <p>Access <code>WaterLevel</code> at the first gridpoint:</p>
-<div id="a4b6c649" class="cell" data-execution_count="21">
+<div id="94d6f7d3" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"100l1"</span>][<span class="dv">0</span>].WaterLevel.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -910,7 +910,7 @@ Note
 </div>
 </div>
 <p>Access <code>Discharge</code> at the second gridpoint:</p>
-<div id="65bb83a4" class="cell" data-execution_count="22">
+<div id="79feeeba" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"100l1"</span>][<span class="dv">1</span>].Discharge.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -934,14 +934,14 @@ Note
 </div>
 </div>
 <p>Access the <code>chainage</code> static property of a gridpoint:</p>
-<div id="6d63101f" class="cell" data-execution_count="23">
+<div id="aafc299f" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>res.reaches[<span class="st">"100l1"</span>][<span class="op">-</span><span class="dv">1</span>].chainage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>47.6827148432828</code></pre>
 </div>
 </div>
 <p>Just like before, you can iterate through reaches like a Python dictionary. The keys are the gridpoint chainage along the reach. For example:</p>
-<div id="62c71f3e" class="cell" data-execution_count="24">
+<div id="8ebbe0fb" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chainage, gridpoint <span class="kw">in</span> res.reaches[<span class="st">"100l1"</span>].items():</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Bottom level at chainage </span><span class="sc">{</span>chainage<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>gridpoint<span class="sc">.</span>bottom_level<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
