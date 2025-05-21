@@ -74,6 +74,10 @@ Additionally, it includes derived quantities (e.g., Water Depth) that are calcul
 res.derived_quantities
 ```
 
+::: {.callout-note}
+Derived quantities are not stored in the result file, thus they always require calculation at runtime (even by MIKE+).
+:::
+
 You can convert quantities at network locations into Pandas DataFrames.
 ```{python}
 #| output: false

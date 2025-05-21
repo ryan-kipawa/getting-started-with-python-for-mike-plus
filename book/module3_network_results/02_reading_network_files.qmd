@@ -76,7 +76,11 @@ df_reach_100l1_q = res.reaches["100l1"].Discharge.read()
 df_reach_100l1_q.head()
 ```
 
-In the coming sections, we will cover how to explore the network structure of `Res1D` and select data. For now, just know that it's possible to call `read()` from various sub-objects of `Res1D` to obtain a `DataFrame`.
+In the coming sections, we will cover how to explore the network structure of `Res1D` and select data. For now, just know that it's possible to call `read()` from various sub-objects of `Res1D` to obtain a `DataFrame`. 
+
+::: {.callout-tip}
+Once you have your network data in a Pandas DataFrame using `.read()`, you can apply all the powerful analysis, manipulation, and visualization techniques you learned in Module 1 and Module 2.
+:::
 
 ## Plotting and other formats
 
