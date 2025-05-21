@@ -1,0 +1,127 @@
+# Homework {.unnumbered}
+
+These exercises will help you practice the concepts covered in Module 3, focusing on reading, exploring, and selecting data from MIKE+ network result files using *MIKE IO 1D*.
+
+::: {.callout-note}
+## Required Data File
+
+For these exercises, you will need a sample `res1d` file. Let's assume this file is named `network_results.res1d` and is located in a `data/module3/` subfolder within your project directory. If you are using a different file or location, please adjust the file paths in the code examples accordingly.
+
+You can typically download sample data files from the course's resource page. For the examples below, we will assume the `res1d` file contains network elements with IDs like "N_1", "N_2", "R_1", "R_2", etc. Please inspect your file and adapt these IDs if necessary.
+:::
+
+---
+
+**Exercise 1: Basic `res1d` File Exploration**
+
+In this exercise, you'll open a `res1d` file, inspect its basic properties, and read some data into a Pandas DataFrame.
+
+1.  Import the `mikeio1d` library.
+
+2.  Open the `network_results.res1d` file. Display the `Res1D` object to see a summary of its contents.
+
+    ```{python}
+    import mikeio1d
+
+    res_file_path = "data/module3/network_results.res1d"
+    res = mikeio1d.open(res_file_path)
+    res
+    ```
+
+3.  Access and display the list of available quantities in the file.
+
+    ```{python}
+    res.quantities
+    ```
+
+4.  Read the "WaterLevel" for all nodes into a Pandas DataFrame. Display the first few rows of this DataFrame.
+
+    ```{python}
+    import pandas as pd
+
+    df_node_wl = res.nodes.WaterLevel.read()
+    df_node_wl.head()
+    ```
+
+---
+
+**Exercise 2: Selecting Specific Network Data**
+
+This exercise focuses on selecting and extracting data for specific locations and quantities.
+
+1.  Using the `res` object from Exercise 1, select the "Discharge" data for a specific reach, for example, "R_1". Read this selection into a DataFrame and display its first few rows.
+
+    ```{python}
+    # Assumes res is still loaded from Exercise 1
+    # Assumes a reach named "R_1" exists in your file
+    df_reach_q = res.reaches["R_1"].Discharge.read()
+    df_reach_q.head()
+    ```
+
+2.  Generate a plot of the "Discharge" for reach "R_1".
+
+    ```{python}
+    # Assumes df_reach_q is available from the previous step
+    df_reach_q.plot()
+    ```
+
+3.  Select the "WaterDepth" (a derived quantity) for a specific node, for example, "N_1". Read this into a DataFrame and display its head.
+
+    ::: {.callout-tip}
+    Remember, derived quantities are accessed similarly to regular quantities once the `Res1D` object is created.
+    :::
+
+    ```{python}
+    # Assumes res is still loaded from Exercise 1
+    # Assumes a node named "N_1" exists in your file
+    df_node_wd = res.nodes["N_1"].WaterDepth.read()
+    df_node_wd.head()
+    ```
+
+---
+
+**Exercise 3: Working with Network Element Properties**
+
+This exercise involves accessing static properties and dynamic results for individual network elements.
+
+1.  Using the `res` object from Exercise 1, access a specific node (e.g., "N_1").
+
+    ```{python}
+    # Assumes res is still loaded from Exercise 1
+    # Assumes a node named "N_1" exists in your file
+    node_n1 = res.nodes["N_1"]
+    node_n1
+    ```
+
+2.  Print the `invert_level` (a static property) of this node.
+
+    ```{python}
+    # Assumes node_n1 is available from the previous step
+    print(f"Invert level of {node_n1.id}: {node_n1.invert_level}")
+    ```
+
+3.  Get the "WaterLevel" time series for node "N_1" and plot it.
+
+    ```{python}
+    # Assumes node_n1 is available from the previous step
+    node_n1_wl = node_n1.WaterLevel.read()
+    node_n1_wl.plot(title=f"Water Level at {node_n1.id}")
+    ```
+
+4.  Display the names and lengths of the first three reaches found in the file. Create a list of dictionaries containing the 'Name' and 'Length' for each of these reaches, then convert it to a Pandas DataFrame for a clear display.
+
+    ```{python}
+    # Assumes res is still loaded from Exercise 1
+    # Assumes pandas (pd) is imported
+    reach_info_list = []
+    for i, (reach_id, reach_obj) in enumerate(res.reaches.items()):
+        if i >= 3:
+            break
+        reach_info_list.append({'Name': reach_id, 'Length': reach_obj.length})
+    df_reach_summary = pd.DataFrame(reach_info_list)
+    df_reach_summary
+    ```
+
+---
+comments: false
+---
