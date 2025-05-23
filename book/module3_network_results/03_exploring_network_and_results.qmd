@@ -190,8 +190,8 @@ for chainage, gridpoint in res.reaches["100l1"].items():
     print(f"Bottom level at chainage {chainage} is {gridpoint.bottom_level}")
 ```
 
-## Video - Dynamic Autocompletion
+## Example - Dynamic Autocompletion
 
 Dynamic autocompletion in environments like Jupyter or VS Code significantly aids in exploring these objects. Watch this video to see it in action.
 
-[Video: example showing autocompletion]
+{{< video https://www.youtube.com/embed/4RC0b7zWNkw?si=toUlPZwK-NL7I0Or >}}
