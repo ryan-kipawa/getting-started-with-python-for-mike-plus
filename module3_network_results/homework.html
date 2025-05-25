@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -72,6 +72,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -513,7 +516,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p><strong>Exercise 1</strong></p>
 <ol type="1">
-<li>Download the <a href="data/network.res1d" download="network.res1d">network.res1d file</a> into a new project folder.</li>
+<li>Download <a href="data/network.res1d" download="network.res1d">network.res1d</a> into a new project folder.</li>
 <li>Create an empty Jupyter Notebook and import <code>mikeio1d</code>.</li>
 <li>Open the <code>network.res1d</code> file into a <code>Res1D</code> object.</li>
 <li>Use the <code>info()</code> method to get an overview of the results.</li>
@@ -522,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>Exercise 2</strong></p>
 <ol type="1">
-<li>Continue with the <code>Res1D</code> object from Exercise 1 (or reopen <code>data/network.res1d</code>).</li>
+<li>Continue with the <code>Res1D</code> object from Exercise 1 (or reopen <code>network.res1d</code>).</li>
 <li>Access the reach named “101l1”.</li>
 <li>Print the static properties: <code>length</code> and <code>n_gridpoints</code> for this reach.</li>
 <li>Plot the ‘WaterLevel’ time series for reach “101l1”.</li>
@@ -530,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>Exercise 3</strong></p>
 <ol type="1">
-<li>Reopen <code>data/network.res1d</code> using <code>mikeio1d.open()</code>.</li>
+<li>Reopen <code>network.res1d</code> using <code>mikeio1d.open()</code>.</li>
 <li>This time, during the <code>open()</code> call, specify that you only want to load:
 <ul>
 <li>Nodes: “1”, “5”, and “10”.</li>
@@ -542,27 +545,13 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>Exercise 4</strong></p>
 <ol type="1">
-<li>Open <code>data/network.res1d</code> into a <code>Res1D</code> object.</li>
-<li>Access the reach named “100l1”.</li>
-<li>Iterate through all gridpoints of reach “100l1”. For each gridpoint, print its <code>chainage</code> and <code>bottom_level</code>.</li>
-<li>Create a single plot showing the ‘WaterLevel’ for the first gridpoint (index <code>0</code>) and the last gridpoint (index <code>-1</code>) of reach “100l1”. Use different line styles or colors for clarity and add a legend.</li>
+<li>Open <code>network.res1d</code> into a <code>Res1D</code> object.</li>
+<li>Access the first grid point on the reach named “100l1”.</li>
+<li>Plot its water level.</li>
+<li>Access the last grid point on the reach named “100l1”.</li>
+<li>Plot its water level.</li>
 </ol>
-<p><strong>Exercise 5</strong></p>
-<ol type="1">
-<li>Download the <a href="data/catchments.res1d" download="catchments.res1d">catchments.res1d file</a> into your project folder.</li>
-<li>Open <code>data/catchments.res1d</code> into a <code>Res1D</code> object.</li>
-<li>Access the catchment named “100_16_16”.</li>
-<li>Print its static property: <code>area</code>.</li>
-<li>Plot the ‘TotalRunOff’ time series for this catchment.</li>
-<li>Export the ‘TotalRunOff’ time series for catchment “100_16_16” to a <code>dfs0</code> file named <code>catchment_100_16_16_runoff.dfs0</code>.</li>
-</ol>
-<p><strong>Exercise 6</strong></p>
-<ol type="1">
-<li>Open <code>data/network.res1d</code> into a <code>Res1D</code> object.</li>
-<li>Find all reaches that are connected to node “1” (i.e., where “1” is either the <code>start_node</code> or <code>end_node</code> of the reach).</li>
-<li>For each of these connected reaches, print its name.</li>
-<li>Create a separate plot of the ‘Discharge’ time series for each of these connected reaches. (Hint: You might want to create a loop and generate multiple plots or subplots).</li>
-</ol>
+<p><strong>Exercise 5</strong> 1. Download <a href="data/model.res1d" download="model.res1d">model.res1d</a> into a new project folder. 2. Open <code>model.res1d</code> into a <code>Res1D</code> object. 3. Read the discharge of reach <code>G60F260_G60F240_l1</code> into a Pandas DateFrame. Use the discharge closest to the end node. 4. Confirm the end node of the reach is a node of type <code>Outlet</code> with id <code>G60F240</code>. 5. Download <a href="data/observed.csv" download="observed.csv">observed.csv</a> into your project folder. 6. Read observed flows from the CSV file into a DataFrame (remembering to use a DatetimeIndex). These represent observed flows of the reach referenced in step 3 above. 7. Plot the time series comparison of model vs observed for the following events: a. 2021-07-31 12:00 to 2021-07-31 15:45 b. 2021-07-28 17:25 to 2021-07-28 20:55 c.&nbsp;2021-06-21 06:55 to 2021-06-21 18:00</p>
 
 
 
