@@ -595,7 +595,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Exercise 1: Project Setup and Model Familiarization</strong></p>
+<p><strong>Exercise 1</strong></p>
 <ol type="1">
 <li>Download <a href="data/module4_model.zip" download="module4_model.zip">module4_model.zip</a> into a new project folder and extract its content.</li>
 <li>Review the folder structure and files of the model. It should be as follows:</li>
@@ -623,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Make a new LTS job list for the simulation. How does it compare with <code>LTS/rainfall_events_LTS_2020_09.MJL</code>?</li>
 <li>Run a simulation. Do you get the same results as those in the <code>results</code> folder?</li>
 </ol>
-<p><strong>Exercise 2: Preparing <code>Observation</code> Objects</strong></p>
+<p><strong>Exercise 2</strong></p>
 <ol type="1">
 <li>Create a new Jupyter Notebook and save it in your project folder.</li>
 <li>Create a <code>PointObservation</code> object for “Flow Meter A” using <code>data/flow_meter_A_2020_09.dfs0</code>.</li>
@@ -634,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Plot their time series.</li>
 </ul></li>
 </ol>
-<p><strong>Exercise 3: Preparing <code>ModelResult</code> Objects</strong></p>
+<p><strong>Exercise 3</strong></p>
 <ol type="1">
 <li>Use the model network results from Exercise 1 (or the provided reference results).</li>
 <li>For “Flow Meter A” (model reach <code>G60F380_G60F360_l1</code>), extract its ‘Discharge’ quantity to a <code>dfs0</code> file.</li>
@@ -645,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Plot the model result time series.</li>
 </ul></li>
 </ol>
-<p><strong>Exercise 4: Matching Data and Individual Comparisons</strong></p>
+<p><strong>Exercise 4</strong></p>
 <ol type="1">
 <li>Match <code>obs_A</code> with <code>mod_A</code> using <code>ms.match()</code>. Store in <code>comparer_A</code>.</li>
 <li>Match <code>obs_B</code> with <code>mod_B</code>. Store in <code>comparer_B</code>.</li>
@@ -658,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Repeat step 3 for <code>comparer_B</code>.</li>
 <li>Examine the skill tables. Qualitatively, which metrics suggest better or worse performance for each location?</li>
 </ol>
-<p><strong>Exercise 5: Analysis with <code>ComparerCollection</code></strong></p>
+<p><strong>Exercise 5</strong></p>
 <ol type="1">
 <li>Create a <code>ComparerCollection</code> named <code>cc</code> from <code>comparer_A</code> and <code>comparer_B</code>.</li>
 <li>Display <code>cc</code>. Check <code>cc.obs_names</code> and <code>cc.mod_names</code>.</li>
