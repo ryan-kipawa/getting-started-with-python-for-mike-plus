@@ -605,10 +605,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><em>ModelSkill</em> is a Python package designed to streamline and standardize the validation of environmental models, including those built with MIKE+. It helps you compare your model results against observed data, calculate skill scores, and generate insightful visualizations.</p>
+<p>ModelSkill is a Python package designed to streamline and standardize the validation of models, including those built with MIKE+. It helps you compare your model results against observed data, calculate skill scores, and generate insightful visualizations.</p>
 <section id="what-is-modelskill" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-modelskill">What is ModelSkill?</h2>
-<p>The primary purpose of <em>ModelSkill</em> is to provide a robust framework for quantitative model skill assessment. It builds upon libraries like <em>MIKE IO</em> and <em>MIKE IO 1D</em> by leveraging their data reading capabilities to easily ingest model outputs and observational data from various formats. This makes it easier to integrate model validation into your Python-based workflows.</p>
+<p>The primary purpose of ModelSkill is to provide a robust framework for quantitative model skill assessment. It builds upon libraries like MIKE IO by leveraging their data reading capabilities to easily ingest model outputs and observational data from various formats. This makes it easier to integrate model validation into your Python-based workflows.</p>
 <p>For comprehensive information, refer to the <a href="https://dhi.github.io/modelskill/">official <code>modelskill</code> documentation</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -626,11 +626,11 @@ Note
 </section>
 <section id="key-features" class="level2">
 <h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
-<p><em>ModelSkill</em> offers several high-impact features for model validation:</p>
+<p>ModelSkill offers several high-impact features for model validation:</p>
 <ul>
 <li>Easy comparison of one or more model results against observations.</li>
 <li>Automatic calculation of a wide range of statistical skill metrics.</li>
-<li>Generation of standard validation plots (e.g., time series, scatter plots, Taylor diagrams).</li>
+<li>Generation of standard validation plots (e.g., time series, scatter plots).</li>
 <li>Flexible handling of various data types and structures.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -649,7 +649,7 @@ Note
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>You can install <em>modelskill</em> using <em>uv</em> in your terminal. Ensure your Python environment is activated.</p>
+<p>You can install ModelSkill using uv in your terminal.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>uv pip install modelskill</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -667,12 +667,14 @@ Caution
 </section>
 <section id="core-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="core-concepts">Core Concepts</h2>
-<p>Understanding a few core concepts will help you use <em>modelskill</em> effectively. The main components are:</p>
+<p>Understanding a few core concepts will help you use ModelSkill effectively. The main components are:</p>
 <ul>
-<li><strong><code>Observation</code></strong>: This object represents your observed data, such as time series from a sensor or discrete measurements.</li>
-<li><strong><code>ModelResult</code></strong>: This object represents your model simulation data, typically time series output from a MIKE+ model or other simulation software.</li>
+<li><strong><code>Observation</code></strong>: Represents your observed data (e.g., sensor time series).</li>
+<li><strong><code>ModelResult</code></strong>: Represents your model simulation data (e.g., MIKE+ time series output).</li>
+<li><strong><code>Comparer</code></strong>: Matches one <code>Observation</code> with one <code>ModelResult</code>. It aligns them (e.g., by time) and is used to calculate skill scores and generate plots for this specific pair.</li>
+<li><strong><code>ComparerCollection</code></strong>: Groups multiple <code>Comparer</code> objects. Use it to assess model performance against several observation points or to get overall skill scores by aggregating results.</li>
 </ul>
-<p>These two objects are then brought together using a <strong><code>Comparer</code></strong> object. The <code>Comparer</code> intelligently matches observations with corresponding model results in space and time. Once matched, the <code>Comparer</code> can be used to calculate skill scores and generate various plots to assess model performance. The general workflow involves preparing <code>Observation</code> and <code>ModelResult</code> objects, feeding them into a <code>Comparer</code>, and then extracting skill metrics and visualizations from the <code>Comparer</code>.</p>
+<p>The general workflow involves preparing <code>Observation</code> and <code>ModelResult</code> objects, using <code>ms.match()</code> to create <code>Comparer</code> objects, optionally grouping them into a <code>ComparerCollection</code>, and then extracting skill metrics and visualizations.</p>
 
 
 </section>
