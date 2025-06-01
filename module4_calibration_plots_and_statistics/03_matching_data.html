@@ -608,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Now that you’ve prepared your <code>Observation</code> and <code>ModelResult</code> data, the next crucial step is to bring them together for direct comparison. ModelSkill makes this easy with <code>ms.match()</code> which creates a <code>Comparer</code> object. For situations where you need to assess performance across multiple locations or aggregate results, you can group several <code>Comparer</code> objects into a <code>ComparerCollection</code>.</p>
 <p>This section uses <code>Observation</code> and <code>ModelResult</code> objects prepared as in previous examples.</p>
-<div id="56b3dc2d" class="cell" data-execution_count="2">
+<div id="41d13f8d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show setup code for Observation and ModelResult objects</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source datasets</span></span>
@@ -648,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="comparer">Comparer</h2>
 <p>Use <code>ms.match()</code> to create a <code>Comparer</code> object. A <code>Comparer</code> is designed to match one <code>Observation</code> with one <code>ModelResult</code>. For point data, <code>match()</code> intelligently interpolates model results to observation timestamps, ensuring a direct, like-for-like comparison.</p>
 <p>Let’s match our previously defined <code>obs_116l1</code> with <code>mod_116l1</code>:</p>
-<div id="40d2f63f" class="cell" data-execution_count="3">
+<div id="6451ad6e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>obs_116l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>&lt;PointObservation&gt;: 116l1
@@ -657,7 +657,7 @@ Time: 1994-08-07 16:35:00 - 1994-08-07 18:35:00
 Quantity: Discharge [m^3/s]</code></pre>
 </div>
 </div>
-<div id="2366058c" class="cell" data-execution_count="4">
+<div id="605b413e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_116l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;PointModelResult&gt;: MIKE+
@@ -666,7 +666,7 @@ Time: 1994-08-07 16:35:00 - 1994-08-07 18:35:00
 Quantity: Discharge [m^3/s]</code></pre>
 </div>
 </div>
-<div id="5648d540" class="cell" data-execution_count="5">
+<div id="733b890c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>comparer_116l1 <span class="op">=</span> ms.match(obs_116l1, mod_116l1) <span class="co"># Changed from modelskill to ms</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>comparer_116l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -678,7 +678,7 @@ Model(s):
 </div>
 </div>
 <p>The <code>Comparer</code> now conveniently holds your matched data, interpolated and aligned, ready for detailed analysis and visualization. You can convert this to a Pandas <code>DataFrame</code> to inspect the aligned data. Notice how the DataFrame contains raw observation values and model values interpolated to the exact observation times.</p>
-<div id="05d14635" class="cell" data-execution_count="6">
+<div id="9706cae6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_aligned_single <span class="op">=</span> comparer_116l1.to_dataframe()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_aligned_single.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -744,7 +744,7 @@ Ensure Correct Pairing
 </div>
 </div>
 <p>A <code>Comparer</code> object is your gateway to generating insightful plots and calculating a range of skill scores. Plotting and skill assessment are detailed later in this module, but here’s a quick preview:</p>
-<div id="b72d4572" class="cell" data-execution_count="7">
+<div id="5e1fe2c2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>comparer_116l1.plot.timeseries()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -754,7 +754,7 @@ Ensure Correct Pairing
 </div>
 </div>
 </div>
-<div id="5a8191aa" class="cell" data-execution_count="8">
+<div id="5a94f781" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>comparer_116l1.skill()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -824,7 +824,7 @@ Comparing models against other models
 </div>
 </div>
 <p>First, let’s create another <code>Comparer</code> for our second observation point, <code>obs_12l1</code>, and its corresponding model result, <code>mod_12l1</code> (which comes from the same <code>MIKE+</code> simulation).</p>
-<div id="83b94438" class="cell" data-execution_count="9">
+<div id="fb91d875" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>obs_12l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>&lt;PointObservation&gt;: 12l1
@@ -833,7 +833,7 @@ Time: 1994-08-07 16:35:00 - 1994-08-07 18:35:00
 Quantity: Discharge [m^3/s]</code></pre>
 </div>
 </div>
-<div id="149894fb" class="cell" data-execution_count="10">
+<div id="6539d3ca" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod_12l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>&lt;PointModelResult&gt;: MIKE+
@@ -842,7 +842,7 @@ Time: 1994-08-07 16:35:00 - 1994-08-07 18:35:00
 Quantity: Discharge [m^3/s]</code></pre>
 </div>
 </div>
-<div id="c68a3d79" class="cell" data-execution_count="11">
+<div id="81b99da1" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>comparer_12l1 <span class="op">=</span> ms.match(obs_12l1, mod_12l1) <span class="co"># Changed from modelskill to ms</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>comparer_12l1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -854,7 +854,7 @@ Model(s):
 </div>
 </div>
 <p>Now, we can combine <code>comparer_116l1</code> and <code>comparer_12l1</code> into a <code>ComparerCollection</code>:</p>
-<div id="11df30bb" class="cell" data-execution_count="12">
+<div id="108da267" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cc <span class="op">=</span> ms.ComparerCollection([comparer_116l1, comparer_12l1]) <span class="co"># Changed from modelskill to ms</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -865,7 +865,7 @@ Comparers:
 </div>
 </div>
 <p>The <code>ComparerCollection</code> (<code>cc</code>) now manages both comparisons. This allows for powerful aggregate views. For instance, it provides skill assessment for each individual observation:</p>
-<div id="15559902" class="cell" data-execution_count="13">
+<div id="b498517b" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cc.skill()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
@@ -926,7 +926,7 @@ Comparers:
 </div>
 </div>
 <p>More importantly, it enables aggregate views of model performance, such as overall skill scores that consider all included comparisons:</p>
-<div id="5fb73aa3" class="cell" data-execution_count="14">
+<div id="cb51092d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cc.mean_skill()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
@@ -976,7 +976,7 @@ Comparers:
 </div>
 </div>
 <p>And aggregate plots, like a histogram of residual errors across all matched observation points:</p>
-<div id="42b4be7f" class="cell" data-execution_count="15">
+<div id="ac072316" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cc.plot.residual_hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -988,21 +988,21 @@ Comparers:
 </div>
 <p>You can inspect the collection’s properties to see which observations and models are included:</p>
 <p>Unique observation names within the collection:</p>
-<div id="a986d2db" class="cell" data-execution_count="16">
+<div id="f7cc4a6d" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cc.obs_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>['116l1', '12l1']</code></pre>
 </div>
 </div>
 <p>Unique model names. Since both <code>mod_116l1</code> and <code>mod_12l1</code> were created with <code>name="MIKE+"</code>, “MIKE+” appears only once, signifying they are from the same model run.</p>
-<div id="ae36796e" class="cell" data-execution_count="17">
+<div id="505879b8" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cc.mod_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>['MIKE+']</code></pre>
 </div>
 </div>
 <p>You can also select an individual <code>Comparer</code> from the collection by its observation name, allowing you to focus on a specific comparison:</p>
-<div id="6e9fa145" class="cell" data-execution_count="18">
+<div id="49aecd80" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>selected_comparer <span class="op">=</span> cc[<span class="st">'116l1'</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>selected_comparer.plot.timeseries()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">

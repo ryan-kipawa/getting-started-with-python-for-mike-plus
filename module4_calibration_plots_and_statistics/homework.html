@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -560,124 +595,86 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>These exercises will guide you through applying <em>ModelSkill</em> to validate a MIKE+ model. You will download a sample model and associated data, prepare observations and model results, compare them, and quantify the model’s performance.</p>
-<p><strong>General Instructions:</strong> * Create a new Jupyter Notebook for your solutions. * Import necessary packages at the beginning of your notebook: <code>python     import modelskill as ms     import mikeio     import mikeio1d     import pandas as pd     import matplotlib.pyplot as plt # For any custom plotting or plot adjustments</code></p>
 <p><strong>Exercise 1: Project Setup and Model Familiarization</strong></p>
 <ol type="1">
-<li>Create a new project folder on your computer specifically for this homework.</li>
-<li>Download the following files into your newly created project folder:
+<li>Download <a href="data/module4_model.zip" download="module4_model.zip">module4_model.zip</a> into a new project folder and extract its content.</li>
+<li>Review the folder structure and files of the model. It should be as follows:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module4_model</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>├── <span class="kw">data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>│   ├── flow_meter_A_2020_09<span class="op">.</span><span class="fu">dfs0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>│   ├── flow_meter_B_2020_09<span class="op">.</span><span class="fu">dfs0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>│   └── rainfall_events_2020-09<span class="op">.</span><span class="fu">dfs0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>├── Dyrup_uncalibrated<span class="op">.</span><span class="fu">mupp</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>├── Dyrup_uncalibrated<span class="op">.</span><span class="fu">sqlite</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>├── LTS</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>│   └── rainfall_events_LTS_2020_09<span class="op">.</span><span class="fu">MJL</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>└── results</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    ├── rainfallBaseDefault_Network_HD<span class="op">.</span><span class="fu">res1d</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    └── rainfallBaseDefault_Surface_runoff<span class="op">.</span><span class="fu">res1d</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Open <code>Dyrup_uncalibrated.mupp</code> in MIKE+ and familiarize yourself with the model.
 <ul>
-<li>MIKE+ Model Package: <code>[UrbanTestModel.zip](data/UrbanTestModel.zip){download="UrbanTestModel.zip"}</code> (This zip file contains the MIKE+ model project.)</li>
-<li>Flow Meter Data (Location A): <code>[Flow_Obs_A.dfs0](data/Flow_Obs_A.dfs0){download="Flow_Obs_A.dfs0"}</code></li>
-<li>Flow Meter Data (Location B): <code>[Flow_Obs_B.dfs0](data/Flow_Obs_B.dfs0){download="Flow_Obs_B.dfs0"}</code></li>
-<li>Rainfall Data (Model Input): <code>[Rainfall_Input.dfs0](data/Rainfall_Input.dfs0){download="Rainfall_Input.dfs0"}</code></li>
-<li>Reference Model Results: <code>[Reference_Results.res1d](data/Reference_Results.res1d){download="Reference_Results.res1d"}</code> (This can be used if you encounter issues running the model, or for initial setup.)</li>
+<li>Review the boundary conditions. Can you see where the rainfall is applied?</li>
+<li>Find the system’s only node outlet: G60F360.</li>
+<li>Locate the two flow meters (A and B). Which reach IDs are they associated with?</li>
+<li>Review the simulation setup.</li>
 </ul></li>
-<li>Unzip the <code>UrbanTestModel.zip</code> file in your project folder. This should create a folder structure for the MIKE+ model.</li>
-<li>Open the MIKE+ model (e.g., <code>UrbanTestModel.mplus</code> or similar, located within the unzipped folder).</li>
-<li>Familiarize yourself with the model: ::: {.callout-note title=“About the UrbanTestModel (Details to be provided by instructor)”} [Placeholder: Your instructor will provide details about this model. This might include:
-<ul>
-<li><strong>Type of System:</strong> Is it an urban drainage collection system, a river network, or something else?</li>
-<li><strong>Key Components:</strong> What are some of the main pipes/reaches, inlets, junctions, and outfalls?</li>
-<li><strong>Simulation Period:</strong> What time frame does the simulation cover?</li>
-<li><strong>Purpose:</strong> What is the model intended to simulate or analyze?</li>
-<li><strong>Observation Points:</strong> You will need to identify the model output locations (e.g., reach names and chainages, or node IDs) that correspond to “Flow Meter A” and “Flow Meter B”. For this exercise, let’s assume:
-<ul>
-<li>Flow Meter A corresponds to ‘Discharge’ in reach <code>MSM_Link_2</code> at chainage <code>25.0</code> (or the closest grid point).</li>
-<li>Flow Meter B corresponds to ‘Discharge’ in reach <code>MSM_Link_5</code> at chainage <code>30.0</code> (or the closest grid point). You may need to explore the model setup in MIKE+ to confirm these locations or find the exact grid point chainages.] :::</li>
-</ul></li>
-</ul></li>
-<li>If you are comfortable with MIKE+, try running the simulation. Ensure that a new result file (e.g., ending in <code>.res1d</code>) is produced. For the subsequent exercises, you can use either your own generated result file or the provided <code>Reference_Results.res1d</code>.</li>
+<li>Make a new LTS job list for the simulation. How does it compare with <code>LTS/rainfall_events_LTS_2020_09.MJL</code>?</li>
+<li>Run a simulation. Do you get the same results as those in the <code>results</code> folder?</li>
 </ol>
 <p><strong>Exercise 2: Preparing <code>Observation</code> Objects</strong></p>
 <ol type="1">
-<li>In your Jupyter Notebook, create a <code>PointObservation</code> object for the data from “Flow Meter A” (<code>Flow_Obs_A.dfs0</code>).
-<ul>
-<li>Name the <code>PointObservation</code> object <code>obs_A</code>.</li>
-<li>Use the <code>data</code> parameter to point to the <code>Flow_Obs_A.dfs0</code> file.</li>
-<li>Specify the correct <code>item</code> from the <code>dfs0</code> file (you might need to inspect the <code>dfs0</code> file first, e.g., using <code>mikeio.read("data/Flow_Obs_A.dfs0").items</code>).</li>
-<li>Set the <code>name</code> parameter of the <code>PointObservation</code> to <code>"Flow_Meter_A"</code>. This will be used for labeling.</li>
-</ul></li>
-<li>Create a <code>PointObservation</code> object for the data from “Flow Meter B” (<code>Flow_Obs_B.dfs0</code>).
-<ul>
-<li>Name the <code>PointObservation</code> object <code>obs_B</code>.</li>
-<li>Use the <code>data</code> parameter to point to the <code>Flow_Obs_B.dfs0</code> file.</li>
-<li>Specify the correct <code>item</code>.</li>
-<li>Set the <code>name</code> parameter of the <code>PointObservation</code> to <code>"Flow_Meter_B"</code>.</li>
-</ul></li>
+<li>Create a new Jupyter Notebook and save it in your project folder.</li>
+<li>Create a <code>PointObservation</code> object for “Flow Meter A” using <code>data/flow_meter_A_2020_09.dfs0</code>.</li>
+<li>Create a <code>PointObservation</code> object for “Flow Meter B” using <code>data/flow_meter_B_2020_09.dfs0</code>.</li>
 <li>For both <code>obs_A</code> and <code>obs_B</code>:
 <ul>
-<li>Print the object to see its summary (e.g., <code>print(obs_A)</code>).</li>
-<li>Use the <code>.plot()</code> method to visualize the time series data (e.g., <code>obs_A.plot()</code>).</li>
+<li>Print their objects and inspect the data.</li>
+<li>Plot their time series.</li>
 </ul></li>
 </ol>
 <p><strong>Exercise 3: Preparing <code>ModelResult</code> Objects</strong></p>
 <ol type="1">
-<li>You will use a model result file (either the <code>Reference_Results.res1d</code> or the one you generated in Exercise 1).</li>
-<li>For the location corresponding to “Flow Meter A” (e.g., ‘Discharge’ in reach <code>MSM_Link_2</code> at chainage <code>25.0</code>):
-<ul>
-<li>Use <code>mikeio1d.open()</code> to open your chosen <code>res1d</code> file.</li>
-<li>Extract the ‘Discharge’ time series for this specific location.</li>
-<li>Save this extracted time series to a new <code>dfs0</code> file named <code>model_discharge_A.dfs0</code>. (Alternatively, convert it directly to a Pandas <code>DataFrame</code>).
-<ul>
-<li><em>Hint:</em> When <code>mikeio1d</code> saves to <code>dfs0</code>, the item name in the <code>dfs0</code> file will typically be descriptive (e.g., <code>reach:Discharge:MSM_Link_2:25.000</code>).</li>
-</ul></li>
-<li>Create a <code>PointModelResult</code> object.
-<ul>
-<li>Name this object <code>mod_A</code>.</li>
-<li>Use the <code>data</code> parameter to point to <code>model_discharge_A.dfs0</code> (or the DataFrame).</li>
-<li>Specify the <code>item</code> name that was created in your <code>model_discharge_A.dfs0</code> (or the column name if using a DataFrame).</li>
-<li>Set the <code>name</code> parameter of the <code>PointModelResult</code> to <code>"MIKE_Plus_Sim"</code>.</li>
-</ul></li>
-</ul></li>
-<li>Repeat a similar process for the location corresponding to “Flow Meter B” (e.g., ‘Discharge’ in reach <code>MSM_Link_5</code> at chainage <code>30.0</code>):
-<ul>
-<li>Extract the ‘Discharge’ time series from the <code>res1d</code> file.</li>
-<li>Save it to a new <code>dfs0</code> file named <code>model_discharge_B.dfs0</code> (or convert to a DataFrame).</li>
-<li>Create a <code>PointModelResult</code> object.
-<ul>
-<li>Name this object <code>mod_B</code>.</li>
-<li>Use <code>model_discharge_B.dfs0</code> (or the DataFrame) for the <code>data</code> parameter.</li>
-<li>Specify the correct <code>item</code>.</li>
-<li>Set the <code>name</code> parameter of this <code>PointModelResult</code> to <code>"MIKE_Plus_Sim"</code> (note: this is the same model name as <code>mod_A</code> because they come from the same simulation run).</li>
-</ul></li>
-</ul></li>
+<li>Use the model network results from Exercise 1 (or the provided reference results).</li>
+<li>For “Flow Meter A” (model reach <code>G60F380_G60F360_l1</code>), extract its ‘Discharge’ quantity to a <code>dfs0</code> file.</li>
+<li>Create a <code>PointModelResult</code> object from the <code>dfs0</code> file created above.</li>
 <li>For both <code>mod_A</code> and <code>mod_B</code>:
 <ul>
 <li>Print the object summary.</li>
-<li>Use the <code>.plot()</code> method to visualize the model result time series.</li>
+<li>Plot the model result time series.</li>
 </ul></li>
 </ol>
 <p><strong>Exercise 4: Matching Data and Individual Comparisons</strong></p>
 <ol type="1">
-<li>Match the observation <code>obs_A</code> with the model result <code>mod_A</code> using <code>ms.match()</code>. Store the result in a <code>Comparer</code> object named <code>comparer_A</code>.</li>
-<li>Match <code>obs_B</code> with <code>mod_B</code>. Store the result in a <code>Comparer</code> object named <code>comparer_B</code>.</li>
+<li>Match <code>obs_A</code> with <code>mod_A</code> using <code>ms.match()</code>. Store in <code>comparer_A</code>.</li>
+<li>Match <code>obs_B</code> with <code>mod_B</code>. Store in <code>comparer_B</code>.</li>
 <li>For <code>comparer_A</code>:
 <ul>
-<li>Generate and display a time series plot: <code>comparer_A.plot.timeseries()</code>.</li>
-<li>Generate and display a scatter plot: <code>comparer_A.plot.scatter()</code>.</li>
-<li>Calculate and display the default skill table: <code>comparer_A.skill()</code>.</li>
+<li>Generate time series plot: <code>comparer_A.plot.timeseries()</code>.</li>
+<li>Generate scatter plot: <code>comparer_A.plot.scatter()</code>.</li>
+<li>Calculate and display skill table: <code>comparer_A.skill()</code>.</li>
 </ul></li>
 <li>Repeat step 3 for <code>comparer_B</code>.</li>
-<li>Look at the skill tables. Which metrics indicate better or worse performance for each location? (This is a qualitative observation for now).</li>
+<li>Examine the skill tables. Qualitatively, which metrics suggest better or worse performance for each location?</li>
 </ol>
-<p><strong>Exercise 5: Aggregated Analysis with <code>ComparerCollection</code></strong></p>
+<p><strong>Exercise 5: Analysis with <code>ComparerCollection</code></strong></p>
 <ol type="1">
-<li>Create a <code>ComparerCollection</code> named <code>cc</code> by providing a list containing <code>comparer_A</code> and <code>comparer_B</code>.</li>
-<li>Display the <code>cc</code> object (e.g., <code>print(cc)</code>). Check the output of <code>cc.obs_names</code> and <code>cc.mod_names</code>.</li>
-<li>Generate and display an aggregated scatter plot for the entire collection: <code>cc.plot.scatter()</code>. How does this compare to the individual scatter plots?</li>
-<li>Generate and display an aggregated histogram of residuals (Model - Observation) for the collection: <code>cc.plot.residual_hist()</code>.</li>
-<li>Calculate and display the skill table for the collection using <code>cc.skill()</code>. This table should show skill scores for each individual observation point (<code>Flow_Meter_A</code> and <code>Flow_Meter_B</code>).
+<li>Create a <code>ComparerCollection</code> named <code>cc</code> from <code>comparer_A</code> and <code>comparer_B</code>.</li>
+<li>Display <code>cc</code>. Check <code>cc.obs_names</code> and <code>cc.mod_names</code>.</li>
+<li>Make a scatter plot: <code>cc.plot.scatter()</code>.</li>
+<li>Make a residual histogram: <code>cc.plot.residual_hist()</code>.</li>
+<li>Calculate and display the skill table for the collection: <code>cc.skill()</code>.
 <ul>
-<li>Modify the call to <code>cc.skill()</code> to show only the ‘rmse’, ‘bias’, ‘nse’, and ‘kge’ metrics.</li>
+<li>Modify to show only ‘rmse’, ‘bias’, ‘nse’, and ‘kge’ metrics.</li>
 </ul></li>
-<li>Calculate and display the mean skill table for the collection using <code>cc.mean_skill()</code>. This table shows the average skill across all observation points.
+<li>Calculate and display the mean skill table: <code>cc.mean_skill()</code>.
 <ul>
-<li>Modify the call to <code>cc.mean_skill()</code> to show only ‘rmse’, ‘bias’, ‘nse’, and ‘kge’.</li>
+<li>Modify to show only ‘rmse’, ‘bias’, ‘nse’, and ‘kge’.</li>
 </ul></li>
-<li>Using the <code>cc.score()</code> method, retrieve and print the mean ‘rmse’ and mean ‘kge’ for the <code>"MIKE_Plus_Sim"</code> model across both observation points.</li>
+<li>Using <code>cc.score()</code>, retrieve and print the mean ‘kge’ score for the model.</li>
+<li>Review <a href="https://dhi.github.io/modelskill/api/metrics.html#modelskill.metrics.nash_sutcliffe_efficiency">ModelSkill’s documentation on ‘nse’</a>. How do both flow meters, and the overall model perform on this metric?</li>
 </ol>
-<p>Good luck! These exercises will solidify your understanding of how to use ModelSkill for practical model validation tasks.</p>
 
 
 
