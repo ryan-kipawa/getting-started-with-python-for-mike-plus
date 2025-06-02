@@ -664,6 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Create a <code>ComparerCollection</code> named <code>cc</code> from <code>comparer_A</code> and <code>comparer_B</code>.</li>
 <li>Display <code>cc</code>. Check <code>cc.obs_names</code> and <code>cc.mod_names</code>.</li>
+<li>Make a temporal coverage plot: <code>cc.plot.temporal_coverage()</code>.</li>
 <li>Make a scatter plot: <code>cc.plot.scatter()</code>.</li>
 <li>Make a residual histogram: <code>cc.plot.residual_hist()</code>.</li>
 <li>Calculate and display the skill table for the collection: <code>cc.skill()</code>.
@@ -675,13 +676,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Modify to show only ‘rmse’, ‘bias’, ‘nse’, and ‘kge’.</li>
 </ul></li>
 <li>Using <code>cc.score()</code>, retrieve and print the mean ‘kge’ score for the model.</li>
-<li>Review <a href="https://dhi.github.io/modelskill/api/metrics.html#modelskill.metrics.nash_sutcliffe_efficiency">ModelSkill’s documentation on ‘nse’</a>. How do both flow meters, and the overall model perform on this metric?</li>
 </ol>
 <p><strong>Exercise 6</strong></p>
 <ol type="1">
 <li>Repeat Exercise 4 and 5, but using the <code>max_model_gap</code> parameter of <code>ms.match()</code>. Use a value of 600 seconds.</li>
 <li>How do the number of observation points in each Comparer change?</li>
-<li>How does the skill assessment change after using this parameter?</li>
+<li>How does the temporal coverage plot change?</li>
+<li>How does this approach impact the skill assessment?</li>
+<li>Review <a href="https://dhi.github.io/modelskill/api/metrics.html#modelskill.metrics.nash_sutcliffe_efficiency">ModelSkill’s documentation on ‘nse’</a>. How do both flow meters, and the overall model perform on this metric?</li>
 </ol>
 
 
