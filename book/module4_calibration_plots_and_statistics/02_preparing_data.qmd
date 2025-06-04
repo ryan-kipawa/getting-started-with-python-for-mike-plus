@@ -54,6 +54,8 @@ ds_obs
 
 Create a `PointObservation` from this `Dataset`, selecting one item.
 ```{python}
+import modelskill as ms
+
 obs_116l1 = ms.PointObservation(
     data=ds_obs,
     item="116l1_observed",    # Selects one column/item
