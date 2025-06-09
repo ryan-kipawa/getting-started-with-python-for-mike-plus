@@ -608,6 +608,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module5_mikepluspy/homework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -720,24 +726,27 @@ Tip
 </section>
 <section id="maturity-potential-and-challenges" class="level2">
 <h2 class="anchored" data-anchor-id="maturity-potential-and-challenges">Maturity, Potential, and Challenges</h2>
-<p>MIKE+Py is less mature than MIKE IO or MIKE IO 1D. It is actively developed, with more features planned.</p>
-<p>MIKE+Py relies on .NET components. This can cause import order conflicts when used with other DHI Python packages like MIKE IO. MIKE+Py includes checks for known import issues.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Recommended Import Order">
+<p>MIKE+Py is less mature than other DHI packages, like MIKE IO and MIKE IO 1D. It is actively being developed, with more features planned.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Compatibility issues">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Recommended Import Order
+Compatibility issues
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To minimize potential for conflicts, ALWAYS use this import order:</p>
+<p>There are known compatibility issues when using MIKE+Py alongside other DHI libraries (e.g.&nbsp;MIKE IO, MIKE IO 1D, ModelSkill).</p>
+<ul>
+<li>Importing MIKE IO <em>after</em> MIKE+Py is not supported and will cause errors.</li>
+<li>Importing MIKE IO 1D <em>before</em> MIKE+Py is not supported and will cause errors.</li>
+</ul>
+<p>The following is the suggest import order which works for most use cases, but could still run into issues:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeio</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> modelskill <span class="im">as</span> ms</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeplus <span class="im">as</span> mp</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mikeio1d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Importing MIKE IO or ModelSkill <em>after</em> MIKE+Py, or MIKE IO 1D <em>before</em> MIKE+Py, often causes errors.</p>
 </div>
 </div>
 
