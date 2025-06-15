@@ -1,0 +1,561 @@
+# Final Project
+
+Welcome to your final project! This project is designed to bring together everything you've learned in this course, focusing on automating common MIKE+ modelling tasks using Python. You'll prepare data, assess an existing model, and then perform a calibration exercise.
+
+**Project Goal:** To improve the performance of a sample MIKE+ model by calibrating catchment parameters using MIKE+Py for automation and ModelSkill for assessment.
+
+**Dataset:**
+
+You'll be working with the `Dyrup_uncalibrated` model and associated rainfall and flow meter CSV data.
+
+*   Download the project data: [DyrupFinalProject_uncalibrated.zip](data/DyrupFinalProject_uncalibrated.zip){download="DyrupFinalProject_uncalibrated.zip"}
+*   `Dyrup_uncalibrated.sqlite`: The MIKE+ model database (after extracting the zip).
+*   `rain_events.csv`: Rainfall data (after extracting the zip).
+*   `station_flow_meters.csv`: Observed flow data from two meter stations (after extracting the zip).
+
+Ensure these files are in a `data` subfolder within your project directory. The `Dyrup_uncalibrated.sqlite` and `.mupp` files should be in the root of your project folder, or adjust paths in the code accordingly.
+
+```text
+Your_Project_Folder/
+├── data/
+│   ├── rain_events.csv
+│   └── station_flow_meters.csv
+├── LTS/
+│   └── rainfallBase.MJL
+├── Dyrup_uncalibrated.sqlite
+├── Dyrup_uncalibrated.mupp
+└── final_project.ipynb (or your script)
+```
+
+**Project Tracks:**
+
+This project offers two tracks. Everyone should complete Parts 1, 2, and 3. Part 4 is an advanced challenge for those who want to dive deeper.
+
+1.  **{{< fa star >}} Standard Track (Mandatory):**
+    *   Part 1: Prepare rainfall and flow data.
+    *   Part 2: Assess the skill of the existing, uncalibrated model.
+    *   Part 3: Calibrate the model focusing on parameters affecting Flow Meter B.
+2.  **{{< fa rocket >}} Advanced Challenge (Optional):**
+    *   Part 4: Further calibrate the model, building upon Part 3, by focusing on parameters affecting Flow Meter A.
+
+Let's begin!
+
+::: {.callout-tip title="Install Python Packages" collapse="true"}
+The following Python packages are required to complete the project. You will need to import the necessary modules from these packages in your notebook.
+
+```powershell
+uv pip install ipykernel pandas mikeio modelskill mikeplus mikeio1d matplotlib plotly nbformat
+```
+:::
+
+## {{< fa star >}} Part 1: Prepare Data
+
+**Objective:** Convert rainfall and flow meter CSV data to `dfs0` format for use with MIKE+ and course tools.
+
+::: {.callout-note title="Relevant Resources" collapse="true"}
+**Relevant Previous Exercises:**
+
+*   [Module 2 Homework](../module2_time_series/homework.qmd): CSV reading, Pandas processing, writing `dfs0`.
+:::
+
+**Tasks:**
+
+1.  **Process and save rainfall data to `dfs0` format.**
+
+    ::: {.callout-tip title="Starter Code: Task 1.1 - Process Rainfall Data" collapse="true"}
+    Remember to add necessary import statements at the beginning of your script/notebook. You may split this code into multiple cells.
+    ```python
+    # --- Part 1: Prepare Data ---
+    # Remember to add necessary import statements at the top of your script/notebook
+    # (e.g., for pandas and mikeio).
+
+    # Task 1.1: Process and save rainfall data to dfs0
+
+    # 1. Load "data/rain_events.csv" into a pandas DataFrame.
+    #    - The first column contains the timestamps. Ensure it's used as the index and parsed as dates.
+    #    - Rainfall data is in micrometers per second (µm/s).
+    # df_rain = ... # Your code here
+
+    # 2. Define ItemInfo for the rainfall data.
+    #    - Name: "Rainfall Intensity"
+    #    - EUMType: Use mikeio.EUMType for Rainfall_Intensity.
+    #    - EUMUnit: Use mikeio.EUMUnit for mu_m_per_sec.
+    #    - data_value_type: "MeanStepBackward" (intensity over previous step).
+    # rainfall_item_info = ... # Your code here (create a mikeio.ItemInfo object)
+
+    # 3. Convert the DataFrame (df_rain) to a mikeio.Dataset.
+    #    - Pass the DataFrame and a list containing your rainfall_item_info to mikeio.from_pandas().
+    # ds_rain = ... # Your code here
+
+    # 4. Save the Dataset to "data/rain_events.dfs0".
+    # ... # Your code here (use the .to_dfs() method)
+    ```
+    :::
+    *   Load `rain_events.csv`, ensuring dates are parsed correctly.
+    *   Convert the rainfall DataFrame to a MIKE IO `Dataset`.
+        *   Define appropriate `mikeio.ItemInfo` (EUM type, unit, data value type, name).
+    *   Save the `Dataset` to `data/rain_events.dfs0`.
+
+2.  **Process and save flow meter data to `dfs0` format.**
+
+    ::: {.callout-tip title="Starter Code: Task 1.2 - Process Flow Meter Data" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # Task 1.2: Process and save flow meter data to dfs0
+    # Add necessary import statements if not already present.
+
+    # 1. Load "data/station_flow_meters.csv" into a pandas DataFrame.
+    #    - The first column contains timestamps. Use it as the index and parse as dates.
+    #    - Data represents observed discharge in m^3/s.
+    # df_flow_meters = ... # Your code here
+
+    # 2. Define ItemInfo for Flow Meter A.
+    #    - Name: "Flow Meter A" (or your chosen column name).
+    #    - EUMType: Use mikeio.EUMType for Discharge.
+    #    - EUMUnit: Use mikeio.EUMUnit for meter_pow_3_per_sec.
+    #    - data_value_type: "Instantaneous".
+    # flow_meter_a_info = ... # Your code here
+
+    # 3. Define ItemInfo for Flow Meter B (similarly).
+    # flow_meter_b_info = ... # Your code here
+
+    # 4. Convert the flow meter DataFrame to a mikeio.Dataset.
+    #    - Create a list containing both flow_meter_a_info and flow_meter_b_info.
+    #    - Pass the DataFrame and this list of ItemInfo objects to mikeio.from_pandas().
+    # items_flow = [...] # Your list of ItemInfo objects
+    # ds_flow_meters = ... # Your code here
+
+    # 5. Save the Dataset to "data/station_flow_meters.dfs0".
+    # ... # Your code here
+    ```
+    :::
+    *   Load `station_flow_meters.csv`, ensuring dates are parsed correctly.
+    *   Optionally, rename columns for clarity.
+    *   Convert the flow meter DataFrame to a MIKE IO `Dataset`.
+        *   Define `mikeio.ItemInfo` for each flow meter (EUM type, unit, data value type, name).
+    *   Save the `Dataset` to `data/station_flow_meters.dfs0`.
+    *   Handle potential `NaN` values if present (though not expected for this dataset's relevant period).
+
+::: {.callout-note title="<i class='fa-solid fa-flag-checkered'></i> Checkpoint"}
+This checkpoint ensures your rainfall and flow data have been successfully converted to the `dfs0` format.
+
+*   `rain_events.dfs0` created and contains one item with correct EUM type (Rainfall Intensity), unit ($\mu m/s$), and data value type (MeanStepBackward).
+*   `station_flow_meters.dfs0` created and contains two items, each with correct EUM type (Discharge), unit ($m^3/s$), and data value type (Instantaneous).
+:::
+
+## {{< fa star >}} Part 2: Assess Skill of Existing Model
+
+**Objective:** Run the uncalibrated model, extract results, and assess baseline performance using ModelSkill against prepared flow data.
+
+::: {.callout-note title="Relevant Resources" collapse="true"}
+**Relevant Previous Exercises:**
+
+*   [Module 5 Homework](../module5_mikepluspy/homework.qmd): Running a simulation.
+*   [Module 3 Homework](../module3_network_results/homework.qmd): Reading `.res1d` files, extracting data.
+*   [Module 4 Homework](../module4_calibration_plots_and_statistics/homework.qmd): Preparing data, matching, assessing skill with ModelSkill.
+:::
+
+**Tasks:**
+
+1.  **Run the initial model simulation.**
+
+    ::: {.callout-tip title="Starter Code: Task 2.1 - Run Initial Model" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # --- Part 2: Assess Skill of Existing Model ---
+    # Add necessary import statements (e.g., for mikeplus and pathlib).
+
+    # Task 2.1: Run the initial model simulation
+    # Define the path to your "Dyrup_uncalibrated.sqlite" database.
+    # initial_db_path = ... # Your path as a string or Path object
+
+    # 1. Open the database using a context manager
+    # with ... as db: # Your code here to open the database
+    
+    # 2. Run the simulation. The simulation setup MUID is "rainfall".
+    #    Alternatively, you can run the active simulation if "rainfall" is active.
+    #    The db.run() method returns a list of pathlib.Path objects.
+    # initial_result_files = ... # Your code here to run the simulation
+    ```
+    :::
+    *   Open `Dyrup_uncalibrated.sqlite` with `mikeplus`.
+    *   Run the 'rainfall' simulation.
+    *   Store the paths to the generated result files.
+
+2.  **Extract and prepare model results for skill assessment.**
+
+    ::: {.callout-tip title="Starter Code: Task 2.2 - Extract Model Results" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # Task 2.2: Extract and prepare model results
+    # Add necessary import statements (e.g., for mikeio1d, mikeio, pandas).
+    
+    # 1. From 'initial_result_files' (list of Path objects from Task 2.1),
+    #    find the Path object for the network HD result file.
+    #    Its name will contain "...Network_HD.res1d".
+    # hd_res1d_path_initial = ... # Assign the Path object
+
+    # Define MUIDs for the reaches corresponding to Flow Meter A and B.
+    # reach_fm_a = "G60F380_G60F360_l1"
+    # reach_fm_b = "G62F070_G62F060_l1"
+
+    # 2. Open the .res1d file using mikeio1d.open().
+    # res_initial = ... # Your code here
+
+    # 3. Extract 'Discharge' time series for reach_fm_a.
+    #    Convert it to a dfs0 file (e.g., "result_subsets/Model_FM_A_Initial.dfs0").
+    # res_initial.reaches[...].
+
+    # 4. Extract 'Discharge' time series for reach_fm_b similarly.
+    #    Convert it to a dfs0 file (e.g., "result_subsets/Model_FM_B_Initial.dfs0").
+    # res_initial.reaches[...].
+
+    ```
+    :::
+    *   Identify the network HD result file (e.g., `...Network_HD.res1d`).
+    *   Open this file with `mikeio1d`.
+    *   Extract 'Discharge' for reaches `G60F380_G60F360_l1` (Flow Meter A) and `G62F070_G62F060_l1` (Flow Meter B). 
+    *   Save extracted discharges to dfs0 files (e.g. `result_subsets/Model_FM_A_Initial.dfs0`)
+
+3.  **Perform skill assessment using ModelSkill.**
+
+    ::: {.callout-tip title="Starter Code: Task 2.3 - Perform Skill Assessment" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # Task 2.3: Perform skill assessment
+    # Add necessary import statements (e.g., for modelskill, mikeio, pandas, matplotlib.pyplot).
+
+    # We define a custom course metric for you. Minimize this metric for best performance.
+    # Use it the same way as other metrics, but DO NOT put its name in quotations.
+    from modelskill.metrics import metric, kge, pr
+
+    @metric(best="-") # Lower is better
+    def course_metric(obs, model):
+        alpha = 0.5 # Weighting factor
+        kge_val = kge(obs, model) 
+        pr_val = pr(obs, model)
+        kge_component = alpha * (1 - kge_val)
+        pr_component = (1 - alpha) * abs(1 - pr_val)
+        return kge_component + pr_component
+
+    # 1. Load observed flow data from "data/station_flow_meters.dfs0" into a MIKE IO Dataset.
+    # ds_obs = ... # Your code here
+
+    # 2. Load initial model results into MIKE IO Datasets (e.g. from Model_FM_A_Initial.dfs0 and Model_FM_B_Initial.dfs0)
+    # ds_mod_a = ... # Your code here
+    # ds_mod_b = ... # Your code here
+
+    # 3. Create a ModelSkill PointObservation object for Flow Meter A.
+    #    - Use ds_obs as data.
+    #    - Specify the correct item name (e.g., "Flow Meter A" or your chosen name from Part 1).
+    #    - Give it a short name like "FM_A".
+    # obs_fm_a = ... # Your code here
+
+    # 4. Create a PointObservation object for Flow Meter B similarly.
+    # obs_fm_b = ... # Your code here
+
+    # 5. Create a ModelSkill PointModelResult for the initial model's output for Flow Meter A.
+    #    - Name the model run, e.g., "MIKE+ Initial".
+    # mod_fm_a_initial = ... # Your code here
+
+    # 6. Create a PointModelResult for Flow Meter B's initial model output similarly.
+    # mod_fm_b_initial = ... # Your code here
+
+    # 7. Match observation for FM A with its corresponding model result using ms.match().
+    #    - Set max_model_gap=200.
+    # cmp_a_initial = ... # Your code here
+
+    # 8. Match observation for FM B with its model result.
+    # cmp_b_initial = ... # Your code here
+    
+    # 9. Create a ModelSkill ComparerCollection from a list of the two Comparer objects.
+    # cc_initial = ... # Your code here
+
+    # 10. Plot temporal coverage for the ComparerCollection.
+    # ... # Your code here
+
+    # 11. For Flow Meter B:
+    #     - Generate a scatter plot for the entire time range.
+    #     - Plot the time series using `backend='plotly'` for a dynamic view. Explore.
+    # ... # Your code here
+
+    # 12. Calculate and display the skill table for cc_initial.
+    #     - Include metrics: 'bias', 'rmse', 'nse', 'kge', 'pr', and your 'course_metric'.
+    #     - Tip: as a custom metric, `course_metric` should not be in quotes.
+    # metrics_to_calc = [...] # Your list of metrics
+    # skill_initial = ... # Your code for cc_initial.skill()
+
+    # 13. Calculate and display the mean skill table for cc_initial using the same metrics.
+    # mean_skill_initial = ... # Your code for cc_initial.mean_skill()
+
+    # 14. Review the metrics. How does the initial model perform?
+    ```
+    :::
+    *   Load observed flow data (`data/station_flow_meters.dfs0`).
+    *   Define and use the custom `course_metric` (referenced in code template).
+    *   Create `ComparerCollection` matching observations (Flow Meter A, B) with model results. Use `max_model_gap=200`.
+    *   Plot temporal coverage.
+    *   For Flow Meter B, generate scatter plot. Plot the time series using plotly as the backend, then explore.
+    *   Calculate and display skill tables (individual and mean) with 'bias', 'rmse', 'nse', 'kge', 'pr', and `course_metric`.
+    *   Reflect on the model's existing skill, paying particular attention to kge, pr, and the course metric.
+
+::: {.callout-note title="<i class='fa-solid fa-flag-checkered'></i> Checkpoint"}
+This checkpoint verifies that you have run the initial model and assessed its baseline performance.
+
+*   Model results for the initial uncalibrated run (specifically for reaches corresponding to Flow Meter A and B) extracted and saved to dfs0 files.
+*   A `ComparerCollection` created in ModelSkill comparing these initial model results against the observed flow data for both flow meters.
+*   Baseline skill scores (especially `course_metric`) for Flow Meter A, Flow Meter B, and the mean performance noted.
+:::
+
+## {{< fa star >}} Part 3: Calibrate Model
+
+**Objective:** Improve model performance at Flow Meter B by calibrating `ModelAConcTime` and `ModelARFactor` using an automated grid search (MIKE+Py, ModelSkill).
+
+::: {.callout-tip title="What is a Grid Search?"}
+A **grid search** is a calibration technique where you define a range of possible values for each parameter you want to calibrate. The model is then run for every possible combination of these parameter values. The combination that yields the best model performance (according to a chosen metric, like NSE or `course_metric`) is selected. For more details, see [Wikipedia: Grid search](https://en.wikipedia.org/wiki/Grid_search).
+:::
+
+::: {.callout-note title="Relevant Resources" collapse="true"}
+**Relevant Previous Exercises:**
+
+*   [Module 5 Homework](../module5_mikepluspy/homework.qmd): Selecting data, creating scenarios/alternatives, looping, modifying parameters, running simulations (especially Exercise 5).
+*   [Module 4 Homework](../module4_calibration_plots_and_statistics/homework.qmd): As in Part 2 for ModelSkill.
+:::
+
+**Tasks:**
+
+1.  **Set up for calibration at Flow Meter B.**
+
+    ::: {.callout-tip title="Starter Code: Task 3.1 - Setup for Calibration (FM B)" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # --- Part 3: Calibrate Model at Flow Meter B ---
+    # Add necessary import statements (e.g., for numpy, mikeplus).
+
+    # Task 3.1: Set up for calibration
+
+    # 1. Open the database.
+    #    Query the "m_Selection" table:
+    #    - Select "ItemMUID".
+    #    - Filter where "SelectionID" is "Flow_Meter_B_Catchments".
+    #    - Filter where "TableName" is "msm_Catchment".
+    #    - Convert the result to a DataFrame and extract the "ItemMUID" column as a list.
+    #    Store this list in catchments_b_muids.
+    # with ... as db: # Open database
+        # selection_df = (db.tables.m_Selection
+                        # .select(...) # Select "ItemMUID"
+                        # .where(...) # Filter by SelectionID
+                        # .where(...) # Filter by TableName
+                        # .to_dataframe())
+        # catchments_b_muids = ... # Extract list of MUIDs
+
+    # 2. Review ModelAConcTime and ModelARFactor for catchments draining to flow meter B.
+    #    Query the "msm_Catchment" table:
+    #    - Select "ModelAConcTime" and "ModelARFactor"
+    #    - Filter by MUID, using the list of catchments for B
+    #    - Convert to DataFrame and describe() the DataFrame.
+
+    # 3. Define parameter ranges for Tc (Time of Concentration) and R_factor (Reduction Factor).
+    #    Use np.linspace() to create, for example, 3 values for Tc (e.g., from 1000s to 4000s)
+    #    and 3 values for R_factor (e.g., from 0.5 to 1.0).
+    # tc_vals_b = ... # Your code for Tc values
+    # r_vals_b = ...  # Your code for R_factor values
+    ```
+    :::
+    *   Open `Dyrup_uncalibrated.sqlite`.
+    *   Retrieve MUIDs for catchments in selection "Flow\_Meter\_B\_Catchments".
+    *   Review existing Time of Concentration (Tc) and Reduction Factor (R\_factor) of catchment B.
+    *   Define ranges for Tc and R\_factor for these catchments (e.g., 3 values for each parameter to create a 3x3 grid).
+
+    > The grid parameters selected will apply to all catchments draining to Flow Meter B (i.e. catchment parameters will not be individually modified, rather as a group).
+
+    ::: {.callout-warning title="Long Runtimes"}
+    Running many MIKE+ simulations can be time-consuming. It's suggested to keep the grid search low initially (e.g. 3x3 = 9 trials). Once your workflow is defined, and you want to refine the calibration, then consider creating more trials.
+    :::
+
+2.  **Perform a single calibration trial for Flow Meter B manually.**
+
+    ::: {.callout-tip title="Starter Code: Task 3.2 - Perform a Single Calibration Trial (FM B)" collapse="true"}
+    Add necessary imports.
+
+    ```python
+    # Task 3.2: Perform a single calibration trial (Flow Meter B)
+
+    # 1. Choose one Tc value and one R_factor value from your defined ranges for this single trial.
+    # tc = tc_vals_b[...]  # e.g., first Tc value
+    # r_factor = r_vals_b[...] # e.g., first R_factor value
+    
+    # 2. Define a unique name for this trial's alternative and scenario. This name will be used for both the alternative and scenario.
+    #    Use f-strings to include parameter values in names for easy identification.
+    # name = f"Trial 0 (tc={tc:.0f}, r={r_factor:.3f})"
+
+    # 3. Create a new alternative and scenario for this trial, then activate the scenario. Confirm it worked in MIKE+.
+    # with ... as db: # Open database
+    #    alt_group = db.alternative_groups[...]
+    #    alternative = alt_group.create(...)
+    #    scenario = db.scenarios.create(...)
+    #    scenario.set_alternative(...)
+    #    scenario.activate()
+    
+    # 4. Update ModelAConcTime and ModelARFactor for the catchments draining to Flow Meter B
+    #    Don't forget to make sure the database is open (last reminder).
+    #    Remember to .execute() the update, then confirm its output and checking MIKE+.
+    # updated = (
+    #   db.tables.msm_Catchment
+    #     .update({...}) # Define columns and new values
+    #     .by_muid(...)  # Specify MUIDs to update
+    #     .execute()
+    # )
+    # len(updated)
+        
+    # 5. Update the 'rainfall' simulation setup in msm_Project table to use the new scenario
+    # (db.tables.msm_Project
+    #     .update({...}) # Define column and new value
+    #     .by_muid(...)  # Specify simulation MUID
+    #     .execute())
+
+    # 6. Run the 'rainfall' simulation and store the list of result file Paths.
+    # result_files = db.run(...)
+    
+    # 7. Open the .res1d file using mikeio1d.
+    # res_single_trial = ...
+
+    # 8. Extract Discharge results for Flow Meter B into a dfs0, just like in Part 2.
+    # ...
+
+    # 9. Create a PointModelResult for this trial's output. Give it the same name as the scenario/alternative.
+    # mod_result_single_trial = ms.PointModelResult(...)
+    
+    # 10. Match with obs_fm_b (the PointObservation for Flow Meter B).
+    # comparer_single_trial = ms.match(...)
+
+    # 11. Do the same plots as in Part 2 (scatter and timeseries).
+    # ...
+    
+    # 12. Calculate the skill using the same metrics as in Part 2 (be sure to include `course_metric`).
+    # skill_single_trial = comparer_single_trial.skill(...)
+
+    ```
+    :::
+
+    > This task guides you to run one iteration of the calibration process. This will help you understand the steps involved before automating them in a loop for the entire grid search.
+
+    *   Work on the database `Dyrup_uncalibrated.sqlite`.
+    *   Perform all steps for one parameter combination: create scenario/alternative, update parameters, run simulation, extract results, calculate `course_metric`.
+    *   Verify that the process works and compare the output metric with the initial model's metric for Flow Meter B.
+
+3.  **Automate the full grid search calibration loop for Flow Meter B.**
+
+    ::: {.callout-tip title="Starter Code: Task 3.3 - Automated Grid Search (FM B)" collapse="true"}
+    Remember to add necessary import statements.
+    ```python
+    # Task 3.3: Automate the full grid search calibration loop (FM B)
+
+    # Initialize structures to store results and track the best trial
+    # trial_b_results = {} # Dictionary: scenario_name -> res1d_file_path  
+
+    # 1. Open the database ONCE for the entire loop using a context manager.
+    # with ... as db:
+        # ...
+
+    # 2. Get alternative group that will be needed for creating alternatives
+    # alt_group = db.alternative_groups[...]
+
+    # 3. Loop through all combinations of Tc and R_factor values.
+    #    Use itertools.product() for this.
+    #    import itertools # if not already imported
+    #    simple print i, tc, and r_factor first to ensure you understand the loop iterations
+    # for i, (tc, r_factor) in enumerate(itertools.product(tc_vals_b, r_vals_b), start=1):
+    #     print(i, tc, r_factor)
+    #     ...
+
+    # 4. Define unique alternative/scenario name for this trial.
+    # name = f"Trial {i} (tc={tc:.0f}, r={r_factor:.3f})"
+
+    # 5. Create a new alternative and scenario, and activate it (same as for single calibration trial)
+    # ...
+
+    # 6. Update the catchment time of concentrations and reduction factors
+    # ...
+
+    # 7. Update the project table, run the simulation, and get the HD result file path
+    #    Tip: Print the simulation name before running it to track status of the loop.
+    # ...
+
+    # 8. Update trial_b_results before the next loop iteration
+    #    Make sure to keep trial_b_results for the next part!
+    # trial_b_results[name] = ...
+
+    ```
+    :::
+    *   Using the database `Dyrup_uncalibrated.sqlite`, loop through *all* combinations of Tc and R\_factor.
+    *   Inside the loop, include all the steps to create a scenario/alternative, update parameters for the current Tc and R\_factor, and run the simulation.
+    *   Save the result of the loop in a dictionary, with keys being the scenario name and values being the path to the res1d result file.
+    *   Open MIKE+, activate a few scenarios, and check the parameters to ensure your code worked as intended.
+  
+    ::: {.callout-caution}
+    Test your code carefully before running it in the full loop. Use cells to test chunks of code. If you accidentally destroy the model database, it's easiest to start over with a fresh copy of the database. Luckily you have a reproducible workflow that's as easy as running all cells :).
+    :::
+
+4.  **Analyze calibration results for Flow Meter B.**
+
+    ::: {.callout-tip title="Starter Code: Task 3.4 - Analyze Calibration Results (FM B)" collapse="true"}
+    Remember to add necessary import statements. You may split this code into multiple cells.
+    ```python
+    # Task 3.4: Analyze calibration results for Flow Meter B
+
+    # 1. Loop over `trial_b_results` from the previous part. Create a list of comparer objects at Flow Meter B for each trial.
+    # comparers = []
+    # for scenario_name, res1d_path in trial_b_results.items():
+    #     res = mikeio1d.open(res1d_path)
+    #     ... some more code to get result data into modelskill
+    #     cmp = ms.match(...)
+    #     comparers.append(cmp)
+
+    # 2. Add the comparer object from MIKE+ Initial at Flow Meter B
+    # comparers.append(...)
+
+    # 3. Create a ComparerCollection of all the trials and the initial model.
+    # cc_fm_b = ms.ComparerCollection(...)
+    
+    # 4. Save the ComparerCollection so that you can reload it in the future.
+    # cc_fm_b.save("flow_meter_b_calibration.msk") 
+    # cc_fm_b = cc_fm_b.load("flow_meter_b_calibration.msk") # this is how you would load it
+    
+    # 5. Create the skill table using the same metrics as in previous parts (including course_metric)
+    # skill_fm_b = cc_fm_b.skill(...)
+
+    # 6. Sort and style the skill table to find the best and worst trial, according to course_metric.
+    # skill_fm_b
+
+    # 7. Make plot comparisons of the best trial versus MIKE+ Initial to support calibration efforts.
+    # cc_fm_b[0].sel(model=["MIKE+ Initial", ...]).plot.
+    ```
+    :::
+    *   Create a `ComparerCollection` for Flow Meter B:
+        *   Include the "MIKE+ Initial" model results (from Part 2).
+        *   Include all trials from the previous part..
+    *   (Optional: save/load `.msk` file).
+    *   Calculate the skill table for Flow Meter B using `course_metric` and other standard metrics.
+    *   Sort the skill table to find the best and worst trials, according to `course_metric`.
+    *   Make plot comparisons of the best trial versus MIKE+ Initial to support the calibration efforts.
+
+::: {.callout-note title="<i class='fa-solid fa-flag-checkered'></i> Checkpoint"}
+This checkpoint confirms the completion of the automated calibration for Flow Meter B and initial analysis of results.
+
+*   The `Dyrup_uncalibrated.sqlite` database now contains all scenarios and alternatives from the grid search for Flow Meter B.
+*   All simulation result files for the grid search trials generated and processed (or at least the path to the best one is known).
+*   The best parameter combination (`ModelAConcTime` and `ModelARFactor`) for the catchments affecting Flow Meter B identified based on the `course_metric`.
+*   The improvement in model performance at Flow Meter B quantified using `course_metric` and visualized.
+:::
+
+## {{< fa rocket >}} Part 4: More Calibration (optional)
+
+**Objective:** Refine model by calibrating parameters for Flow Meter A catchments, using Part 3's best scenario as parent.
+
+**Tasks:**
+
+- There's no code templates or checkpoints for this part - you're on your own :)
+- Repeat the process used in Part 3, but for the additional catchments flowing to Flow Meter A.
+- Create Python functions to reuse your code from Part 3 in a cleaner way.
+- Create a ComparerCollection including both observation points, then calculate the mean `course_metric` of the entire model.
